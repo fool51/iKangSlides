@@ -560,8 +560,12 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .leaflet table.pkg td.c{width:58px;white-space:nowrap}
 .leaflet table.pkg td.note{font-size:11.5px}
 .leaflet table.pkg tr.sale td{font-size:17px}
-.leaflet .split>.tbl-scroll.tbl-scaled{overflow:hidden;align-self:start}
+.leaflet .split>.tbl-scroll.tbl-scaled{overflow:visible;align-self:start}
 .leaflet .split>.tbl-scroll.tbl-scaled table.pkg{transform-origin:top left}
+.leaflet .tbl-scale-inner{transform-origin:top left;display:block}
+.slide.leaflet.leaflet-tight-table table.pkg{font-size:14px}
+.slide.leaflet.leaflet-tight-table table.pkg th,.slide.leaflet.leaflet-tight-table table.pkg td{padding:7px 10px}
+.slide.leaflet.leaflet-tight-table table.pkg tr.sale td{font-size:16px}
 .leaflet .split>.withfig{min-height:0;overflow:hidden;display:flex;flex-direction:column}
 .leaflet .brandline,.leaflet .sidefig{align-self:center;width:100%;max-width:100%}
 .leaflet .out.alert,.leaflet .out.ok{flex:none}
@@ -1715,42 +1719,77 @@ function fitSlide(s){
   sheet.style.height='100%';
   sheet.style.minHeight='0';
   if(s.classList.contains('leaflet')){
+    s.classList.toggle('leaflet-tight-table', s.dataset.title==='骨健康 · 骨关节评估');
+    const clearTableScale=(table,tblScroll)=>{
+      table.style.transform='';
+      table.style.width='';
+      table.style.transformOrigin='';
+      table.style.zoom='';
+      tblScroll.style.height='';
+      tblScroll.classList.remove('tbl-scaled');
+      const inner=table.closest('.tbl-scale-inner');
+      if(inner&&inner.parentNode===tblScroll){
+        tblScroll.insertBefore(table, inner);
+        inner.remove();
+      }
+    };
     s.querySelectorAll('.tbl-scroll').forEach(el=>{
       el.classList.remove('tbl-fit','tbl-fit-2','tbl-scaled');
       el.style.height='';
       el.style.overflow='';
-    });
-    s.querySelectorAll('.tbl-scroll table.pkg').forEach(t=>{
-      t.style.transform='';
-      t.style.width='';
-      t.style.transformOrigin='';
+      const t=el.querySelector(':scope > table.pkg, :scope > .tbl-scale-inner > table.pkg');
+      if(t) clearTableScale(t, el);
     });
     delete s.dataset.shrunk;
+    const tableBottom=(table)=>{
+      const sale=table.querySelector('tr.sale');
+      const row=sale||table.querySelector('tr.mkt')||table.tBodies[0]?.lastElementChild;
+      return row?row.getBoundingClientRect().bottom:table.getBoundingClientRect().bottom;
+    };
+    const applyTableScale=(table,tblScroll,sc)=>{
+      if(sc>=0.992){ clearTableScale(table,tblScroll); return; }
+      tblScroll.classList.add('tbl-scaled');
+      table.style.transformOrigin='top left';
+      const useZoom=typeof CSS!=='undefined'&&CSS.supports&&CSS.supports('zoom','1');
+      if(useZoom){
+        table.style.transform='';
+        table.style.width='';
+        table.style.zoom=sc.toFixed(4);
+        tblScroll.style.height='';
+      }else{
+        table.style.zoom='';
+        let inner=table.closest('.tbl-scale-inner');
+        if(!inner||inner.parentNode!==tblScroll){
+          inner=document.createElement('div');
+          inner.className='tbl-scale-inner';
+          tblScroll.insertBefore(inner, table);
+          inner.appendChild(table);
+        }
+        inner.style.transformOrigin='top left';
+        inner.style.transform='scale('+sc.toFixed(4)+')';
+        inner.style.width=(100/sc).toFixed(2)+'%';
+        tblScroll.style.height=Math.ceil(inner.getBoundingClientRect().height)+'px';
+      }
+    };
     const fitLeafletTable=()=>{
-      const footPad=mqMobile.matches?52:38;
+      const footPad=mqMobile.matches?52:42;
       const limit=s.getBoundingClientRect().bottom-footPad;
       const tblScroll=s.querySelector('.split > .tbl-scroll');
       const table=tblScroll?.querySelector('table.pkg');
       if(!tblScroll||!table) return;
-      if(mqMobile.matches){
-        const slideLimit=s.getBoundingClientRect().bottom-footPad;
-        if(tblScroll.getBoundingClientRect().bottom<=slideLimit) return;
-      }else if(tblScroll.getBoundingClientRect().bottom<=limit) return;
+      clearTableScale(table,tblScroll);
+      if(tableBottom(table)<=limit) return;
       const top=tblScroll.getBoundingClientRect().top;
-      let avail=limit-top;
-      if(mqMobile.matches){
-        avail=Math.max(avail,s.getBoundingClientRect().bottom-footPad-top);
-      }
-      if(avail<48) return;
+      const avail=Math.max(48, limit-top);
       const naturalH=table.offsetHeight;
       if(!naturalH) return;
-      const scale=Math.min(1,avail/naturalH);
-      if(scale>=0.992) return;
-      tblScroll.classList.add('tbl-scaled');
-      table.style.transformOrigin='top left';
-      table.style.transform='scale('+scale.toFixed(4)+')';
-      table.style.width=(100/scale).toFixed(2)+'%';
-      tblScroll.style.height=Math.ceil(naturalH*scale)+'px';
+      let scale=Math.min(1, avail/naturalH);
+      applyTableScale(table,tblScroll,scale);
+      let guard=0;
+      while(guard++<14 && tableBottom(table)>limit+1){
+        scale=Math.max(0.62, scale*0.965);
+        applyTableScale(table,tblScroll,scale);
+      }
     };
     requestAnimationFrame(()=>{ fitLeafletTable(); requestAnimationFrame(fitLeafletTable); });
     return;
