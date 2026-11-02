@@ -222,7 +222,8 @@ html,body{background:#E9E3D8}
 .slide:not(.cover):not(.close) .top{justify-content:flex-start;height:30px}
 .slide:not(.cover):not(.close) .top .logo{display:none}
 .slide:not(.cover):not(.close) h2{padding-right:200px}
-.viewport{justify-content:flex-start;padding-left:16px}
+.viewport{justify-content:center;padding:0}
+.stage{margin-right:92px}
 .top{height:32px}
 .logo{height:30px}
 .pager{font-size:14px}
@@ -248,7 +249,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 .withfig{display:flex;flex-direction:column;min-height:0;gap:8px}
 .withfig .tbl-scroll{flex:none}
 .coqfig{flex:1;min-height:0;margin:0;border-radius:12px;overflow:hidden;background:#F7FAFE;box-shadow:0 0 0 1px #E4EAF2;display:flex;align-items:center;justify-content:center}
-.coqfig img{max-width:100%;max-height:220px;width:auto;height:auto;object-fit:contain}
+.coqfig img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .cmap{background:transparent;container-type:size}
 .mapbox{position:relative;width:min(100%, calc(100cqh * 1000 / 738));aspect-ratio:1000 / 738;margin:0 auto}
 .mapbox img.map{width:100%;height:100%;display:block;object-fit:fill}
@@ -457,7 +458,10 @@ table.grid td,table.pkg td{padding:9px 12px}
 .step{padding:14px}
 .out{padding:8px 10px}
 .flowpage .escort{padding:10px 12px 10px}
-.leaflet .split,.leaflet .split.fig{padding:12px}
+.leaflet .split,.leaflet .split.fig{padding:12px;flex:1 0 auto;height:auto;min-height:min-content;align-items:stretch}
+.leaflet .split>.side,.leaflet .split>.tbl-scroll,.leaflet .split>.withfig,.leaflet .split>.infographic{min-height:min-content;height:auto;align-self:stretch}
+.leaflet .side{display:flex;flex-direction:column}
+.leaflet .dossier{flex:none;margin-top:auto}
 .tickets div{padding:10px 12px}
 .tickets{display:flex;gap:8px;margin:0 0 8px}
 .tickets div{flex:1;background:#fff;border-radius:12px;padding:8px 10px;box-shadow:0 0 0 1px #F6E7D4}
@@ -1255,8 +1259,6 @@ table.grid td,table.pkg td{padding:9px 12px}
   <p style="margin-top:8px">爱康予您妥帖安心</p>
 </section>
 <p class="brandfoot" id="brandfoot">爱康门诊<span>呵护您与家人的健康</span></p>
-<button class="nav prev" id="prev" aria-label="上一页">‹</button>
-<button class="nav next" id="next" aria-label="下一页">›</button>
 <nav class="book" id="book" aria-label="目录"></nav>
 </div></div>
 <div class="hint">方向键或左右滑动换页 · 右侧页签即目录</div>
