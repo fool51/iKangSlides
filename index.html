@@ -61,10 +61,9 @@ table.grid tr:nth-child(even) td{background:#F7FAFD}
 .banner{margin-top:10px;background:var(--gold);color:#fff;border-radius:8px;text-align:center;font-weight:700;font-size:14px;padding:10px 12px;flex:none}
 .layers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;flex:none;align-items:stretch}
 .layer{background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:8px;padding:16px 18px;position:relative;display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:0}
-.slide:has(.layers){padding-bottom:8px}
-.slide:has(.layers) .sheet{justify-content:center}
 .slide:has(.layers) .banner{margin-top:15px}
-.slide:has(.layers) .layers{gap:15px;margin-top:17px}
+.slide:has(.layers) .layers{gap:15px;margin-top:17px;flex:1}
+.slide:has(.layers) .layer{justify-content:center;height:100%}
 .tbl-scroll.tight{flex:none}
 .layer:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:8px 8px 0 0}
 .layer.a:before{background:var(--navy)} .layer.b:before{background:var(--green)} .layer.c:before{background:var(--gold)}
@@ -1212,16 +1211,16 @@ table.grid td,table.pkg td{padding:9px 12px}
     <b style="color:var(--navy);font-size:16px">首批城市</b>
     <div class="cmap">
       <div class="mapbox">
-        <img class="map" src="images/china.png" alt="中国地图">
-        <span class="mpin up" style="left:68.09%;top:39.58%"><b>北京</b></span>
-        <span class="mpin left" style="left:73.36%;top:60.39%"><b>常州</b></span>
-        <span class="mpin" style="left:74.80%;top:62.20%"><b>上海</b></span>
-        <span class="mpin down" style="left:73.64%;top:64.40%"><b>杭州</b></span>
-        <span class="mpin" style="left:72.37%;top:75.12%"><b>福州</b></span>
-        <span class="mpin left" style="left:63.43%;top:82.71%"><b>广州</b></span>
-        <span class="mpin down" style="left:64.61%;top:84.23%"><b>深圳</b></span>
-        <span class="mpin left" style="left:53.62%;top:73.66%"><b>贵阳</b></span>
-        <span class="mpin up" style="left:53.50%;top:66.18%"><b>重庆</b></span>
+        <img class="map" src="images/china.svg" alt="中国地图">
+        <span class="mpin up" style="left:68.42%;top:44.22%"><b>北京</b></span>
+        <span class="mpin left" style="left:73.70%;top:64.82%"><b>常州</b></span>
+        <span class="mpin" style="left:75.92%;top:66.22%"><b>上海</b></span>
+        <span class="mpin down" style="left:73.97%;top:68.51%"><b>杭州</b></span>
+        <span class="mpin" style="left:72.70%;top:78.23%"><b>福州</b></span>
+        <span class="mpin left" style="left:63.76%;top:84.74%"><b>广州</b></span>
+        <span class="mpin down" style="left:64.94%;top:86.00%"><b>深圳</b></span>
+        <span class="mpin left" style="left:53.94%;top:76.94%"><b>贵阳</b></span>
+        <span class="mpin up" style="left:53.82%;top:70.19%"><b>重庆</b></span>
       </div>
     </div>
     <div class="reserve">预留扩城：长沙、郑州、合肥（根据首期效果动态增补）</div>
