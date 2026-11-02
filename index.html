@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>爱康 × 阿里健康 · 家庭健康卡 · v4</title>
 <style>
 :root{
@@ -619,6 +619,111 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .caregrid article:last-child{grid-column:1 / -1}
 .hangzhou{margin:14px 0 0;padding:8px 10px;border-radius:8px;background:#FFF4EC;color:#C2410C;font-weight:750;font-size:15px}
 .exam-fuse{margin:2px 0 10px}
+
+/* —— 移动端自适应 —— */
+@media (max-width:820px){
+  html,body{height:100%;overflow:hidden;background:#fff}
+  .viewport{align-items:stretch;justify-content:flex-start;height:100%;min-height:100dvh;padding:0}
+  .stage{
+    width:100vw!important;max-width:100vw;
+    height:100dvh!important;max-height:100dvh;
+    margin:0!important;border-radius:0;box-shadow:none;
+    overflow:hidden;
+  }
+  .book{
+    position:fixed;left:0;right:0;top:auto;bottom:0;
+    width:100%;height:auto;max-height:42dvh;
+    flex-direction:row;flex-wrap:nowrap;align-items:stretch;
+    justify-content:flex-start;gap:6px;
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));
+    overflow-x:auto;overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    background:rgba(255,255,255,.97);
+    box-shadow:0 -6px 24px rgba(29,80,162,.14);
+    z-index:40;
+  }
+  .book button{
+    flex:0 0 auto;width:auto;min-width:3.6em;height:34px;
+    margin:0!important;padding:0 11px;border-radius:999px;
+    font-size:11px;text-align:center;white-space:nowrap;
+  }
+  .slide{padding:10px 12px calc(58px + env(safe-area-inset-bottom,0px))}
+  .slide:not(.cover):not(.close){
+    overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  .slide:not(.cover):not(.close) h2{padding-right:0;font-size:21px;margin:0 0 8px;line-height:1.3}
+  .title-row{flex-wrap:wrap;gap:6px}
+  .title-row h2{font-size:21px;margin:0 0 8px}
+  .hookline{font-size:13px;line-height:1.4;margin:0 0 6px}
+  .top{height:auto;min-height:28px;flex-wrap:wrap;gap:4px}
+  .pager{font-size:12px}
+  .pager b{font-size:14px}
+  .lead{font-size:14px;padding:10px 12px 10px 14px;line-height:1.45}
+  .cols.two,.split,.split.fig,.coop,.day,.vision,.sop,.exam,.quad,.cover-grid{
+    grid-template-columns:1fr!important;grid-template-rows:auto!important;
+  }
+  .split.fig .side,.split.fig .tbl-scroll,.split.fig .infographic{grid-column:1!important;grid-row:auto!important}
+  .painboard{
+    grid-template-columns:1fr!important;grid-template-rows:auto;gap:10px;
+    align-content:start;padding-bottom:8px;
+  }
+  .pain-side.l,.pain-side.r{transform:none;grid-column:1!important;grid-row:auto!important}
+  .pain-art{grid-column:1!important;grid-row:auto!important;max-height:36vh}
+  .pain-cap{margin-top:4px;font-size:14px;padding:8px 18px;letter-spacing:.06em}
+  .menu{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:8px}
+  .tile{padding:10px 12px}
+  .tile b{font-size:14px}
+  .themes{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .perks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .svcgrid{grid-template-columns:1fr}
+  .steps,.layers,.escort .three{grid-template-columns:1fr}
+  .guard-cards{grid-template-columns:1fr}
+  .caregrid{grid-template-columns:1fr}
+  .caregrid article:last-child{grid-column:1}
+  .proc.time{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .trio{flex-wrap:wrap;gap:10px;margin-bottom:16px}
+  .trio img{width:26vw;height:26vw;max-width:108px;max-height:108px;border-radius:12px}
+  .cover{padding:12px 16px calc(58px + env(safe-area-inset-bottom,0px))}
+  .cover h1{font-size:26px}
+  .leaflet .split{display:flex;flex-direction:column;gap:10px;overflow:visible;padding:10px 12px 12px}
+  .leaflet .split>.side{order:1;flex:none}
+  .leaflet .split>.tbl-scroll{order:2;flex:1 1 auto;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch}
+  .leaflet table.pkg{font-size:13px;min-width:min(100%,520px)}
+  .leaflet table.pkg th,.leaflet table.pkg td{padding:7px 8px}
+  .leaflet table.pkg tr.sale td{font-size:15px}
+  table.pkg td.cat{white-space:normal}
+  table.pkg th{white-space:normal;font-size:13px}
+  .sidefig{max-height:none;flex-direction:column!important;align-items:stretch!important}
+  .sidefig img,.sidefig:has(figcaption) img{max-width:100%!important;max-height:140px!important;margin:0 auto}
+  .sidefig figcaption,.leaflet .sidefig figcaption{
+    flex:none;max-width:100%;margin:8px 0 0;padding:8px 0 0;
+    border-left:0;border-top:3px solid #F26A21;font-size:11px;line-height:1.4;
+  }
+  .narr-pop,.explain-pop,.dossier .explain-pop{
+    position:fixed;left:12px!important;right:12px!important;width:auto!important;max-width:none;
+    bottom:auto;top:50%;transform:translateY(-50%);z-index:50;
+    max-height:70dvh;overflow-y:auto;
+  }
+  .ditem:hover .explain-pop,.ditem:focus-within .explain-pop{display:block}
+  .brandfoot{
+    left:10px;bottom:calc(52px + env(safe-area-inset-bottom,0px));
+    font-size:8px;white-space:normal;max-width:55%;
+  }
+  .hint{display:none}
+  .tools{right:10px;bottom:calc(54px + env(safe-area-inset-bottom,0px));z-index:45}
+  .nav{width:36px;height:48px;font-size:22px}
+  .nav.prev{left:4px}
+  .nav.next{right:4px}
+  .mapbox{width:100%;max-height:42vh}
+  .photos img{min-height:88px;height:auto;max-height:140px}
+  .chip{font-size:14px;padding:8px 14px}
+  .banner{font-size:14px;padding:10px 12px}
+}
+@media (max-width:820px) and (max-height:520px){
+  .book{max-height:36dvh;padding-top:6px;padding-bottom:calc(6px + env(safe-area-inset-bottom,0px))}
+  .book button{height:28px;font-size:10px;padding:0 8px}
+  .slide{padding-bottom:calc(48px + env(safe-area-inset-bottom,0px))}
+}
 
 </style>
 </head>
@@ -1445,7 +1550,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <p class="brandfoot" id="brandfoot">爱康门诊<span>呵护您与家人的健康</span></p>
 <nav class="book" id="book" aria-label="目录"></nav>
 </div></div>
-<div class="hint">方向键左右换页 · 右侧页签即目录</div>
+<div class="hint" id="hint">方向键左右换页 · 右侧页签即目录</div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];
 const SHORT=['封面','设计思路','痛点分析','竞品分析','方案总览','年度体检','专项总览','记忆评估','中风评估','关节评估','冠脉评估','胃部评估','肠道评估','胰腺评估','乳腺评估','卵巢评估','结节评估','长寿评估','营养评估','核磁专项','陪诊服务','健康日','权益探讨','按需探讨','开放城市','人文关怀','关键指标'];
@@ -1511,8 +1616,12 @@ slides.forEach(s=>{
       '脑健康 · 中风风险评估':'低密度脂蛋白亚分型：采用高分辨率凝胶电泳技术，精准识别不稳定斑块与心血管危急风险，为卒中与心梗提供早期预警。',
       '骨健康 · 骨关节评估':'骨标志物两项：检测 β-CTX 与 Total-P1NP，反映骨吸收与骨形成活性，用于骨质疏松等疾病筛查。',
       '心脏健康 · 冠脉血管评估':'心无忧：检测 MPO 和 Lp-PLA2 浓度，早期预警心梗、脑梗等心脑血管疾病风险。',
+      '消化健康 · 胃部评估':'一管四检耐药检测：国内独家拥有三类医疗器械注册证的无创耐药检测，为幽门螺杆菌根除治疗提供精准指导，避免反复治疗。',
+      '她健康 · 乳腺评估':'BRCA基因检测：遗传性肿瘤风险评估的「金标准」，从「被动治疗」转向「主动预防」，实现真正的精准健康管理。',
       '她健康 · 卵巢评估':'泌思优：通过检测血液外泌体中的 CA125、HE4 和 C5a 浓度，早期筛查卵巢癌。',
-      '肺健康 · 结节评估':'肺癌 7 项自身抗体检测：作为低剂量 CT 的有效补充，从「生物学」维度评估肺癌风险，实现更精准的早期筛查与肺结节管理。'
+      '肺健康 · 结节评估':'肺癌 7 项自身抗体检测：作为低剂量 CT 的有效补充，从「生物学」维度评估肺癌风险，实现更精准的早期筛查与肺结节管理。',
+      '长寿评估':'「抗衰老健康管理」的黄金组合。它不局限于「有没有病」，而是聚焦于「老得快不快」和「风险高不高」。',
+      '营养代谢评估':'一套精准评估身体「燃料」储备与代谢功能的组合检测，能帮助您从细胞层面了解营养状况，告别盲目补充。'
     };
     let fig=s.querySelector('.infographic, .coqfig, .labshot');
     if(!fig && s.dataset.title==='脑健康 · 记忆力评估'){
@@ -1571,12 +1680,21 @@ slides.forEach(s=>{
 });
 let i=0;
 const book=document.getElementById('book');
+const mqMobile=window.matchMedia('(max-width:820px)');
 function paintBook(){
   [...book.children].forEach((b,k)=>{
     b.classList.toggle('on', k===i);
     b.style.marginLeft='0';
   });
+  const on=book.children[i];
+  if(on&&mqMobile.matches) on.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
 }
+function syncMobileHint(){
+  const hint=document.getElementById('hint');
+  if(hint) hint.textContent=mqMobile.matches?'左右滑动换页 · 底部页签跳转':'方向键左右换页 · 右侧页签即目录';
+}
+syncMobileHint();
+mqMobile.addEventListener('change',()=>{ syncMobileHint(); fitSlide(slides[i]); });
 const brandfoot=document.getElementById('brandfoot');
 const stageEl=document.getElementById('stage');
 function sheetOf(s){
@@ -1609,14 +1727,21 @@ function fitSlide(s){
     });
     delete s.dataset.shrunk;
     const fitLeafletTable=()=>{
-      const limit=s.getBoundingClientRect().bottom-38;
+      const footPad=mqMobile.matches?52:38;
+      const limit=s.getBoundingClientRect().bottom-footPad;
       const tblScroll=s.querySelector('.split > .tbl-scroll');
       const table=tblScroll?.querySelector('table.pkg');
       if(!tblScroll||!table) return;
-      if(tblScroll.getBoundingClientRect().bottom<=limit) return;
+      if(mqMobile.matches){
+        const slideLimit=s.getBoundingClientRect().bottom-footPad;
+        if(tblScroll.getBoundingClientRect().bottom<=slideLimit) return;
+      }else if(tblScroll.getBoundingClientRect().bottom<=limit) return;
       const top=tblScroll.getBoundingClientRect().top;
-      const avail=limit-top;
-      if(avail<60) return;
+      let avail=limit-top;
+      if(mqMobile.matches){
+        avail=Math.max(avail,s.getBoundingClientRect().bottom-footPad-top);
+      }
+      if(avail<48) return;
       const naturalH=table.offsetHeight;
       if(!naturalH) return;
       const scale=Math.min(1,avail/naturalH);
