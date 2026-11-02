@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>爱康 × 阿里健康 · 家庭健康卡 · v2</title>
+<title>爱康 × 阿里健康 · 家庭健康卡 · v3</title>
 <style>
 :root{
   --navy:#1D50A2; --gold:#E89D01; --ink:#3A342E; --title:#404040;
@@ -353,9 +353,69 @@ table.grid td,table.pkg td{padding:9px 12px}
 .explain-btn svg{width:14px;height:14px;flex:none}
 .explain-pop{display:none;position:absolute;z-index:12;right:0;bottom:calc(100% + 8px);width:min(360px,46vw);background:#FDF3E7;color:#3A342E;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;font-weight:500;text-align:left;box-shadow:0 10px 24px rgba(58,52,46,.18)}
 .explain:hover .explain-pop,.explain:focus-within .explain-pop,.ditem:hover .explain-pop,.ditem:focus-within .explain-pop{display:block}
-.pain{display:grid;grid-template-columns:1fr 320px 1fr;gap:12px;flex:1;min-height:0;align-items:stretch}
-.pain-visual{margin:0;align-self:center;border-radius:18px;overflow:hidden;background:#FBF6F0;box-shadow:0 10px 26px rgba(29,80,162,.1)}
-.pain-visual img{display:block;width:100%;height:auto}
+h2.pain-title{display:flex;flex-direction:column;align-items:flex-start;gap:2px;color:#2A2A2A;line-height:1.25}
+h2.pain-title::before{content:none}
+h2.pain-title .leadline{display:flex;align-items:center;gap:8px}
+h2.pain-title .leadline::before{content:"";width:5px;height:.85em;border-radius:2px;background:#F26A21;flex:none}
+h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:13px}
+.painboard{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(300px,1.42fr) minmax(0,1.02fr);grid-template-rows:minmax(0,1fr) auto;column-gap:6px;align-items:center}
+.pain-side.l{transform:translateX(28px)}
+.pain-side.r{transform:translateX(-28px)}
+.pain-who{text-align:center;margin:0 0 10px}
+.pain-who b{display:block;font-size:22px;line-height:1.1;font-weight:800}
+.pain-side.l .pain-who b{color:#F07A1A}
+.pain-side.r .pain-who b{color:#2F62D6}
+.pain-who span{display:block;margin-top:2px;font-size:13px;color:#8A93A3;font-weight:650}
+.pain-art{grid-column:2;grid-row:1;margin:0;min-height:0;height:100%;display:flex;align-items:center;justify-content:center}
+.pain-art img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.pain-side{grid-row:1;display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:0}
+.pain-side.l{grid-column:1}
+.pain-side.r{grid-column:3}
+.pchip{display:flex;align-items:center;gap:8px;border-radius:10px;min-height:44px}
+.pain-side.l .pchip{background:linear-gradient(90deg,#FFF3E6 0%,rgba(255,243,230,0) 100%);padding:3px 6px 3px 3px}
+.pain-side.r .pchip{background:linear-gradient(270deg,#F2F6FB 0%,rgba(242,246,251,0) 100%);padding:3px 3px 3px 8px;justify-content:flex-end;text-align:right}
+.pchip b{flex:none;min-width:62px;text-align:center;color:#fff;background:linear-gradient(180deg,#F7B15A,#F08A2C);border-radius:8px;padding:7px 8px;font-size:14px;font-weight:800}
+.pain-side.r .pchip b{color:#3E4C63;background:linear-gradient(180deg,#F8FAFC,#E4EBF5)}
+.pchip span{font-size:13px;line-height:1.35;color:#5C6573}
+.pain-cap{grid-column:1 / -1;grid-row:2;justify-self:center;margin-top:-28px;position:relative;z-index:2;background:linear-gradient(90deg,#F8B15A,#F07A28);color:#fff;font-weight:800;font-size:18px;letter-spacing:.12em;border-radius:999px;padding:9px 40px;box-shadow:0 8px 16px rgba(240,122,40,.28)}
+.twoguard{display:flex;flex-direction:column;gap:20px;flex:1;min-height:0;justify-content:flex-start}
+.guard{background:transparent;padding:0;box-shadow:none}
+.linehead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 8px}
+.linehead .tick{width:4px;height:18px;border-radius:2px;background:#F26A21;flex:none}
+.linehead b{color:#1A1A1A;font-size:17px}
+.linehead em{font-style:normal;color:#F07A1A;background:#fff;border:1px solid #F0B27A;border-radius:4px;padding:2px 8px;font-weight:750;font-size:13px}
+.linehead span{color:#8A93A3;font-size:14px}
+.guard-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gcard{background:#fff;border-radius:16px;padding:12px 14px 10px;box-shadow:0 8px 20px rgba(29,80,162,.06)}
+.ghead{display:flex;align-items:center;margin-bottom:8px}
+.gcard h3{margin:0;font-size:17px;font-weight:800;color:#1A1A1A}
+.gtickets{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 10px}
+.gtickets div{background:#fff;border:1px solid #F3D7B0;border-radius:10px;padding:7px 8px 6px;text-align:center}
+.gtickets em{display:block;font-style:normal;font-size:13px;color:#8A8178;font-weight:650}
+.gtickets b{display:block;margin-top:1px;font-size:26px;line-height:1.05;color:#B0551F;font-weight:800}
+.gtickets small{margin-left:2px;font-size:13px;font-weight:700}
+.gcard ul{margin:0;padding:0;list-style:none}
+.gcard li{display:flex;gap:6px;align-items:flex-start;font-size:14px;line-height:1.45;margin:0 0 6px;color:#3A342E}
+.gcard li svg{width:15px;height:15px;flex:none;margin-top:2px;color:#F07A1A}
+.themes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.themes button{border:0;background:#fff;border-radius:14px;padding:8px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700;font-size:13px;color:#3A342E;cursor:pointer;box-shadow:0 0 0 1px #E6EDF5}
+.themes button svg{width:24px;height:24px;color:#F07A1A;margin-bottom:2px}
+.themes button b{font-size:14px;font-weight:800;color:#1A1A1A}
+.themes button span{font-size:12px;font-weight:650;color:#C2410C;line-height:1.3}
+.themes button:hover{background:#FFF8F1;box-shadow:0 0 0 1.5px #F0B27A}
+.guard-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto}
+.motto{margin:0;color:#5C6573;font-weight:650;font-size:14px}
+.perks{display:flex;gap:14px;flex-wrap:wrap}
+.perks span{display:inline-flex;align-items:center;gap:4px;background:transparent;color:#5C6573;padding:0;border-radius:0;font-size:13.5px;font-weight:650}
+.perks svg{width:14px;height:14px;color:#F07A1A;flex:none}
+.sidefig{flex:1;min-height:0;margin:0 0 8px;border-radius:14px;overflow:hidden;background:#F7FAFE;display:flex;align-items:center;justify-content:center}
+.sidefig img{width:100%;height:100%;max-height:100%;object-fit:contain;display:block}
+.sidefig:has(figcaption){display:grid;grid-template-columns:minmax(0,1fr) 142px;align-items:center;justify-items:end;padding:6px 8px 6px 4px;gap:8px;min-height:0}
+.sidefig:has(figcaption) img{width:auto;height:auto;max-width:100%;max-height:100%;min-height:0;object-fit:contain}
+.sidefig figcaption{justify-self:start;margin:0;max-height:100%;padding:0 0 0 10px;border-left:3px solid #F26A21;font-size:12.5px;line-height:1.5;letter-spacing:.04em;color:#3A342E;font-weight:650}
+.sidefig figcaption::before{content:"“";display:block;margin:0 0 1px -1px;font-size:22px;line-height:.75;color:#F26A21;font-weight:800;letter-spacing:0}
+.pain-visual{margin:0;align-self:center;border-radius:0;overflow:visible;background:transparent;box-shadow:none}
+.pain-visual img{display:block;width:100%;height:auto;max-height:340px;object-fit:contain}
 .pain-col{background:#fff;border-radius:14px;box-shadow:0 8px 22px rgba(29,80,162,.06);padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-height:0;overflow:visible}
 .pain-h{color:#fff;font-weight:750;border-radius:8px;padding:6px 10px;font-size:14px}
 .pain-h.navy{background:#1D50A2}
@@ -484,6 +544,10 @@ table.grid td,table.pkg td{padding:9px 12px}
 .tickets b{display:block;font-size:26px;line-height:1.05;color:#B0551F;font-weight:800}
 .tickets span{display:block;margin-top:2px;font-size:12px;color:#8A8178}
 .narr-btn,.narr-wrap{display:none}
+.poster{display:inline-flex;align-items:center;gap:4px;color:#B0551F;font-weight:750;cursor:pointer;white-space:nowrap}
+.poster svg{width:15px;height:15px;flex:none}
+.poster-pop{display:none;position:fixed;z-index:10000;margin:0;padding:6px;background:#fff;border-radius:12px;box-shadow:0 16px 36px rgba(20,32,51,.22)}
+.poster-pop img{display:block;width:300px;height:auto;max-height:620px;object-fit:contain;border-radius:8px}
 </style>
 </head>
 <body>
@@ -511,39 +575,36 @@ table.grid td,table.pkg td{padding:9px 12px}
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>痛点</span><b>02</b><span>/ 27</span></div>
+    <div class="pager"><span>痛点</span><b>02</b><span>/ 25</span></div>
   </header>
-  <h2>核心痛点：想尽孝的心意，卡在两地之间</h2>
-  
-<div class="lead">子女不在身边的父母，面临太多陪伴式健康消费陷阱；子女想了解父母的健康状况却没有渠道，陷入焦虑。</div>
-<div class="pain">
-  <div class="pain-col">
-    <div class="pain-h navy">子女端 · 付费方</div>
-    <div class="pain-row"><b>01</b><span>异地相隔，无法探知父母真实状况。体检缺人陪、报告看不懂，预约无从下手。</span></div>
-    <div class="pain-row"><b>02</b><span>担心慢病突发或小病拖成大病，人在外地，无法第一时间介入。</span></div>
-    <div class="pain-row"><b>03</b><span>担心老人空巢时的健康焦虑，也担心他们识别不了医疗消费陷阱，耽误诊疗。希望有靠谱机构能接住。</span></div>
-    <div class="pain-row"><b>04</b><span>希望异常指标和复诊提醒直达子女手机，而不是只推给不会操作的老人。</span></div>
-    <div class="pain-tags"><span>不知情</span><span>陪不了</span><span>看不懂</span></div>
+  <h2 class="pain-title"><span class="leadline">核心痛点：</span><em>想尽孝的心意，卡在两地之间</em></h2>
+  <div class="painboard">
+    <div class="pain-side l">
+      <div class="pain-who"><b>子女端</b><span>付费方</span></div>
+      <div class="pchip"><b>不知情</b><span>异地相隔，探不到父母真实健康状况</span></div>
+      <div class="pchip"><b>陪不了</b><span>体检缺人陪同，预约无从下手</span></div>
+      <div class="pchip"><b>看不懂</b><span>报告术语难懂，异常指标无人解读</span></div>
+      <div class="pchip"><b>怕踩坑</b><span>担心消费陷阱，更盼异常提醒直达手机</span></div>
+    </div>
+    <figure class="pain-art">
+      <img src="images/pain-bridge.png" alt="远方的子女、到店的医生和父母，由爱康把断开的桥接上">
+    </figure>
+    <div class="pain-side r">
+      <div class="pain-who"><b>父母端</b><span>使用方</span></div>
+      <div class="pchip"><span>线上预约、问诊、查报告独立完成难</span><b>不会用</b></div>
+      <div class="pchip"><span>更信赖线下医生当面诊断，线上难建信任</span><b>信不过</b></div>
+      <div class="pchip"><span>害怕过度检查，专业术语与报告看不懂</span><b>怕花钱</b></div>
+      <div class="pchip"><span>挂号难、无人陪同、来回奔波成最大障碍</span><b>没人陪</b></div>
+    </div>
+    <div class="pain-cap">爱康 就是这座桥</div>
   </div>
-  <figure class="pain-visual">
-    <img src="images/image6202.jpg" alt="远方的子女与家里的父母视频相连，中间是一份健康守护">
-  </figure>
-  <div class="pain-col">
-    <div class="pain-h gold">父母端 · 使用方</div>
-    <div class="pain-row"><b>01</b><span>线上预约、问诊、查报告的门槛高，数字化工具常常用不上。</span></div>
-    <div class="pain-row"><b>02</b><span>更信赖线下医院或体检中心当面的医生，线上很难建立信任。</span></div>
-    <div class="pain-row"><b>03</b><span>害怕乱花钱和过度检查，看不懂术语和纸质报告。</span></div>
-    <div class="pain-row"><b>04</b><span>挂号难、到院没人陪、来回奔波，是老人就医最现实的障碍。</span></div>
-    <div class="pain-tags warm"><span>不会约</span><span>约不上</span><span>没人陪</span></div>
-  </div>
-</div>
 </section>
 
 <section class="slide " data-title="竞品全景：市面产品只做了一半">
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>竞品</span><b>03</b><span>/ 27</span></div>
+    <div class="pager"><span>竞品</span><b>03</b><span>/ 25</span></div>
   </header>
   <h2>竞品全景：市面产品只做了一半</h2>
   
@@ -564,35 +625,11 @@ table.grid td,table.pkg td{padding:9px 12px}
 </div>
 </section>
 
-<section class="slide " data-title="我们的承诺：子女远在他乡，父母健康有人管">
-  <div class="bar"></div>
-  <header class="top">
-    <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>价值与愿景</span><b>04</b><span>/ 27</span></div>
-  </header>
-  <h2>我们的承诺：子女远在他乡，父母健康有人管</h2>
-  
-<div class="vision">
-  <div class="photowrap"><img class="photo" src="images/doctor.png" alt="医生为老人听诊"></div>
-  <div class="promise">
-    <div class="k">价值与愿景</div>
-    <h2>把心里的孝心，变成常态的健康管理</h2>
-    <p class="sub">突破地域限制，承接客户对异地父母的牵挂：捕捉健康风险、同步健康信息，缓解异地照护焦虑。</p>
-    <div class="vgrid">
-      <div class="v"><b>一对一医生问诊</b><span>专属医生面对面，把健康疑问当场讲清楚。</span></div>
-      <div class="v"><b>一对一药师服务</b><span>专业药师整理分药，提醒用药，避免漏服。</span></div>
-      <div class="v"><b>爱康特色中医代茶饮</b><span>按老年人体质调配，到店先有一杯暖茶。</span></div>
-      <div class="v"><b>全程陪伴检查</b><span>导检一对一陪同，让体检是「有人陪」的。</span></div>
-    </div>
-  </div>
-</div>
-</section>
-
 <section class="slide " data-title="解决方案：一张家庭健康卡，四大服务闭环">
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>解决方案</span><b>05</b><span>/ 27</span></div>
+    <div class="pager"><span>解决方案</span><b>04</b><span>/ 25</span></div>
   </header>
   <h2>解决方案：一张家庭健康卡，四大服务闭环</h2>
   
@@ -614,57 +651,68 @@ table.grid td,table.pkg td{padding:9px 12px}
 <div class="principle">老人端只带一张身份证到店。子女端把下单、预约、查报告和健康趋势放在一起完成。</div>
 </section>
 
-<section class="slide " data-title="年度体检卡">
+<section class="slide " data-title="一张家庭健康卡，两道健康防线">
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>年度体检</span><b>06</b><span>/ 27</span></div>
+    <div class="pager"><span>年度体检</span><b>05</b><span>/ 25</span></div>
   </header>
-  <h2>年度体检卡</h2>
-  
-<div class="exam">
-  <article class="t">
-    <div class="pill">01 肿瘤深度筛查体检卡</div>
-    <div class="prices">
-      <div class="px"><b>市场价</b><span>男 2060 元</span><span>女 2419 元</span></div>
-      <div class="px"><b>销售价</b><span>男 721 元</span><span>女 846.7 元</span></div>
+  <h2>一张家庭健康卡，两道健康防线</h2>
+  <div class="twoguard">
+    <article class="guard">
+      <div class="linehead"><i class="tick"></i><b>防线一 · 年度体检卡</b><em>二选一</em><span>深度筛查年度一次，把大病风险挡在前面</span></div>
+      <div class="guard-cards">
+        <div class="gcard">
+          <div class="ghead"><h3>肿瘤深度筛查体检卡</h3></div>
+          <div class="gtickets"><div><em>男</em><b>2060<small>起</small></b></div><div><em>女</em><b>2261<small>起</small></b></div></div>
+          <ul>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2 9.4 4.8l3.8.3-2.9 2.5.9 3.7L8 9.5l-3.2 2 1-3.7L2.8 5.1l3.8-.3z"/></svg>常规检查 + 腹部 / 甲状腺彩超、胸部 CT 影像筛查</li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2 9.4 4.8l3.8.3-2.9 2.5.9 3.7L8 9.5l-3.2 2 1-3.7L2.8 5.1l3.8-.3z"/></svg>女性含 HPV 27 分型 + TCT 宫颈癌早筛</li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2 9.4 4.8l3.8.3-2.9 2.5.9 3.7L8 9.5l-3.2 2 1-3.7L2.8 5.1l3.8-.3z"/></svg>九大癌种分子早筛（肺癌 / 胃癌 / 肠癌 / 肝癌等），自选加购</li>
+          </ul>
+        </div>
+        <div class="gcard">
+          <div class="ghead"><h3>心脑血管深度筛查体检卡</h3></div>
+          <div class="gtickets"><div><em>男</em><b>3391</b></div><div><em>女</em><b>3391</b></div></div>
+          <ul>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2 9.4 4.8l3.8.3-2.9 2.5.9 3.7L8 9.5l-3.2 2 1-3.7L2.8 5.1l3.8-.3z"/></svg>常规检查 + 心脏超声、颈动脉超声、胸部 CT</li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2 9.4 4.8l3.8.3-2.9 2.5.9 3.7L8 9.5l-3.2 2 1-3.7L2.8 5.1l3.8-.3z"/></svg>心脏 / 血管 / 代谢三维评估（冠脉钙化积分 · 心无忧）</li>
+            <li><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.2 9.4 4.8l3.8.3-2.9 2.5.9 3.7L8 9.5l-3.2 2 1-3.7L2.8 5.1l3.8-.3z"/></svg>冠脉 CTA、颅脑 MRI+MRA 等 AI 深度筛查，自选加购</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <article class="guard">
+      <div class="linehead"><i class="tick"></i><b>防线二 · 专项健康卡</b><em>十大主题 · 按需自选</em><span>从家里的难题讲起，针对性强化筛查</span></div>
+      <div class="themes">
+        <button type="button" data-go="5"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 20v-1.5A3.5 3.5 0 0 0 6.2 15 3.6 3.6 0 0 1 8 8.4 4 4 0 0 1 12 4a4 4 0 0 1 4 4.4A3.6 3.6 0 0 1 17.8 15 3.5 3.5 0 0 0 15 18.5V20"/><path d="M10 20h4"/></svg><b>脑健康</b><span>子女先发现</span></button>
+        <button type="button" data-go="7"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 7.5c0-2 1.4-3.5 3.2-3.5 1.2 0 2 .6 2.4 1.5.4-.9 1.2-1.5 2.4-1.5 1.8 0 3.2 1.5 3.2 3.5 0 1.4-.7 2.4-1.6 3.1L14.2 14H9.8L6.4 10.6C5.5 9.9 4.8 8.9 4.8 7.5"/><path d="M9 14.5c.4 2.2 1.2 4 3 5.5 1.8-1.5 2.6-3.3 3-5.5"/></svg><b>骨关节</b><span>上楼扶栏杆</span></button>
+        <button type="button" data-go="8"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20s-7-4.2-7-9.2C5 8 6.8 6.2 9 6.2c1.2 0 2.3.6 3 1.5.7-.9 1.8-1.5 3-1.5 2.2 0 4 1.8 4 4.6C19 15.8 12 20 12 20z"/></svg><b>心脏</b><span>胸闷成习惯</span></button>
+        <button type="button" data-go="9"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 5.5c0-1.4 1.2-2.5 2.6-2.5h.2c2.4 0 4.2 2 4.2 4.6 0 1.5-.6 2.6-1.4 3.4L13 13.2V16a2 2 0 0 1-2 2h-.2"/><path d="M8.5 9.5c-1.6.3-2.8 1.6-2.8 3.3 0 2.4 2.2 4.2 5 4.2"/><path d="M10 18.2V20"/></svg><b>消化</b><span>一筷传一桌</span></button>
+        <button type="button" data-go="11"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 4c2.2 2.4 3.4 4.4 3.4 6.6A3.4 3.4 0 0 1 12 14a3.4 3.4 0 0 1-3.4-3.4C8.6 8.4 9.8 6.4 12 4z"/><path d="M12 14c0 2.2-1.6 4.4-4.2 5.6"/><path d="M12 14c0 2.2 1.6 4.4 4.2 5.6"/></svg><b>乳腺</b><span>发紧放心上</span></button>
+        <button type="button" data-go="12"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 8.5a3 3 0 1 1 3.2-3"/><path d="M16 8.5a3 3 0 1 0-3.2-3"/><path d="M8.2 9.2c-1.6 1.6-2.2 3.6-1.6 5.6 1 3.2 3.4 5.2 5.4 5.2s4.4-2 5.4-5.2c.6-2-.1-4-1.6-5.6"/><path d="M12 14.5V20"/></svg><b>卵巢</b><span>发胀当吃多</span></button>
+        <button type="button" data-go="13"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 19c-4.2-.4-7-3-7-6.2C5 9.2 7.4 6.8 10.2 6.2 11 4.8 11.6 4 12 4s1 .8 1.8 2.2c2.8.6 5.2 3 5.2 6.6 0 3.2-2.8 5.8-7 6.2z"/><path d="M12 10.5v5"/><path d="M9.2 13.2c.8 1.6 1.8 2.4 2.8 2.4s2-.8 2.8-2.4"/></svg><b>肺结节</b><span>三个字醒夜</span></button>
+        <button type="button" data-go="14"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="16" height="8" rx="4"/><path d="M12 8v8"/></svg><b>胰腺</b><span>停在再观察</span></button>
+        <button type="button" data-go="15"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 19s-6-3.6-6-7.6C6 8.6 7.6 7 9.6 7c1 0 1.9.5 2.4 1.2C12.5 7.5 13.4 7 14.4 7 16.4 7 18 8.6 18 11.4 18 15.4 12 19 12 19z"/><path d="M12 9.2v4.2M10 11.3h4"/></svg><b>长寿</b><span>报告全是病</span></button>
+        <button type="button" data-go="16"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13c0-3 1.6-6 4-8 2.4 2 4 5 4 8 0 2.6-1.6 4.5-4 4.5S8 15.6 8 13z"/><path d="M7 20c1.4-1 2.8-1.5 5-1.5s3.6.5 5 1.5"/></svg><b>营养代谢</b><span>吃饱仍没劲</span></button>
+      </div>
+    </article>
+    <div class="guard-foot">
+      <p class="motto">「每张卡，先答『有没有事』，再答『要不要往下查』」</p>
+      <div class="perks">
+        <span><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="5" r="2.2"/><path d="M3.5 13c.6-2.2 2.2-3.3 4.5-3.3S12 10.8 12.5 13"/></svg>一对一陪检</span>
+        <span><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 2.5h6l2 2V13.5H4z"/><path d="M6 8h4M6 10.5h3"/></svg>报告当面解读</span>
+        <span><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 8A5 5 0 1 1 8.2 3"/><path d="M8 2.2 10.2 3 8.6 5"/></svg>免费复查指引</span>
+        <span><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2.5v11M3.5 6.5h9"/></svg>就医协助</span>
+      </div>
     </div>
-    <div class="exam-sec"><b><i></i>基础检查</b><ul class="tags"><li>一般检查 A</li><li>内科</li><li>外科</li><li>视力色觉</li><li>外眼</li><li>耳鼻咽喉科</li><li>口腔科</li><li>人工智能-视网膜影像</li><li>血常规</li><li>尿常规</li><li>便常规</li><li>肝功十三项</li><li>肾功三项</li><li>空腹血糖（FBG）</li><li>胰岛素（INS）</li><li>血脂四项</li><li>心电图</li><li>幽门螺杆菌检测（C14 呼气试验）</li><li>前列腺小体外泄蛋白</li></ul></div>
-    <div class="exam-sec"><b><i></i>宫颈癌早筛</b><ul class="tags"><li>人乳头瘤病毒（HPV）27 分型</li><li>宫颈 TCT</li><li>白带常规</li></ul></div>
-    <div class="exam-sec"><b><i></i>肿瘤影像筛查</b><ul class="tags"><li>腹部彩超</li><li>甲状腺彩超</li><li>胸部 CT</li><li>前列腺彩超</li><li>子宫</li><li>附件彩超</li></ul></div>
-    <div class="exam-sec"><b><i></i>肿瘤分子早筛（套餐内不含，自选加购）</b><ul class="tags"><li><em>食管癌</em>艾思宁</li><li><em>肺癌</em>抗体七项自身抗体</li><li><em>胃癌</em>卫益检多基因甲基化检测</li><li><em>胰腺癌</em>逸力嘉 microRNA 检测</li><li><em>肠癌</em>Septin9 基因甲基化检测</li><li><em>泌尿系统肿瘤</em>艾光乐尿液脱落细胞甲基化</li><li><em>肝癌</em>甘预、甘欣安液体活检</li><li><em>宫颈癌</em>宫颈癌甲基化检测</li><li><em>卵巢癌</em>泌思优外泌体检测</li></ul></div>
-  </article>
-  <article class="h">
-    <div class="pill">02 心脑血管深度筛查体检卡</div>
-    <div class="prices">
-      <div class="px"><b>市场价</b><span>男 3391 元</span><span>女 3391 元</span></div>
-      <div class="px"><b>销售价</b><span>男 1186.9 元</span><span>女 1186.9 元</span></div>
-    </div>
-    <div class="exam-sec"><b><i></i>基础检查</b><ul class="tags"><li>一般检查 A</li><li>内科</li><li>外科</li><li>视力色觉</li><li>外眼</li><li>耳鼻咽喉科</li><li>口腔科</li><li>人工智能-视网膜影像</li><li>血常规</li><li>尿常规</li><li>便常规</li><li>肝功十三项</li><li>肾功三项</li><li>幽门螺杆菌检测（C14 呼气试验）</li><li>血脂四项</li><li>腹部彩超</li><li>甲状腺彩超</li><li>心电图</li><li>甲胎蛋白定量（AFP）</li><li>癌胚抗原定量（CEA）</li></ul></div>
-    <div class="exam-sec"><b><i></i>心脑血管及代谢筛查</b><div class="sub"><span>胰岛素抵抗分析</span><ul class="tags"><li>空腹血糖（FBG）</li><li>胰岛素（INS）</li><li>胰岛素抵抗指数</li></ul></div><div class="sub"><span>心脏健康</span><ul class="tags"><li>胸部 CT</li><li>心安诊-冠脉钙化积分分析与风险评估</li><li>心脏超声</li><li>颈动脉超声</li></ul></div></div>
-    <div class="exam-sec"><b><i></i>血管炎症分析</b><ul class="tags"><li>心无忧</li><li>低密度脂蛋白亚分型</li><li>超敏 C 反应蛋白</li></ul></div>
-    <div class="exam-sec"><b><i></i>AI 影像深度筛查（套餐内不含，自选加购）</b><ul class="tags"><li><em>心脏血管深度评估</em>冠脉 CTA</li><li><em>颅脑血管深度评估</em>颅脑 MRI+MRA</li></ul></div>
-  </article>
-</div>
-<p class="note">每套体检均含一对一陪检与深度报告解读，支持标准预约与线下服务，检后免费复查指引、用药指导与就医协助。尊享权益里两套二选一。</p>
-</section>
-
-<section class="slide " data-title="专项健康卡">
-  <div class="bar"></div>
-  <header class="top">
-    <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>07</b><span>/ 27</span></div>
-  </header>
-  <h2>专项健康卡</h2>
-  
-<p class="lead">每张卡从一句家里的难题讲起。先回答有没有事，再回答要不要往下查。点一张卡，看产品包和结果怎么走。</p>
-<div class="menu" style="margin-top:10px"><button class="tile" type="button" data-go="7"><span class="no">01</span><b>脑健康 · 记忆力评估卡</b><span class="line">家里第一个发现老人记性变了的，常常是子女</span></button><button class="tile" type="button" data-go="8"><span class="no">02</span><b>脑健康 · 中风风险评估卡</b><span class="line">血压的药吃了十年，怕的是突然说不出话</span></button><button class="tile" type="button" data-go="9"><span class="no">03</span><b>骨健康 · 关节守护卡</b><span class="line">上下楼开始扶栏杆，出门就越来越少</span></button><button class="tile" type="button" data-go="10"><span class="no">04</span><b>心脏健康 · 关心卡</b><span class="line">胸闷一旦变成习惯，风险就藏在习惯里</span></button><button class="tile" type="button" data-go="11"><span class="no">05</span><b>消化健康 · 胃部管理</b><span class="line">一双筷子，能把一个人的胃传到一桌子人</span></button><button class="tile" type="button" data-go="12"><span class="no">06</span><b>消化健康 · 肠道管理</b><span class="line">益生菌吃了好几盒，肚子还是没个准</span></button><button class="tile" type="button" data-go="13"><span class="no">07</span><b>乳腺健康关注卡</b><span class="line">更年期前后，每一次发紧都会在心里过一遍</span></button><button class="tile" type="button" data-go="14"><span class="no">08</span><b>卵巢健康关注卡</b><span class="line">肚子发胀、裤腰紧，最容易被当成吃多了</span></button><button class="tile" type="button" data-go="15"><span class="no">09</span><b>肺结节关注卡</b><span class="line">「肺结节」三个字，够人醒好几个晚上</span></button><button class="tile" type="button" data-go="16"><span class="no">10</span><b>胰腺健康关注卡</b><span class="line">该查的人，常常停在「再观察观察」</span></button><button class="tile" type="button" data-go="17"><span class="no">11</span><b>长寿检测卡</b><span class="line">想知道还能自己买菜，报告上却全是病名</span></button><button class="tile" type="button" data-go="18"><span class="no">12</span><b>营养与代谢检测卡</b><span class="line">饭吃得不少，人还是一年比一年没劲</span></button></div>
+  </div>
 </section>
 
 <section class="slide" data-title="脑健康 · 记忆力评估卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>08</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>06</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>脑健康 · 记忆力评估卡</h2>
@@ -694,7 +742,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="脑健康 · 中风风险评估卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>09</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>07</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>脑健康 · 中风风险评估卡</h2>
@@ -724,7 +772,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="骨健康 · 关节守护卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>10</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>08</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>骨健康 · 关节守护卡</h2>
@@ -754,7 +802,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="心脏健康 · 关心卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>11</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>09</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>心脏健康 · 关心卡</h2>
@@ -784,7 +832,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="消化健康 · 胃部管理">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>12</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>10</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>消化健康 · 胃部管理</h2>
@@ -814,7 +862,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="消化健康 · 肠道管理">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>13</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>11</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>消化健康 · 肠道管理</h2>
@@ -848,7 +896,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="乳腺健康关注卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>14</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>12</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>乳腺健康关注卡</h2>
@@ -878,7 +926,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="卵巢健康关注卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>15</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>13</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>卵巢健康关注卡</h2>
@@ -908,7 +956,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="肺结节关注卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>16</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>14</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>肺结节关注卡</h2>
@@ -938,7 +986,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="胰腺健康关注卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>17</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>15</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>胰腺健康关注卡</h2>
@@ -951,7 +999,7 @@ table.grid td,table.pkg td{padding:9px 12px}
     </div>
   </div>
   <div class="split fig">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>358</td><td class='c'>1,358</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>126</td><td class='c'>476</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/1.png" alt="逸力嘉产品海报：一次抽血，早期检测胰腺癌风险"></span></span></td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>358</td><td class='c'>1,358</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>126</td><td class='c'>476</td><td></td></tr></tbody></table>
       <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
     </div>
     <aside class="side">
@@ -972,7 +1020,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="长寿检测卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>18</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>16</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>长寿检测卡</h2>
@@ -1005,7 +1053,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <section class="slide" data-title="营养与代谢检测卡">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项健康卡</span><b>19</b><span>/ 27</span></div>
+    <div class="pager"><span>专项健康卡</span><b>17</b><span>/ 25</span></div>
   </header>
   <div class="title-row">
     <h2>营养与代谢检测卡</h2>
@@ -1034,7 +1082,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 
 <section class="slide" data-title="磁共振专项 · 按需加购">
   <header class="top"><img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项加购</span><b>20</b><span>/ 27</span></div></header>
+    <div class="pager"><span>专项加购</span><b>18</b><span>/ 25</span></div></header>
   <div class="title-row"><h2>磁共振专项 · 按需加购</h2>
     <div class="narr-wrap"><button type="button" class="narr-btn">叙事</button>
       <div class="narr-pop"><p class="hook">想精准排查病灶，项目太多，分不清该选哪个部位</p><p>血管和脏器是身体的管道和仓库。MRI 看得清软组织、韧带、脏器内部和微小病灶。平扫做初筛，怀疑异常再做增强。脊柱看椎间盘和神经根，关节看软骨和韧带，腹盆看肝胆胰、前列腺和子宫附件，头部看脑组织、血管、微小出血和梗塞。结果都稳，按周期随访。一旦有异常，医生告诉您优先复查和进一步诊疗。避开的是：做完核磁，仍然看不懂片子，不知道下一步。</p></div></div></div>
@@ -1062,7 +1110,7 @@ table.grid td,table.pkg td{padding:9px 12px}
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>线下流程</span><b>21</b><span>/ 27</span></div>
+    <div class="pager"><span>线下流程</span><b>19</b><span>/ 25</span></div>
   </header>
   <h2>分院接待流程：从推开门那一刻起，就有人陪着</h2>
   <div class="proc six">
@@ -1087,7 +1135,7 @@ table.grid td,table.pkg td{padding:9px 12px}
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>线下活动</span><b>22</b><span>/ 27</span></div>
+    <div class="pager"><span>线下活动</span><b>20</b><span>/ 25</span></div>
   </header>
   <h2>家庭健康日：每周二下午，像老友聚会一样做完半日</h2>
   <p class="lead">示例：脑健康主题。每周二下午，子女线上下单后老人到店，完成「讲座 + 专项体检 + 报告解读 + 医生咨询」半日闭环。50 人起场。</p>
@@ -1123,7 +1171,7 @@ table.grid td,table.pkg td{padding:9px 12px}
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>合作方式</span><b>23</b><span>/ 27</span></div>
+    <div class="pager"><span>合作方式</span><b>21</b><span>/ 25</span></div>
   </header>
   <h2>合作设想一 · 权益卡模式</h2>
   
@@ -1164,7 +1212,7 @@ table.grid td,table.pkg td{padding:9px 12px}
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>合作方式</span><b>24</b><span>/ 27</span></div>
+    <div class="pager"><span>合作方式</span><b>22</b><span>/ 25</span></div>
   </header>
   <h2>合作设想二 · 按需结算模式</h2>
   
@@ -1201,7 +1249,7 @@ table.grid td,table.pkg td{padding:9px 12px}
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>试点</span><b>25</b><span>/ 27</span></div>
+    <div class="pager"><span>试点</span><b>23</b><span>/ 25</span></div>
   </header>
   <h2>首期试点：选对城市，选好分院</h2>
   
@@ -1243,7 +1291,7 @@ table.grid td,table.pkg td{padding:9px 12px}
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>落地</span><b>26</b><span>/ 27</span></div>
+    <div class="pager"><span>落地</span><b>24</b><span>/ 25</span></div>
   </header>
   <h2>落地节奏：先跑通链路，再扩城扩店</h2>
   
@@ -1282,7 +1330,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 <div class="hint">方向键左右换页 · 右侧页签即目录</div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];
-const SHORT=['封面','痛点','竞品','承诺','方案','年度体检卡','专项健康卡','记忆卡','中风卡','关节卡','心脏卡','胃部卡','肠道卡','乳腺卡','卵巢卡','肺结节卡','胰腺卡','长寿卡','营养卡','核磁专项','分院开放日','健康日','合作模式1','合作模式2','试点城市','落地节奏','尾页'];
+const SHORT=['封面','痛点','竞品','方案','年度体检卡','记忆卡','中风卡','关节卡','心脏卡','胃部卡','肠道卡','乳腺卡','卵巢卡','肺结节卡','胰腺卡','长寿卡','营养卡','核磁专项','分院开放日','健康日','合作模式1','合作模式2','试点城市','落地节奏','尾页'];
 const MARK={'脑健康 · 记忆力评估卡':'忆','脑健康 · 中风风险评估卡':'脉','骨健康 · 关节守护卡':'骨','心脏健康 · 关心卡':'心','消化健康 · 胃部管理':'胃','消化健康 · 肠道管理':'肠','乳腺健康关注卡':'乳','卵巢健康关注卡':'巢','肺结节关注卡':'肺','胰腺健康关注卡':'胰','长寿检测卡':'寿','营养与代谢检测卡':'营','磁共振专项 · 按需加购':'磁'};
 function mix(a,b,t){
   const n=s=>parseInt(s,16);
@@ -1311,8 +1359,6 @@ slides.forEach(s=>{
     row.insertAdjacentElement('afterend', p);
   }
   const side=s.querySelector('.side');
-  const sale=s.querySelector('tr.sale');
-  const mkt=s.querySelector('tr.mkt');
   const who=side&&side.querySelector('.who');
   const epi=side&&side.querySelector('.epi');
   const bound=side&&side.querySelector('.bound');
@@ -1332,21 +1378,37 @@ slides.forEach(s=>{
       slogan.before(line);
       line.append(mark,slogan);
     }else side.prepend(line,mark);
-    if(sale){
-      const sc=[...sale.querySelectorAll('td.c')].map(td=>td.textContent.trim()).filter(t=>t && t!=='—');
-      const mc=mkt?[...mkt.querySelectorAll('td.c')].map(td=>td.textContent.trim()):[];
-      const board=document.createElement('div');
-      board.className='tickets';
-      const names=sc.length>1?['基础卡','升级卡']:['本卡'];
-      sc.forEach((price,idx)=>{
-        const d=document.createElement('div');
-        const em=document.createElement('em'); em.textContent=names[idx]||'加购';
-        const b=document.createElement('b'); b.textContent=price;
-        const sp=document.createElement('span'); sp.textContent=mc[idx]?'市场价 '+mc[idx]:'';
-        d.append(em,b,sp);
-        board.appendChild(d);
-      });
-      line.after(board);
+    const FIG={
+      '脑健康 · 中风风险评估卡':['images/card-stroke.jpg','血压与中风风险示意'],
+      '骨健康 · 关节守护卡':['images/card-joint.jpg','关节与骨密度示意'],
+      '心脏健康 · 关心卡':['images/card-heart.jpg','心脏健康示意'],
+      '消化健康 · 胃部管理':['images/card-stomach.jpg','家庭用餐与胃部健康示意'],
+      '乳腺健康关注卡':['images/card-breast.jpg','乳腺健康随访示意'],
+      '卵巢健康关注卡':['images/card-ovary.jpg','女性健康随访示意'],
+      '肺结节关注卡':['images/card-lung.jpg','肺部筛查示意'],
+      '营养与代谢检测卡':['images/card-nutrition.jpg','营养与代谢示意']
+    };
+    let fig=s.querySelector('.infographic, .coqfig, .labshot');
+    if(!fig && s.dataset.title==='脑健康 · 记忆力评估卡'){
+      fig=document.createElement('figure');
+      const img=document.createElement('img');
+      img.src='images/lab-memory.png';
+      img.alt='实验室分子检测';
+      fig.appendChild(img);
+    }
+    if(!fig && FIG[s.dataset.title]){
+      fig=document.createElement('figure');
+      const img=document.createElement('img');
+      img.src=FIG[s.dataset.title][0];
+      img.alt=FIG[s.dataset.title][1];
+      fig.appendChild(img);
+    }
+    if(fig){
+      fig.classList.remove('infographic','gut','coqfig','labshot');
+      fig.classList.add('sidefig');
+      line.after(fig);
+      const split=s.querySelector('.split');
+      if(split) split.classList.remove('fig');
     }
     const ok=side.querySelector('.out.ok');
     const box=document.createElement('div');
@@ -1371,18 +1433,6 @@ slides.forEach(s=>{
     });
     if(box.children.length){
       if(ok) ok.after(box); else side.appendChild(box);
-    }
-  }
-  if(s.dataset.title==='脑健康 · 记忆力评估卡'){
-    const left=s.querySelector('.tbl-scroll');
-    if(left){
-      const fig=document.createElement('figure');
-      fig.className='labshot';
-      const img=document.createElement('img');
-      img.src='images/lab-memory.png';
-      img.alt='实验室分子检测';
-      fig.appendChild(img);
-      left.appendChild(fig);
     }
   }
   wrap.remove();
@@ -1480,7 +1530,32 @@ stage.addEventListener('pointerup',e=>{
   if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.2) show(i+(dx<0?1:-1));
   x0=y0=null;
 });
-document.querySelectorAll('.tile[data-go]').forEach(el=>el.addEventListener('click',()=>show(+el.dataset.go)));
+document.querySelectorAll('.tile[data-go], .themes button[data-go]').forEach(el=>el.addEventListener('click',()=>show(+el.dataset.go)));
+document.querySelectorAll('.poster').forEach(el=>{
+  const pop=el.querySelector('.poster-pop');
+  let hideTimer;
+  const place=()=>{
+    clearTimeout(hideTimer);
+    document.body.appendChild(pop);
+    pop.style.display='block';
+    const box=stage.getBoundingClientRect();
+    const r=el.getBoundingClientRect();
+    const pw=pop.offsetWidth, ph=pop.offsetHeight;
+    let left=r.left-pw+6;
+    if(left<box.left+8) left=Math.min(r.right-6, box.right-pw-8);
+    let top=r.top+r.height/2-ph/2;
+    top=Math.max(box.top+12, Math.min(top, box.bottom-ph-12));
+    pop.style.left=left+'px';
+    pop.style.top=top+'px';
+  };
+  const hide=()=>{ hideTimer=setTimeout(()=>{ pop.style.display='none'; }, 120); };
+  el.addEventListener('mouseenter', place);
+  el.addEventListener('focusin', place);
+  el.addEventListener('mouseleave', hide);
+  pop.addEventListener('mouseenter', ()=>clearTimeout(hideTimer));
+  pop.addEventListener('mouseleave', hide);
+  el.addEventListener('focusout', e=>{ if(!el.contains(e.relatedTarget) && !pop.contains(e.relatedTarget)) hide(); });
+});
 show(0);
 </script>
 </body></html>
