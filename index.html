@@ -61,7 +61,10 @@ table.grid tr:nth-child(even) td{background:#F7FAFD}
 .banner{margin-top:10px;background:var(--gold);color:#fff;border-radius:8px;text-align:center;font-weight:700;font-size:14px;padding:10px 12px;flex:none}
 .layers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;flex:none;align-items:stretch}
 .layer{background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:8px;padding:16px 18px;position:relative;display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:0}
-.slide:has(.layers){justify-content:flex-start}
+.slide:has(.layers){padding-bottom:8px}
+.slide:has(.layers) .sheet{justify-content:center}
+.slide:has(.layers) .banner{margin-top:15px}
+.slide:has(.layers) .layers{gap:15px;margin-top:17px}
 .tbl-scroll.tight{flex:none}
 .layer:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:8px 8px 0 0}
 .layer.a:before{background:var(--navy)} .layer.b:before{background:var(--green)} .layer.c:before{background:var(--gold)}
@@ -130,7 +133,7 @@ table.pkg tr.sale td{font-size:16px}
 .vision{display:grid;grid-template-columns:minmax(280px,.9fr) 1.1fr;gap:14px;flex:1;min-height:0;align-items:stretch}
 .photowrap{position:relative;min-height:0;height:100%;border-radius:16px;overflow:hidden;background:#F4F7FB;box-shadow:0 0 0 1px #E4EAF2}
 .vision img.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;background:#F4F7FB}
-.promise{background:linear-gradient(180deg,#FFF7F1,#fff);border-radius:16px;padding:16px 18px;overflow:visible;display:flex;flex-direction:column;min-height:0}
+.promise{background:linear-gradient(180deg,#FFF7F1,#fff);border-radius:16px;padding:16px 18px;overflow:visible;display:flex;flex-direction:column;min-height:0;justify-content:center}
 .promise .vgrid{flex:none;grid-template-rows:auto auto;align-content:start;gap:10px}
 .promise .v{display:flex;flex-direction:column;justify-content:flex-start;min-height:0;padding:12px 14px}
 .promise .k{color:var(--orange);font-weight:750;font-size:13px;letter-spacing:.08em}
@@ -178,6 +181,7 @@ table.pkg tr.sale td{font-size:16px}
 .kpi b{font-size:13px} .kpi span{display:block;font-size:12px;color:var(--muted);line-height:1.4;margin-top:2px}
 .sop{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-height:0}
 .sop>div{display:flex;flex-direction:column;min-height:0}
+.sop>div:first-child{justify-content:center}
 .kpis{flex:1;grid-template-rows:1fr 1fr}
 .kpi{display:flex;flex-direction:column;justify-content:center}
 .sop-item{display:grid;grid-template-columns:28px 1fr;gap:8px;margin-bottom:8px}
@@ -249,7 +253,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 .withfig{display:flex;flex-direction:column;min-height:0;gap:8px}
 .withfig .tbl-scroll{flex:none}
 .coqfig{flex:1;min-height:0;margin:0;border-radius:12px;overflow:hidden;background:#F7FAFE;box-shadow:0 0 0 1px #E4EAF2;display:flex;align-items:center;justify-content:center}
-.coqfig img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.coqfig img{max-width:100%;max-height:min(100%,200px);width:auto;height:auto;object-fit:contain}
 .cmap{background:transparent;container-type:size}
 .mapbox{position:relative;width:min(100%, calc(100cqh * 1000 / 738));aspect-ratio:1000 / 738;margin:0 auto}
 .mapbox img.map{width:100%;height:100%;display:block;object-fit:fill}
@@ -350,7 +354,9 @@ table.grid td,table.pkg td{padding:9px 12px}
 .explain-btn svg{width:14px;height:14px;flex:none}
 .explain-pop{display:none;position:absolute;z-index:12;right:0;bottom:calc(100% + 8px);width:min(360px,46vw);background:#FDF3E7;color:#3A342E;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;font-weight:500;text-align:left;box-shadow:0 10px 24px rgba(58,52,46,.18)}
 .explain:hover .explain-pop,.explain:focus-within .explain-pop,.ditem:hover .explain-pop,.ditem:focus-within .explain-pop{display:block}
-.pain{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0}
+.pain{display:grid;grid-template-columns:1fr 320px 1fr;gap:12px;flex:1;min-height:0;align-items:stretch}
+.pain-visual{margin:0;align-self:center;border-radius:18px;overflow:hidden;background:#FBF6F0;box-shadow:0 10px 26px rgba(29,80,162,.1)}
+.pain-visual img{display:block;width:100%;height:auto}
 .pain-col{background:#fff;border-radius:14px;box-shadow:0 8px 22px rgba(29,80,162,.06);padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-height:0;overflow:visible}
 .pain-h{color:#fff;font-weight:750;border-radius:8px;padding:6px 10px;font-size:14px}
 .pain-h.navy{background:#1D50A2}
@@ -458,10 +464,20 @@ table.grid td,table.pkg td{padding:9px 12px}
 .step{padding:14px}
 .out{padding:8px 10px}
 .flowpage .escort{padding:10px 12px 10px}
-.leaflet .split,.leaflet .split.fig{padding:12px;flex:1 0 auto;height:auto;min-height:min-content;align-items:stretch}
-.leaflet .split>.side,.leaflet .split>.tbl-scroll,.leaflet .split>.withfig,.leaflet .split>.infographic{min-height:min-content;height:auto;align-self:stretch}
-.leaflet .side{display:flex;flex-direction:column}
-.leaflet .dossier{flex:none;margin-top:auto}
+.slide.leaflet{padding-bottom:36px}
+.leaflet .split,.leaflet .split.fig{padding:14px 14px 16px;flex:1 1 auto;min-height:0;height:auto;align-items:stretch}
+.leaflet .split>.side{min-height:0;height:100%;align-self:stretch}
+.leaflet .split.fig{grid-template-rows:auto minmax(0,1fr)}
+.leaflet .split.fig .infographic{min-height:0;max-height:none;height:100%;overflow:hidden}
+.leaflet .side{display:flex;flex-direction:column;height:100%;min-height:0}
+.leaflet .dossier{flex:none}
+.coqfig{flex:1;min-height:0;max-height:none}
+.flowpage:not(:has(.dayboard)) .proc.six{flex:none;margin-top:auto}
+.flowpage:not(:has(.dayboard)) .escort{margin-bottom:auto}
+.flowpage:not(:has(.dayboard)) .proc.six .node{min-height:124px;padding:24px 18px 18px}
+.flowpage:not(:has(.dayboard)) .proc .node b{font-size:16px}
+.flowpage:not(:has(.dayboard)) .proc .node span{font-size:14.5px}
+.flowpage:not(:has(.dayboard)) .escort{margin-top:18px}
 .tickets div{padding:10px 12px}
 .tickets{display:flex;gap:8px;margin:0 0 8px}
 .tickets div{flex:1;background:#fff;border-radius:12px;padding:8px 10px;box-shadow:0 0 0 1px #F6E7D4}
@@ -510,6 +526,9 @@ table.grid td,table.pkg td{padding:9px 12px}
     <div class="pain-row"><b>04</b><span>希望异常指标和复诊提醒直达子女手机，而不是只推给不会操作的老人。</span></div>
     <div class="pain-tags"><span>不知情</span><span>陪不了</span><span>看不懂</span></div>
   </div>
+  <figure class="pain-visual">
+    <img src="images/image6202.jpg" alt="远方的子女与家里的父母视频相连，中间是一份健康守护">
+  </figure>
   <div class="pain-col">
     <div class="pain-h gold">父母端 · 使用方</div>
     <div class="pain-row"><b>01</b><span>线上预约、问诊、查报告的门槛高，数字化工具常常用不上。</span></div>
@@ -1261,10 +1280,10 @@ table.grid td,table.pkg td{padding:9px 12px}
 <p class="brandfoot" id="brandfoot">爱康门诊<span>呵护您与家人的健康</span></p>
 <nav class="book" id="book" aria-label="目录"></nav>
 </div></div>
-<div class="hint">方向键或左右滑动换页 · 右侧页签即目录</div>
+<div class="hint">方向键左右换页 · 右侧页签即目录</div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];
-const SHORT=['封面','痛点','竞品','承诺','方案','体检','专项','记忆','中风','关节','心脏','胃部','肠道','乳腺','卵巢','肺结节','胰腺','长寿','营养','核磁','接待','健康日','权益卡','按需','试点','落地','收束'];
+const SHORT=['封面','痛点','竞品','承诺','方案','年度体检卡','专项健康卡','记忆卡','中风卡','关节卡','心脏卡','胃部卡','肠道卡','乳腺卡','卵巢卡','肺结节卡','胰腺卡','长寿卡','营养卡','核磁专项','分院开放日','健康日','合作模式1','合作模式2','试点城市','落地节奏','尾页'];
 const MARK={'脑健康 · 记忆力评估卡':'忆','脑健康 · 中风风险评估卡':'脉','骨健康 · 关节守护卡':'骨','心脏健康 · 关心卡':'心','消化健康 · 胃部管理':'胃','消化健康 · 肠道管理':'肠','乳腺健康关注卡':'乳','卵巢健康关注卡':'巢','肺结节关注卡':'肺','胰腺健康关注卡':'胰','长寿检测卡':'寿','营养与代谢检测卡':'营','磁共振专项 · 按需加购':'磁'};
 function mix(a,b,t){
   const n=s=>parseInt(s,16);
@@ -1393,8 +1412,26 @@ function fitSlide(s){
   if(s.classList.contains('cover')||s.classList.contains('close')) return;
   const sheet=sheetOf(s);
   sheet.style.transform='none';
-  sheet.style.height='auto';
+  sheet.style.flex='';
+  sheet.style.height='100%';
   sheet.style.minHeight='0';
+  if(s.classList.contains('leaflet')){
+    const split=s.querySelector('.split');
+    const d=s.querySelector('.dossier');
+    if(split && d && !s.dataset.shrunk){
+      const edge=split.getBoundingClientRect().bottom-2;
+      const over=[d, ...s.querySelectorAll('.split .fine, .split table, .split img, .split figcaption')].some(el=>el.getBoundingClientRect().bottom>edge);
+      if(over){
+        s.dataset.shrunk='1';
+        const els=[...s.querySelectorAll('.sheet *')];
+        const sizes=els.map(el=>parseFloat(getComputedStyle(el).fontSize));
+        els.forEach((el,n)=>{ if(sizes[n]>=12) el.style.fontSize=(sizes[n]-1)+'px'; });
+      }
+    }
+    return;
+  }
+  sheet.style.height='auto';
+  sheet.style.flex='0 0 auto';
   const sr=s.getBoundingClientRect();
   if(sr.height<40) return;
   const cs=getComputedStyle(s);
@@ -1404,6 +1441,7 @@ function fitSlide(s){
     sheet.style.transform='scale('+(avail/h).toFixed(4)+')';
     sheet.style.transformOrigin='top center';
   }else{
+    sheet.style.flex='';
     sheet.style.height='100%';
     sheet.style.minHeight='0';
   }
@@ -1427,8 +1465,6 @@ slides.forEach((s,k)=>{
   b.addEventListener('click',()=>show(k));
   book.appendChild(b);
 });
-document.getElementById('prev').onclick=()=>show(i-1);
-document.getElementById('next').onclick=()=>show(i+1);
 document.addEventListener('keydown',e=>{
   if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1)}
   if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(i-1)}
