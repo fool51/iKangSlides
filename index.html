@@ -545,7 +545,9 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .out{padding:8px 10px}
 .flowpage .escort{padding:10px 12px 10px}
 .slide.leaflet{padding-bottom:36px}
-.leaflet .split,.leaflet .split.fig{padding:14px 14px 16px;flex:1 1 auto;min-height:0;height:auto;align-items:stretch}
+.slide.leaflet .sheet{flex:1;min-height:0;height:100%}
+.slide.leaflet .hookline,.slide.leaflet .title-row,.slide.leaflet .top{flex:none}
+.leaflet .split,.leaflet .split.fig{padding:14px 14px 16px;flex:1 1 auto;min-height:0;height:auto;align-items:stretch;overflow:hidden}
 .leaflet .split>.side{min-height:0;height:100%;align-self:stretch}
 .leaflet .split.fig{grid-template-rows:auto minmax(0,1fr)}
 .leaflet .split.fig .infographic{min-height:0;max-height:none;height:100%;overflow:hidden}
@@ -558,6 +560,8 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .leaflet table.pkg td.c{width:58px;white-space:nowrap}
 .leaflet table.pkg td.note{font-size:11.5px}
 .leaflet table.pkg tr.sale td{font-size:17px}
+.leaflet .split>.tbl-scroll.tbl-scaled{overflow:hidden;align-self:start}
+.leaflet .split>.tbl-scroll.tbl-scaled table.pkg{transform-origin:top left}
 .leaflet .split>.withfig{min-height:0;overflow:hidden;display:flex;flex-direction:column}
 .leaflet .brandline,.leaflet .sidefig{align-self:center;width:100%;max-width:100%}
 .leaflet .out.alert,.leaflet .out.ok{flex:none}
@@ -1593,9 +1597,37 @@ function fitSlide(s){
   sheet.style.height='100%';
   sheet.style.minHeight='0';
   if(s.classList.contains('leaflet')){
-    s.querySelectorAll('.tbl-scroll').forEach(el=>el.classList.remove('tbl-fit','tbl-fit-2'));
-    s.querySelectorAll('.sheet [style*="font-size"]').forEach(el=>{ el.style.fontSize=''; });
+    s.querySelectorAll('.tbl-scroll').forEach(el=>{
+      el.classList.remove('tbl-fit','tbl-fit-2','tbl-scaled');
+      el.style.height='';
+      el.style.overflow='';
+    });
+    s.querySelectorAll('.tbl-scroll table.pkg').forEach(t=>{
+      t.style.transform='';
+      t.style.width='';
+      t.style.transformOrigin='';
+    });
     delete s.dataset.shrunk;
+    const fitLeafletTable=()=>{
+      const limit=s.getBoundingClientRect().bottom-38;
+      const tblScroll=s.querySelector('.split > .tbl-scroll');
+      const table=tblScroll?.querySelector('table.pkg');
+      if(!tblScroll||!table) return;
+      if(tblScroll.getBoundingClientRect().bottom<=limit) return;
+      const top=tblScroll.getBoundingClientRect().top;
+      const avail=limit-top;
+      if(avail<60) return;
+      const naturalH=table.offsetHeight;
+      if(!naturalH) return;
+      const scale=Math.min(1,avail/naturalH);
+      if(scale>=0.992) return;
+      tblScroll.classList.add('tbl-scaled');
+      table.style.transformOrigin='top left';
+      table.style.transform='scale('+scale.toFixed(4)+')';
+      table.style.width=(100/scale).toFixed(2)+'%';
+      tblScroll.style.height=Math.ceil(naturalH*scale)+'px';
+    };
+    requestAnimationFrame(()=>{ fitLeafletTable(); requestAnimationFrame(fitLeafletTable); });
     return;
   }
   sheet.style.height='auto';
