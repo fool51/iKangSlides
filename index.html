@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>爱康 × 阿里健康 · 家庭健康卡 · v2</title>
+<style>
+:root{
+  --navy:#1D50A2; --gold:#E89D01; --ink:#3A342E; --title:#404040;
+  --muted:#5A6278; --line:#E6EBF2; --blue:#F2FAFF; --cream:#FDF3E7;
+  --green:#0E9F6E; --sky:#5582FE; --orange:#F26A21; --paper:#fff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#E7EEF6;
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;color:var(--ink)}
+button,a{font-family:inherit}
+.viewport{height:100%;display:flex;align-items:center;justify-content:center}
+.stage{
+  position:relative;background:var(--paper);
+  width:min(calc(100vw - 96px), calc((100vh - 28px) * 16 / 9));
+  height:min(calc(100vh - 28px), calc((100vw - 96px) * 9 / 16));
+  box-shadow:0 16px 48px rgba(29,80,162,.16);
+  overflow:hidden;
+}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;padding:14px 22px 12px;background:#fff;min-height:0}
+.slide.active{display:flex}
+.cols,.quad,.exam,.split,.steps,.sop,.coop,.day,.vision,.menu{min-height:0}
+.cols>*,.quad>*,.exam>*,.split>*,.sop>*,.coop>*,.day>*,.vision>*{min-height:0;overflow:auto}
+.top{display:flex;align-items:center;justify-content:space-between;height:28px;flex:none}
+.logo{height:26px;width:auto;display:block}
+.pager{font-size:12px;color:var(--muted);letter-spacing:.04em}
+.pager b{color:var(--navy);font-size:14px;margin:0 4px}
+.pager span:first-child{margin-right:10px;color:var(--gold);font-weight:650}
+h2{margin:4px 0 6px;font-size:22px;line-height:1.25;color:var(--title);font-weight:700}
+.title-row{display:flex;align-items:center;gap:12px;flex:none}
+.title-row h2{margin:4px 0 8px}
+.lead{background:var(--blue);border-radius:8px;padding:8px 12px 8px 14px;position:relative;color:#334155;font-size:13.5px;line-height:1.5;flex:none}
+.lead:before{content:"";position:absolute;left:6px;top:10px;bottom:10px;width:3px;background:var(--navy);border-radius:2px}
+.cols{display:grid;gap:12px;min-height:0;flex:1}
+.cols.two{grid-template-columns:1fr 1fr}
+.panel{background:#fff;border-radius:10px;box-shadow:0 0 0 1px var(--line);padding:12px 14px;overflow:auto;min-height:0;position:relative}
+.panel:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:10px 10px 0 0}
+.panel.navy:before{background:var(--navy)}
+.panel.gold:before{background:var(--gold)}
+.panel.green:before{background:var(--green)}
+.panel.sky:before{background:var(--sky)}
+.tag{display:inline-block;color:#fff;border-radius:6px;padding:4px 10px;font-size:13px;font-weight:700}
+.tag.navy{background:var(--navy)} .tag.gold{background:var(--gold)}
+.panel ul{margin:8px 0 0;padding:0;list-style:none}
+.panel li{font-size:12.5px;line-height:1.4;margin:0 0 5px;padding-left:12px;position:relative}
+.panel.navy li{color:var(--navy);font-weight:600}
+.panel.gold li{color:#9A6B00;font-weight:600}
+.panel li:before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:currentColor}
+.foot3{margin-top:6px;font-size:14px;font-weight:750;letter-spacing:.12em}
+.panel.navy .foot3{color:var(--navy)}
+.panel.gold .foot3{color:var(--gold)}
+table.grid,table.pkg{width:100%;border-collapse:collapse;font-size:12.5px}
+table.grid th,table.pkg th{background:var(--navy);color:#fff;text-align:left;padding:6px 8px;font-weight:650}
+table.grid td,table.pkg td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top;color:#334155}
+table.grid tr:nth-child(even) td{background:#F7FAFD}
+.banner{margin-top:10px;background:var(--gold);color:#fff;border-radius:8px;text-align:center;font-weight:700;font-size:14px;padding:10px 12px;flex:none}
+.layers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;flex:none;align-items:stretch}
+.layer{background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:8px;padding:14px 16px;position:relative;display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:0}
+.slide:has(.layers){justify-content:flex-start}
+.tbl-scroll.tight{flex:none}
+.layer:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:8px 8px 0 0}
+.layer.a:before{background:var(--navy)} .layer.b:before{background:var(--green)} .layer.c:before{background:var(--gold)}
+.layer b{display:block;color:var(--navy);font-size:15px;margin-bottom:6px}
+.layer span{font-size:14px;color:#3A342E;line-height:1.5}
+.quad{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;flex:1;min-height:0}
+.q{background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:10px;padding:10px 12px 8px;position:relative;overflow:auto}
+.q:before{content:"";position:absolute;left:0;right:0;top:0;height:4px}
+.q.n:before{background:var(--navy)} .q.g:before{background:var(--gold)} .q.e:before{background:var(--green)} .q.s:before{background:var(--sky)}
+.q .no{width:28px;height:28px;border-radius:50%;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:750;font-size:13px;margin-right:8px}
+.q.n .no{background:var(--navy)} .q.g .no{background:var(--gold)} .q.e .no{background:var(--green)} .q.s .no{background:var(--sky)}
+.q h3{display:inline;font-size:16px;margin:0;color:#1A1A1A}
+.q p{margin:6px 0 0;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.q .when{margin-top:4px;font-weight:700;color:var(--navy);font-size:12.5px}
+.principle{margin-top:8px;background:var(--blue);border-radius:8px;padding:8px 12px;color:var(--navy);font-size:13px;font-weight:650;line-height:1.45;flex:none}
+.exam{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0}
+.exam article{box-shadow:0 0 0 1px var(--line);border-radius:10px;overflow:auto;padding:0 12px 10px;position:relative}
+.exam article:before{content:"";position:absolute;left:0;right:0;top:0;height:4px}
+.exam .t:before{background:var(--navy)} .exam .h:before{background:var(--gold)}
+.pill{margin:12px 0 6px;color:#fff;border-radius:6px;padding:6px 10px;font-weight:700;font-size:13px}
+.exam .t .pill{background:var(--navy)} .exam .h .pill{background:var(--gold)}
+.exam h4{margin:8px 0 2px;font-size:13px}
+.exam .t h4{color:var(--navy)} .exam .h h4{color:#C2410C}
+.exam p{margin:0 0 4px;font-size:12px;line-height:1.45;color:#334155}
+.note{flex:none;margin:8px 0 0;font-size:12.5px;color:#7A6A5C}
+.menu{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:10px;flex:1;min-height:0}
+.tile{text-align:left;border:0;background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;position:relative;overflow:hidden}
+.tile:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--navy)}
+.tile:nth-child(3n+2):before{background:var(--gold)}
+.tile:nth-child(3n):before{background:var(--sky)}
+.tile .no{color:var(--gold);font-weight:750;font-size:12px}
+.tile b{display:block;margin-top:4px;font-size:14px;color:var(--title)}
+.tile .line{display:block;position:static;margin-top:6px;background:transparent;border:0;padding:0;font-size:12px;line-height:1.4;color:#9A6B00;font-weight:400}
+.split{display:grid;grid-template-columns:1.28fr .72fr;gap:12px;flex:1;min-height:0}
+.tbl-scroll{overflow:auto;min-height:0;border-radius:8px;box-shadow:0 0 0 1px var(--line)}
+table.pkg th{position:sticky;top:0}
+table.pkg td.cat{color:var(--navy);font-weight:650;white-space:nowrap}
+table.pkg td.c{text-align:center;width:58px;font-weight:700}
+table.pkg td.yes{color:var(--navy)}
+table.pkg td.no{color:#C5CDD8;font-weight:500}
+table.pkg td.need{color:#C2410C;font-size:11px}
+table.pkg td.note{color:var(--muted);font-size:11.5px}
+table.pkg tr.mkt td,table.pkg tr.sale td{background:#E89D01;color:#fff;font-weight:750}
+table.pkg tr.sale td{font-size:16px}
+.fine{margin:0;padding:6px 8px 8px;font-size:11px;color:var(--muted);line-height:1.4}
+.side{overflow:auto;min-height:0;background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:10px;padding:10px 12px 12px;position:relative}
+.side:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--sky);border-radius:10px 10px 0 0}
+.slogan{font-size:16px;font-weight:750;margin:6px 0 6px}
+.who,.epi{margin:0 0 8px;font-size:12.5px;line-height:1.45}
+.who{color:#334155} .epi{color:var(--muted)}
+.out{border-radius:8px;padding:6px 8px;margin:0 0 6px}
+.out b{display:block;font-size:12px;margin-bottom:2px}
+.out span{font-size:12px;line-height:1.4;color:#334155}
+.out.alert{background:#FFF4EC} .out.alert b{color:#C2410C}
+.out.ok{background:#EEF4FE} .out.ok b{color:var(--navy)}
+.bound{margin:4px 0 0;font-size:11.5px;line-height:1.4;color:var(--muted)}
+.narr-wrap{position:relative}
+.narr-btn{border:0;background:var(--cream);color:#9A6B00;font-weight:750;border-radius:999px;padding:4px 12px;cursor:pointer;font-size:13px}
+.narr-btn:hover,.narr-wrap:hover .narr-btn{background:var(--gold);color:#fff}
+.narr-pop{display:none;position:absolute;z-index:8;top:calc(100% + 8px);right:0;width:min(560px,52vw);
+  background:#FDF3E7;border-radius:10px;padding:12px 14px;box-shadow:0 10px 28px rgba(58,52,46,.16);
+  font-size:13px;line-height:1.55;color:#3A342E}
+.narr-pop .hook{margin:0 0 6px;font-weight:750;color:#9A6B00}
+.narr-pop p{margin:0}
+.narr-wrap:hover .narr-pop,.narr-wrap:focus-within .narr-pop{display:block}
+.vision{display:grid;grid-template-columns:.82fr 1.18fr;gap:12px;flex:none;min-height:0;align-items:stretch}
+.photowrap{position:relative;min-height:0;border-radius:16px;overflow:hidden}
+.vision img.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.promise{background:linear-gradient(180deg,#FFF7F1,#fff);border-radius:16px;padding:14px 16px;overflow:visible;display:flex;flex-direction:column;min-height:0}
+.promise .vgrid{flex:none;grid-template-rows:auto auto;align-content:start;gap:10px}
+.promise .v{display:flex;flex-direction:column;justify-content:flex-start;min-height:0;padding:12px 14px}
+.promise .k{color:var(--orange);font-weight:750;font-size:13px;letter-spacing:.08em}
+.promise h2{margin:4px 0 6px;font-size:28px}
+.promise .sub{color:var(--muted);font-size:13.5px;line-height:1.5;margin:0 0 10px}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.v{background:#fff;border-radius:10px;padding:8px 10px;box-shadow:0 0 0 1px #F3E4D6}
+.v b{display:block;color:#3A342E;font-size:13.5px;margin-bottom:2px}
+.v span{font-size:12px;color:var(--muted);line-height:1.4}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1;min-height:0}
+.step{background:#FDF4EC;border-radius:12px;padding:12px}
+.step .n{width:26px;height:26px;border-radius:50%;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:750}
+.step b{display:block;margin:8px 0 4px;font-size:16px}
+.step span{font-size:12.5px;color:var(--muted);line-height:1.45}
+.escort{margin-top:10px;background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:12px;padding:10px 12px;flex:none}
+.escort b{color:var(--navy)}
+.escort .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:6px}
+.escort .three div{background:var(--blue);border-radius:8px;padding:8px}
+.escort .three strong{display:block;color:var(--navy);font-size:13px}
+.escort .three span{font-size:12px;color:var(--muted);line-height:1.4}
+.day{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;flex:1;min-height:0}
+.acts{overflow:auto}
+.act{display:grid;grid-template-columns:28px 1fr;gap:8px;margin:0 0 8px;align-items:start}
+.act i{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-style:normal;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:750}
+.act b{font-size:13px} .act span{display:block;font-size:12px;color:var(--muted);line-height:1.4}
+.photos img{width:100%;height:118px;object-fit:cover;border-radius:8px;display:block}
+.photos figcaption{font-size:12px;color:var(--muted);margin:2px 0 8px}
+.flow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.flow span{background:#EEF1F6;color:var(--navy);font-weight:700;font-size:12px;border-radius:6px;padding:4px 8px}
+.flow em{color:var(--sky);font-style:normal;font-weight:750}
+.tiny{font-size:12.5px;color:#C2410C;font-weight:700;margin:6px 0 0}
+.coop{display:grid;grid-template-columns:1.35fr .65fr;gap:12px;flex:1;min-height:0}
+.coop .sidebox{overflow:auto}
+.coop h3{margin:0 0 4px;font-size:14px;color:#3A342E}
+.coop p{margin:0 0 8px;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.chiprow{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#EEF1F6;color:var(--navy);font-weight:750;border-radius:8px;padding:8px 18px;font-size:15px}
+.reserve{margin-top:8px;background:var(--cream);color:#C2410C;font-weight:700;border-radius:8px;padding:8px 12px;font-size:13px}
+.std li{color:#9A6B00;font-weight:650;font-size:13px;line-height:1.45;margin:0 0 6px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpi{background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:10px;padding:8px 10px;position:relative}
+.kpi:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;border-radius:10px 10px 0 0}
+.kpi.c1:before{background:var(--navy)} .kpi.c2:before{background:var(--sky)}
+.kpi.c3:before{background:var(--green)} .kpi.c4:before{background:var(--gold)}
+.kpi b{font-size:13px} .kpi span{display:block;font-size:12px;color:var(--muted);line-height:1.4;margin-top:2px}
+.sop{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-height:0}
+.sop-item{display:grid;grid-template-columns:28px 1fr;gap:8px;margin-bottom:8px}
+.sop-item i{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:750;font-size:12px}
+.cover,.close{align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#fff 0%,#F2FAFF 100%)}
+.cover .logo,.close .logo{height:72px;margin-bottom:18px}
+.cover h1{margin:0;font-size:36px;color:var(--navy);letter-spacing:.02em}
+.cover .sub{margin:14px 0 0;color:#595959;font-size:16px}
+.cover .line4{margin:18px 0 0;color:#5A6278;font-size:14px}
+.bar{position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--orange),var(--gold) 40%,var(--navy))}
+.close h2{font-size:32px;color:var(--navy);margin:8px 0}
+.close p{margin:0;font-size:20px;color:#3A342E;font-weight:650}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:64px;border:0;border-radius:10px;
+  background:#fff;color:var(--navy);font-size:26px;cursor:pointer;box-shadow:0 6px 18px rgba(29,80,162,.18);z-index:25}
+.nav:hover{background:var(--navy);color:#fff}
+.nav.prev{left:14px} .nav.next{right:14px}
+.tools{position:fixed;right:18px;bottom:16px;display:flex;gap:8px;z-index:20}
+.tools button{border:0;background:#fff;color:var(--navy);border-radius:999px;padding:6px 12px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(29,80,162,.15)}
+#toc{position:fixed;inset:0;background:rgba(20,32,51,.45);z-index:30;display:none;align-items:center;justify-content:center}
+#toc.open{display:flex}
+#toc .box{background:#fff;width:min(720px,92vw);max-height:80vh;overflow:auto;border-radius:14px;padding:16px 18px}
+#toc h3{margin:0 0 8px;color:var(--navy)}
+#toc button.jump{display:flex;width:100%;text-align:left;border:0;background:transparent;padding:7px 4px;border-bottom:1px solid var(--line);cursor:pointer;color:var(--ink);font-size:14px}
+#toc button.jump:hover{background:var(--blue)}
+#toc button.jump em{color:var(--gold);font-style:normal;width:34px;flex:none}
+.hint{position:fixed;left:18px;bottom:16px;color:#5A6A7C;font-size:12px;z-index:20}
+
+/* v2：铺满视窗、放大字号、信息图 */
+html,body{background:#E9E3D8}
+.stage{
+  width:min(1280px, calc(100vw - 120px), calc((100vh - 12px) * 16 / 9));
+  height:min(720px, calc(100vh - 12px), calc((100vw - 120px) * 9 / 16));
+  border-radius:8px;
+  box-shadow:0 18px 50px rgba(58,42,24,.16);
+  overflow:visible;
+}
+.slide{padding:8px 16px 124px;background:#fff}
+.slide:not(.cover):not(.close){background:#fff url("方案展示素材/slide-bg.png") center / 100% 100% no-repeat}
+.slide:not(.cover):not(.close) .bar{display:none}
+.slide:not(.cover):not(.close) .top{justify-content:flex-start;height:30px}
+.slide:not(.cover):not(.close) .top .logo{display:none}
+.slide:not(.cover):not(.close) h2{padding-right:200px}
+.viewport{justify-content:flex-start;padding-left:16px}
+.top{height:32px}
+.logo{height:30px}
+.pager{font-size:14px}
+.pager b{font-size:16px}
+h2{font-size:28px;letter-spacing:-.02em;margin:2px 0 8px}
+.title-row h2{font-size:28px;margin:2px 0 8px}
+.lead{font-size:16px;line-height:1.45;padding:10px 14px 10px 16px}
+.panel{padding:14px 16px 16px;border-radius:14px;box-shadow:0 8px 22px rgba(29,80,162,.06);background:#fff}
+.panel li{font-size:15px;line-height:1.45;margin:0 0 8px}
+.foot3{font-size:18px;margin-top:10px}
+.tag{font-size:14px;padding:5px 12px}
+table.grid,table.pkg{font-size:15px}
+table.grid th,table.pkg th{padding:8px 10px;background:linear-gradient(90deg,#1D50A2,#2B62A8);white-space:nowrap}
+table.pkg td.c{white-space:nowrap}
+table.grid td,table.pkg td{padding:7px 10px}
+.banner{font-size:16px;padding:10px 12px}
+.layer b{font-size:15px}
+.layer span{font-size:14px;line-height:1.45}
+.q h3{font-size:18px}
+.q p,.q .when{font-size:14.5px}
+.q .no{width:32px;height:32px;font-size:14px}
+.principle{font-size:15.5px;padding:10px 14px}
+.exam h4{font-size:15px}
+.exam p{font-size:14.5px;line-height:1.45}
+.pill{font-size:15px}
+.note{font-size:14px}
+.tile{border-radius:14px;padding:12px 14px;background:linear-gradient(180deg,#fff,#F8FBFF);box-shadow:0 8px 18px rgba(29,80,162,.06)}
+.tile b{font-size:16px;line-height:1.3}
+.tile .no{font-size:13px}
+.slogan{font-size:20px;line-height:1.3}
+.who,.epi{font-size:14.5px;line-height:1.45}
+.out b{font-size:13.5px}
+.out span{font-size:14px;line-height:1.45}
+.bound,.fine{font-size:13px;line-height:1.4}
+.side{border-radius:16px;padding:12px 14px 14px;box-shadow:0 8px 22px rgba(29,80,162,.06);background:#fff}
+.step b{font-size:18px}
+.step span{font-size:14.5px}
+.act b{font-size:15px}
+.act span{font-size:14px}
+.chip{font-size:18px;padding:10px 20px}
+.kpi b{font-size:16px}
+.kpi span{font-size:14px}
+.coop h3{font-size:16px}
+.coop p{font-size:14.5px}
+.photos{display:flex;flex-direction:column;min-height:0;height:100%}
+.photos figure{margin:0 0 8px;flex:1;min-height:0;display:flex;flex-direction:column}
+.photos img{flex:1;height:100%;min-height:120px;object-fit:cover}
+.nav.prev{left:-22px}
+.nav.next{right:8px}
+.cover,.close{background:
+  radial-gradient(900px 420px at 12% 80%, rgba(242,106,33,.14), transparent 60%),
+  radial-gradient(700px 380px at 88% 20%, rgba(29,80,162,.12), transparent 55%),
+  linear-gradient(160deg,#fff,#F4F8FC)}
+.cover{align-items:stretch;justify-content:stretch;text-align:left;padding:36px 40px 28px}
+.cover-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;width:100%;height:100%}
+.cover .logo{height:64px;margin:0 0 18px}
+.cover h1{font-size:44px;line-height:1.18;margin:8px 0 0}
+.cover .sub{font-size:18px;margin:0;max-width:16em}
+.cover .line4{font-size:16px;margin:16px 0 0;max-width:22em;line-height:1.5}
+.cover-art{margin:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0}
+.cover-art img{width:100%;max-height:78%;object-fit:contain}
+.cover-art figcaption{margin-top:8px;font-size:14px;color:#5A6278;text-align:center}
+.close .logo{height:84px}
+.close h2{font-size:40px}
+.close p{font-size:24px}
+.split.fig{grid-template-columns:1.22fr .78fr;grid-template-rows:auto 1fr;gap:12px}
+.split.fig .tbl-scroll{grid-column:1;grid-row:1;overflow:visible}
+.split.fig .side{grid-column:2;grid-row:1 / span 2}
+.split.fig .infographic{grid-column:1;grid-row:2}
+.infographic{margin:0;min-height:0;display:flex;flex-direction:column;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 28px rgba(29,80,162,.08)}
+.infographic img{width:100%;flex:1;min-height:0;object-fit:contain;background:#F3FAFF}
+.infographic.gut img{background:#E7F6F4;object-fit:contain}
+.infographic.meter img{object-fit:cover;background:#fff}
+.infographic figcaption{flex:none;padding:8px 12px 10px;font-size:13.5px;line-height:1.4;color:#3A342E}
+.shot{display:block;width:100%;height:210px;object-fit:contain;background:#fff;border-radius:12px;margin:8px 0 4px}
+.exam .t{background:#fff}
+.exam .h .shot{height:auto;max-height:200px;object-fit:contain;background:#fff}
+.shotcap{margin:0 0 6px;font-size:13px;color:#5A6278;line-height:1.35}
+.cover{background:#fff;align-items:center;justify-content:center;text-align:center;padding:16px 28px 18px}
+.cover-official{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.brandrow{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:clamp(12px,2.4vh,28px)}
+.brandrow .wm{height:clamp(36px,6vh,52px);width:auto}
+.brandrow .op{height:clamp(40px,7vh,58px);width:auto}
+.vbar{width:1px;height:34px;background:#C5CDD6;flex:none}
+.trio{display:flex;gap:16px;justify-content:center;margin:0 0 clamp(12px,2.4vh,26px)}
+.trio img{width:clamp(128px,22vh,200px);height:clamp(128px,22vh,200px);object-fit:cover;border-radius:18px}
+.cover .sub{margin:0;max-width:none;font-size:clamp(14px,2vh,18px);color:#595959;font-weight:500;letter-spacing:.01em}
+.cover h1{margin:clamp(8px,1.4vh,14px) 0 0;font-size:clamp(28px,4.4vh,42px);line-height:1.2;color:#1D50A2;font-weight:750;letter-spacing:0}
+.cover .line4{margin:clamp(8px,1.4vh,14px) 0 0;max-width:none;font-size:clamp(13px,1.8vh,16px);color:#5A6278;font-weight:500}
+.cover-official{height:calc(100% - 36px)}
+.nav.next{right:8px}
+.book{position:absolute;z-index:20;left:100%;top:10px;bottom:10px;width:92px;display:flex;flex-direction:column;justify-content:center;gap:3px;overflow:auto;margin:0}
+.book button{border:0;color:#fff;font-weight:700;font-size:12px;text-align:left;padding:0 8px;height:20px;flex:0 0 20px;width:100%;margin-left:0;border-radius:0 8px 8px 0;cursor:pointer;letter-spacing:.02em}
+.book button.on{box-shadow:inset 0 0 0 2px #fff}
+.leaflet .tbl-scroll,.leaflet .split>.tbl-scroll{overflow:visible}
+.brandline{display:flex;align-items:center;gap:10px;margin:0 0 8px;flex-wrap:nowrap}
+.brandline .mark{margin:0;flex:none}
+.brandline .slogan{margin:0;font-size:18px;line-height:1.25}
+.exam .h{background:#fff}
+.shot.coq{height:auto;max-height:168px;object-fit:contain;background:#fff}
+.labshot{margin:8px 0 0;background:#F4F7FB;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.labshot img{display:block;width:100%;max-height:150px;object-fit:contain}
+.explain{position:relative;display:inline-flex}
+.explain-btn{display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;color:#fff;font-weight:750;font-size:12px;cursor:pointer;padding:0}
+.explain-btn svg{width:14px;height:14px;flex:none}
+.explain-pop{display:none;position:absolute;z-index:12;right:0;bottom:calc(100% + 8px);width:min(360px,46vw);background:#FDF3E7;color:#3A342E;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;font-weight:500;text-align:left;box-shadow:0 10px 24px rgba(58,52,46,.18)}
+.explain:hover .explain-pop,.explain:focus-within .explain-pop{display:block}
+.pain{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0}
+.pain-col{background:#fff;border-radius:14px;box-shadow:0 8px 22px rgba(29,80,162,.06);padding:10px 12px;display:flex;flex-direction:column;gap:6px;min-height:0;overflow:auto}
+.pain-h{color:#fff;font-weight:750;border-radius:8px;padding:6px 10px;font-size:14px}
+.pain-h.navy{background:#1D50A2}
+.pain-h.gold{background:#E89D01}
+.pain-row{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start;background:#F7FAFF;border-radius:8px;padding:6px 8px}
+.pain-row b{color:#1D50A2;font-size:13px}
+.pain-row span{font-size:13px;line-height:1.4;color:#3A342E}
+.pain-tags{display:flex;gap:8px;margin-top:auto}
+.pain-tags span{background:#E8F0FE;color:#1D50A2;border-radius:999px;padding:4px 10px;font-weight:750;font-size:13px}
+.pain-tags.warm span{background:#FFF4E5;color:#B0551F}
+.flowpage h2{font-size:24px;margin:0 0 8px}
+.flowpage .lead{margin:0 0 8px;font-size:14px;flex:none}
+.dayboard{display:grid;grid-template-columns:1.55fr .45fr;gap:12px;flex:none;align-items:start}
+.proc{display:grid;gap:16px 14px;min-height:0;padding-top:14px}
+.proc.six{grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;flex:none}
+.proc.three{grid-template-columns:repeat(3,1fr);margin-top:2px;padding-top:16px}
+.proc.time{grid-template-columns:repeat(6,1fr);margin-top:2px;gap:8px;padding-top:12px}
+.proc .node{position:relative;background:#FFF8F1;border-radius:12px;padding:16px 12px 12px;display:flex;flex-direction:column;justify-content:flex-start;min-height:0}
+.proc .node i{position:absolute;top:-11px;left:12px;width:24px;height:24px;border-radius:50%;background:#F26A21;color:#fff;font-style:normal;font-weight:750;font-size:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #fff}
+.proc .node b{font-size:14px;line-height:1.3;color:#1D50A2;font-weight:750;margin:0 0 4px}
+.proc .node span{font-size:12.5px;line-height:1.45;color:#3A342E;font-weight:400}
+.proc.time .node{align-items:center;text-align:center;padding:14px 6px 8px}
+.proc.time .node b{font-size:15px;margin:0}
+.proc.time .node span{font-size:13px}
+.proc.six .node{min-height:86px}
+.proc.three .node{padding-top:20px}
+.proc.time .node{padding:12px 4px 6px}
+.proc.six .node:not(:nth-child(3n))::after,
+.proc.three .node:not(:nth-child(3n))::after,
+.proc.time .node:not(:last-child)::after{content:"";position:absolute;right:-11px;top:50%;margin-top:-6px;width:0;height:0;border:6px solid transparent;border-left:8px solid #1D50A2;z-index:2}
+.flowpage .escort{margin-top:10px;flex:none;background:#F4F7FB;border-radius:12px;padding:8px 10px 8px}
+.flowpage .escort>b{display:block;color:#1D50A2;font-size:14px;margin:0 0 2px}
+.flowpage .tiny{margin:6px 0 0;font-size:13px;color:#B0551F;font-weight:650}
+.dayboard .photos{display:flex;flex-direction:column;gap:8px;min-height:0}
+.dayboard .photos figure{margin:0;flex:none;display:flex;flex-direction:column;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px #E6E0D6}
+.dayboard .photos img{width:100%;height:104px;min-height:0;flex:none;object-fit:cover}
+.dayboard .photos figcaption{flex:none;padding:4px 8px 6px;font-size:12px;color:#5A6278}
+.leaflet .title-row h2{font-size:26px}
+.hookline{margin:-2px 0 8px;font-size:15px;line-height:1.35;font-weight:750;color:#9A6B00}
+.leaflet .split,.leaflet .split.fig{background:#fff;border-radius:18px;padding:10px;box-shadow:0 0 0 1px #F3E4D6, 0 14px 32px rgba(29,80,162,.08)}
+.leaflet .side{background:linear-gradient(180deg,#FFF8F1 0%,#F3F8FF 100%);position:relative}
+.leaflet .side .mark{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px;margin:4px 0 8px;background:linear-gradient(135deg,#F26A21,#E89D01 55%,#1D50A2)}
+.leaflet .tbl-scroll{display:flex;flex-direction:column;background:#fff;border-radius:16px;box-shadow:0 0 0 1px #F3E4D6,0 10px 24px rgba(29,80,162,.07)}
+.leaflet .pull{margin:0;padding:16px 18px;border-radius:0 0 16px 16px;background:linear-gradient(135deg,#FFF8F1,#F3F8FF);font-size:16px;line-height:1.55;color:#5C4A3A;flex:1;display:flex;align-items:center}
+.leaflet .split.fig .tbl-scroll{align-self:start;height:auto}
+.leaflet .split.fig .pull{flex:none}
+.leaflet .split.fig .infographic{min-height:168px}
+.leaflet tr.sale td{font-size:17px;color:#fff}
+.leaflet .slogan{font-size:22px}
+.tickets{display:flex;gap:8px;margin:0 0 8px}
+.tickets div{flex:1;background:#fff;border-radius:12px;padding:8px 10px;box-shadow:0 0 0 1px #F6E7D4}
+.tickets em{display:block;font-style:normal;font-size:12px;color:#5A6278;font-weight:650}
+.tickets b{display:block;font-size:26px;line-height:1.05;color:#B0551F;font-weight:800}
+.tickets span{display:block;margin-top:2px;font-size:12px;color:#8A8178}
+.narr-btn,.narr-wrap{display:none}
+</style>
+</head>
+<body>
+<div class="viewport"><div class="stage" id="stage">
+
+<section class="slide cover active" data-title="封面">
+  <div class="cover-official">
+    <div class="brandrow">
+      <img class="wm" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+      <span class="vbar"></span>
+      <img class="op" src="方案展示素材/cover-outpatient.png" alt="爱康门诊 iKang Outpatient">
+    </div>
+    <div class="trio">
+      <img src="方案展示素材/cover-p1.png" alt="爱康分院">
+      <img src="方案展示素材/cover-p2.png" alt="医生为老人听诊">
+      <img src="方案展示素材/cover-p3.png" alt="影像设备">
+    </div>
+    <p class="sub">把子女看不见的孝心，变成可落地、可感知的健康守护</p>
+    <h1>爱康×阿里健康｜家庭健康卡</h1>
+    <p class="line4">体检卡 + 主题健康卡专项守护 + 三甲就医陪诊服务 + 家庭健康日陪伴</p>
+  </div>
+</section>
+
+<section class="slide " data-title="核心痛点：想尽孝的心意，卡在两地之间">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>痛点</span><b>02</b><span>/ 27</span></div>
+  </header>
+  <h2>核心痛点：想尽孝的心意，卡在两地之间</h2>
+  
+<div class="lead">子女不在身边的父母，面临太多陪伴式健康消费陷阱；子女想了解父母的健康状况却没有渠道，陷入焦虑。</div>
+<div class="pain">
+  <div class="pain-col">
+    <div class="pain-h navy">子女端 · 付费方</div>
+    <div class="pain-row"><b>01</b><span>异地相隔，无法探知父母真实状况。体检缺人陪、报告看不懂，预约无从下手。</span></div>
+    <div class="pain-row"><b>02</b><span>担心慢病突发或小病拖成大病，人在外地，无法第一时间介入。</span></div>
+    <div class="pain-row"><b>03</b><span>担心老人空巢时的健康焦虑，也担心他们识别不了医疗消费陷阱，耽误诊疗。希望有靠谱机构能接住。</span></div>
+    <div class="pain-row"><b>04</b><span>希望异常指标和复诊提醒直达子女手机，而不是只推给不会操作的老人。</span></div>
+    <div class="pain-tags"><span>不知情</span><span>陪不了</span><span>看不懂</span></div>
+  </div>
+  <div class="pain-col">
+    <div class="pain-h gold">父母端 · 使用方</div>
+    <div class="pain-row"><b>01</b><span>线上预约、问诊、查报告的门槛高，数字化工具常常用不上。</span></div>
+    <div class="pain-row"><b>02</b><span>更信赖线下医院或体检中心当面的医生，线上很难建立信任。</span></div>
+    <div class="pain-row"><b>03</b><span>害怕乱花钱和过度检查，看不懂术语和纸质报告。</span></div>
+    <div class="pain-row"><b>04</b><span>挂号难、到院没人陪、来回奔波，是老人就医最现实的障碍。</span></div>
+    <div class="pain-tags warm"><span>不会约</span><span>约不上</span><span>没人陪</span></div>
+  </div>
+</div>
+</section>
+
+<section class="slide " data-title="竞品全景：市面产品只做了一半">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>竞品</span><b>03</b><span>/ 27</span></div>
+  </header>
+  <h2>竞品全景：市面产品只做了一半</h2>
+  
+<div class="tbl-scroll tight">
+<table class="grid">
+<thead><tr><th>产品类型</th><th>代表</th><th>核心模式</th><th>服务短板</th></tr></thead>
+<tbody>
+<tr><td>体检机构孝心卡</td><td>体检中心旗舰店</td><td>体检卡，价格透明、亲民</td><td>到检后即结束，没有后续健康管护</td></tr>
+<tr><td>互联网孝心包</td><td>京东健康</td><td>整合上门护理和就医陪诊，侧重服务打包</td><td>没有家庭关系绑定，没有统一健康档案；体检多为外购套餐，标准不一</td></tr>
+<tr><td>保险系孝心卡</td><td>保险公司</td><td>健康咨询加上意外医疗赔付，侧重风险保障</td><td>溢价高，依赖保险渠道；缺少线下自有连锁，履约不稳定</td></tr>
+<tr><td>线上问诊老年包</td><td>互联网医院</td><td>图文或电话轻问诊，解决基础咨询</td><td>老人门槛高，核销率低；没有线下履约，解决不了实质就医</td></tr>
+</tbody></table></div>
+<div class="banner">爱康 × 阿里健康家庭健康卡：子女远程管 · 父母线下用 · 爱康全国自有分院履约</div>
+<div class="layers">
+  <div class="layer a"><b>01 关系层：亲情绑定，账号互通</b><span>基于家人权限绑定。子女线上直接为父母预约、查报告，老人不用自己操作。</span></div>
+  <div class="layer b"><b>02 履约层：自有分院，到店即享</b><span>老人凭身份证到直营分院。专家活动、体检按同一标准接待，避免服务断层。</span></div>
+  <div class="layer c"><b>03 管护层：全程守护，持续关注</b><span>体检不是终点。健康档案留下，健康日减少家庭焦虑，从筛查、陪诊到检后管理接成一条路。</span></div>
+</div>
+</section>
+
+<section class="slide " data-title="我们的承诺：子女远在他乡，父母健康有人管">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>价值与愿景</span><b>04</b><span>/ 27</span></div>
+  </header>
+  <h2>我们的承诺：子女远在他乡，父母健康有人管</h2>
+  
+<div class="vision">
+  <div class="photowrap"><img class="photo" src="方案展示素材/doctor.png" alt="医生为老人听诊"></div>
+  <div class="promise">
+    <div class="k">价值与愿景</div>
+    <h2>把心里的孝心，变成常态的健康管理</h2>
+    <p class="sub">突破地域限制，承接客户对异地父母的牵挂：捕捉健康风险、同步健康信息，缓解异地照护焦虑。</p>
+    <div class="vgrid">
+      <div class="v"><b>一对一医生问诊</b><span>专属医生面对面，把健康疑问当场讲清楚。</span></div>
+      <div class="v"><b>一对一药师服务</b><span>专业药师整理分药，提醒用药，避免漏服。</span></div>
+      <div class="v"><b>爱康特色中医代茶饮</b><span>按老年人体质调配，到店先有一杯暖茶。</span></div>
+      <div class="v"><b>全程陪伴检查</b><span>导检一对一陪同，让体检是「有人陪」的。</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="slide " data-title="解决方案：一张家庭健康卡，四大服务闭环">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>解决方案</span><b>05</b><span>/ 27</span></div>
+  </header>
+  <h2>解决方案：一张家庭健康卡，四大服务闭环</h2>
+  
+<div class="lead">子女在支付宝下单、绑定、收报告、看父母的健康状况。父母到爱康分院现场接受服务。</div>
+<div class="quad" style="margin-top:10px">
+  <div class="q n"><span class="no">01</span><h3>年度体检卡</h3>
+    <p>肿瘤深度筛查，或心脑血管深度筛查。现场一对一陪检。检后深度解读、复查指引和就医协助。</p>
+    <p class="when">标准预约，线下服务</p></div>
+  <div class="q g"><span class="no">02</span><h3>全程陪诊服务</h3>
+    <p>三甲医院就医陪诊。有人接，全程陪同，协助挂号、缴费和检查，并和医生沟通。老人不再独自就医。</p>
+    <p class="when">子女线上下单，48 小时内安排</p></div>
+  <div class="q e"><span class="no">03</span><h3>专项健康卡</h3>
+    <p>覆盖磁共振、三高监测、骨密度、低剂量肺部 CT、肿瘤标志物等专项。按父母既往病史和关心的问题自选，先回答有没有事，再回答要不要往下查。</p>
+    <p class="when">标准预约，或下午专场</p></div>
+  <div class="q s"><span class="no">04</span><h3>家庭健康日</h3>
+    <p>每周集中服务持卡老人。医生讲座、主题检测、用药整理、报告当面讲、一对一答疑、药师指导用药。</p>
+    <p class="when">每周下午专场，50 人起</p></div>
+</div>
+<div class="principle">老人端只带一张身份证到店。子女端把下单、预约、查报告和健康趋势放在一起完成。</div>
+</section>
+
+<section class="slide " data-title="年度体检卡">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>年度体检</span><b>06</b><span>/ 27</span></div>
+  </header>
+  <h2>年度体检卡</h2>
+  
+<div class="exam">
+  <article class="t">
+    <div class="pill">01 肿瘤深度筛查体检卡</div>
+    <img class="shot" src="方案展示素材/body-map.png" alt="脑、肺、乳腺、胃、肝、卵巢、食管、胰腺、肠、肾">
+    <p class="shotcap">脑、肺、乳腺、胃、肝、卵巢、食管、胰腺、肠、肾。套餐按这些部位排检查，分子早筛另购。</p>
+    <h4>基础检查</h4>
+    <p>一般检查 A、内科、外科、视力色觉、外眼、耳鼻咽喉科、口腔科、人工智能视网膜影像、血常规、尿常规、便常规、肝功十三项、肾功三项、空腹血糖、胰岛素、血脂四项、心电图、幽门螺杆菌 C14 呼气试验、前列腺小体外泄蛋白。</p>
+    <h4>宫颈癌早筛</h4>
+    <p>HPV 27 分型，宫颈 TCT，白带常规。</p>
+    <h4>肿瘤影像筛查</h4>
+    <p>腹部彩超、甲状腺彩超、胸部 CT、前列腺彩超、子宫及附件彩超。</p>
+    <h4>肿瘤分子早筛（套餐内不含，自选加购）</h4>
+    <p>食管癌艾思宁；肺癌抗体七项；胃癌卫益检；胰腺癌逸力嘉 microRNA；肠癌 Septin9；泌尿肿瘤艾光乐；肝癌甘预、甘欣安；宫颈甲基化；卵巢癌泌思优。</p>
+  </article>
+  <article class="h">
+    <div class="pill">02 心脑血管深度筛查体检卡</div>
+    <img class="shot meter" src="方案展示素材/glucose.png" alt="指尖血糖检测">
+    <p class="shotcap">血糖、胰岛素和血管炎症放在同一套里，用来解释饭后犯困和胸闷是不是已经有了信号。</p>
+    <h4>基础检查</h4>
+    <p>一般检查 A、内科、外科、视力色觉、外眼、耳鼻咽喉科、口腔科、人工智能视网膜影像、血常规、尿常规、便常规、肝功十三项、肾功三项、C14 呼气试验、血脂四项、腹部彩超、甲状腺彩超、心电图、甲胎蛋白、癌胚抗原。</p>
+    <h4>心脑血管及代谢筛查</h4>
+    <p>胰岛素抵抗：空腹血糖、胰岛素、胰岛素抵抗指数。心脏：胸部 CT、心安诊冠脉钙化积分、心脏超声、颈动脉超声。</p>
+    <h4>血管炎症</h4>
+    <p>心无忧、低密度脂蛋白亚分型、超敏 C 反应蛋白。</p>
+    <h4>AI 影像深度筛查（套餐内不含，自选加购）</h4>
+    <p>冠脉 CTA，评估心脏血管。颅脑 MRI+MRA，评估脑血管。</p>
+  </article>
+</div>
+<p class="note">每套都含一对一陪检和深度报告解读，支持标准预约和线下服务。检后有复查指引、用药指导和就医协助。尊享权益里两套二选一。</p>
+</section>
+
+<section class="slide " data-title="专项健康卡">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>07</b><span>/ 27</span></div>
+  </header>
+  <h2>专项健康卡</h2>
+  
+<p class="lead">每张卡从一句家里的难题讲起。先回答有没有事，再回答要不要往下查。点一张卡，看产品包和结果怎么走。</p>
+<div class="menu" style="margin-top:10px"><button class="tile" type="button" data-go="7"><span class="no">01</span><b>脑健康 · 记忆力评估卡</b><span class="line">家里第一个发现老人记性变了的，常常是子女</span></button><button class="tile" type="button" data-go="8"><span class="no">02</span><b>脑健康 · 中风风险评估卡</b><span class="line">血压的药吃了十年，怕的是突然说不出话</span></button><button class="tile" type="button" data-go="9"><span class="no">03</span><b>骨健康 · 关节守护卡</b><span class="line">上下楼开始扶栏杆，出门就越来越少</span></button><button class="tile" type="button" data-go="10"><span class="no">04</span><b>心脏健康 · 关心卡</b><span class="line">胸闷一旦变成习惯，风险就藏在习惯里</span></button><button class="tile" type="button" data-go="11"><span class="no">05</span><b>消化健康 · 胃部管理</b><span class="line">一双筷子，能把一个人的胃传到一桌子人</span></button><button class="tile" type="button" data-go="12"><span class="no">06</span><b>消化健康 · 肠道管理</b><span class="line">益生菌吃了好几盒，肚子还是没个准</span></button><button class="tile" type="button" data-go="13"><span class="no">07</span><b>乳腺健康关注卡</b><span class="line">更年期前后，每一次发紧都会在心里过一遍</span></button><button class="tile" type="button" data-go="14"><span class="no">08</span><b>卵巢健康关注卡</b><span class="line">肚子发胀、裤腰紧，最容易被当成吃多了</span></button><button class="tile" type="button" data-go="15"><span class="no">09</span><b>肺结节关注卡</b><span class="line">「肺结节」三个字，够人醒好几个晚上</span></button><button class="tile" type="button" data-go="16"><span class="no">10</span><b>胰腺健康关注卡</b><span class="line">该查的人，常常停在「再观察观察」</span></button><button class="tile" type="button" data-go="17"><span class="no">11</span><b>长寿检测卡</b><span class="line">想知道还能自己买菜，报告上却全是病名</span></button><button class="tile" type="button" data-go="18"><span class="no">12</span><b>营养与代谢检测卡</b><span class="line">饭吃得不少，人还是一年比一年没劲</span></button></div>
+</section>
+
+<section class="slide" data-title="脑健康 · 记忆力评估卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>08</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>脑健康 · 记忆力评估卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">家里第一个发现老人记性变了的，常常是子女</p>
+        <p>一管血看 APOE，了解阿尔茨海默相关的遗传风险，并看 Aβ 蛋白现在的状态。遗忘已经影响到出门、服药，升级再看 Tau217 和 microRNA，给医生多一枚判断。看完，家里可以决定继续按年复查，还是约记忆门诊、让子女一起听。避开：把需要就医的变化，一直当成年纪到了。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>遗传风险评估</td><td>APOE（阿尔茨海默遗传风险）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Aβ 蛋白 40/42</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Tau217</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基因分子评估</td><td>microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>950</td><td class='c'>1,670</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>333</td><td class='c'>585</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#B0551F">守护记忆，留住家的往事</div>
+      <p class="who">适合开始担心记忆力衰退、想先了解阿尔茨海默遗传风险的家庭，帮助判断是否有必要进一步筛查。</p>
+      <p class="epi">我国 60 岁以上人群痴呆患病率 5.3%（《柳叶刀·神经病学》）。疾病不可逆，晚期完全失能，照护给家庭带来长期负担。</p>
+      <div class="out alert"><b>有提示时</b><span>建议记忆门诊、神经内科评估，家属共同参与照护规划。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>保持脑力活动、规律睡眠与社交，按年度复查。</span></div>
+      <p class="bound">基因与标志物提示遗传风险，不能预测发病时点。出现明显记忆下降、迷路、性格改变，及时就诊。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="脑健康 · 中风风险评估卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>09</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>脑健康 · 中风风险评估卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">血压的药吃了十年，怕的是突然说不出话</p>
+        <p>颅脑 CT 看现在有没有出血或梗死，同型半胱氨酸看血管损伤相关的因子。CT 有疑问，升级做头颅 MRI，把血管看得更清楚，并补辅酶 Q10 和脂蛋白亚分型。没有要处理的病灶，力气放回血压、血脂、血糖和心律。有可疑病灶，当场决定要不要加 MRI、要不要转神经内科。避开的是：已经有病灶，还在家里当成睡歪了。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>颅脑 CT</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>血管损伤因子</td><td>同型半胱氨酸</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>血管损伤因子</td><td>辅酶 Q10</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>血管损伤因子</td><td>低密度脂蛋白亚分型</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>大型设备</td><td>颅脑 MRI</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>有 CT 疑问时升级</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>588</td><td class='c'>3,423</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>206</td><td class='c'>1,199</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#2B62A8">先看清血管，再安心生活</div>
+      <p class="who">先看颅内有没有需要处理的病变，再结合血压、血脂、血糖等已有结果，判断是否需要进一步看脑血管。</p>
+      <p class="epi">脑卒中是我国成人首位致死致残病因，75% 幸存者遗留残疾（《中国脑卒中防治报告 2023》），复发率高，长期照护成本高。</p>
+      <div class="out alert"><b>有提示时</b><span>当场判断是否加做头颅 MRI/MRA，必要时转神经内科或卒中门诊。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>重点管理血压、血脂、血糖和房颤，6–12 个月复查。</span></div>
+      <p class="bound">颅脑 CT 初筛看当前有无出血或梗死，不能替代脑血管评估。突发口角歪斜、肢体无力、说话不清，立即拨打 120。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="骨健康 · 关节守护卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>10</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>骨健康 · 关节守护卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">上下楼开始扶栏杆，出门就越来越少</p>
+        <p>维生素 D 和双能骨密度回答骨量。骨力宝看两侧膝关节和髋关节，判断走路还稳不稳。钙、磷和骨标志物放在升级里，需要空腹，用来解释钙是不是正在丢。骨量还好，就把走路、补充维生素 D、收起家里的绊脚物守住。到了骨质疏松，去骨科或内分泌，把补钙和用药说清楚。避开的是：骨量已经在流失，人还在用少出门来保护自己。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>25-羟基维生素 D2+D3 质谱定量</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>血清钙</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基线检查</td><td>血清磷</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>联合指标溯源</td><td>骨标志物两项</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>联合指标溯源</td><td>双能骨密度</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 双膝正位</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 髋关节正位</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>营养补剂</td><td>Move Free 益节维骨力氨糖软骨素钙片 80 粒</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>随卡</td></tr><tr><td class='cat'>大型设备</td><td>关节 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元/部位，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>985</td><td class='c'>1,307</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>471</td><td class='c'>584</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#B0551F">腿脚硬朗，走得再远都不怕</div>
+      <p class="who">从基础指标、溯源检查和 AI 辅助评估三个层面看骨与关节。卡内有基础权益，也有到店自费的升级权益。</p>
+      <p class="epi">50 岁以上人群骨质疏松患病率 19.2%（国家卫健委流调）。骨折风险升高，致残后会明显增加家庭照护压力。</p>
+      <div class="out alert"><b>有提示时</b><span>骨密度达到骨质疏松标准，或既往有脆性骨折，建议内分泌或骨科就诊，制定补钙、维生素 D 与抗骨松方案。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>骨密度正常，坚持负重运动、补充钙与维生素 D、预防跌倒，年度监测骨密度。</span></div>
+      <p class="bound">骨密度反映骨量。骨折风险还要结合年龄、跌倒史和当前用药。身高变矮、持续背痛、轻微外力骨折，及时就诊。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="心脏健康 · 关心卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>11</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>心脏健康 · 关心卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">胸闷一旦变成习惯，风险就藏在习惯里</p>
+        <p>心电图看此刻的心律。心无忧和同型半胱氨酸看心脑血管风险，不用把胸闷先翻译成一场大检查。升级用心安诊看冠状动脉有没有钙化，没有 CT 就先做 CT；辅酶 Q10 和脂蛋白亚分型作为补充，不单独下结论。没有高危信号，守住睡眠和血压。积分偏高，医生做分层，再决定冠脉 CT 或心脏超声。避开的是：胸闷被当成歇一歇，直到变成持续胸痛。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>血管损伤因子</td><td>同型半胱氨酸</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>血管损伤因子</td><td>心无忧</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>无需空腹；升级档不含此项</td></tr><tr><td class='cat'>血管损伤因子</td><td>辅酶 Q10</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>血管损伤因子</td><td>低密度脂蛋白亚分型</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>AI 辅助</td><td>心安诊 · 冠脉钙化积分</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT，需要加做 CT</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>386</td><td class='c'>1,091</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>136</td><td class='c'>382</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#2B62A8">给拼命的人，一颗安稳的心</div>
+      <p class="who">适合长期加班、睡眠不足、血压不稳，或家里有人较早发生心脑血管事件的人。</p>
+      <p class="epi">心血管病为我国居民首位死因，现患 3.3 亿（国家心血管病中心）。早筛用来降低猝死风险。</p>
+      <div class="out alert"><b>有提示时</b><span>血脂或冠脉钙化积分偏高，医生做风险分层，建议加做冠脉 CT 或心脏超声，并制定干预计划。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>未见高危信号，重点管理睡眠、血压和压力，控制可控危险因素，定期复评。</span></div>
+      <p class="bound">抽血与钙化积分为风险评估，不能替代冠脉造影。持续胸痛、胸闷放射至左肩或下颌，及时就诊。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="消化健康 · 胃部管理">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>12</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>消化健康 · 胃部管理</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">一双筷子，能把一个人的胃传到一桌子人</p>
+        <p>碳 13 呼气看当前有没有感染，需要空腹。同住的两位可以一起做。要看耐药、肠道风险和菌群，升级做一管四测，大便送检，不用空腹。阳性就把清除方案、分餐公筷和要不要看药敏讲明白。没有感染，公筷继续，胃不舒服再单独评估。避开的是：感染在饭桌上反复传，也避开只知道「有」，不知道下一步怎么治、要不要看肠道。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>C13 呼气试验</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>空腹</td></tr><tr><td class='cat'>一管四测</td><td>幽门螺杆菌感染评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>一管四测</td><td>幽门螺杆菌耐药评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>一管四测</td><td>肠癌风险评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>一管四测</td><td>肠道菌群评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>大型设备</td><td>磁控胶囊胃镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需升级，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>347</td><td class='c'>1,500</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>122</td><td class='c'>525</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#B0551F">一餐一饭，都要吃得安心</div>
+      <p class="who">幽门螺杆菌会在家庭共同生活中传播。先查当前是否感染，需要看药敏和肠道情况时再做一管四测。</p>
+      <p class="epi">2022 年我国结直肠癌新发 51.7 万例（国家癌症中心）。早期往往没有症状，早筛能提高生存机会。</p>
+      <div class="out alert"><b>有提示时</b><span>幽门螺杆菌阳性或肠道风险有提示，说明根除方案、家庭分餐与药敏，必要时做一管四测。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>本次未检出感染、没有报警症状，建议家人分餐公筷，有胃部不适再单独评估。</span></div>
+      <p class="bound">碳 13 呼气只反映当前感染状态，不能替代胃肠镜。黑便、消瘦、贫血，及时就医。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="消化健康 · 肠道管理">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>13</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>消化健康 · 肠道管理</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">益生菌吃了好几盒，肚子还是没个准</p>
+        <p>大便检测看肠道菌群：多样性够不够，有益菌和能产短链脂肪酸的菌偏不多。结果用来安排吃饭和发酵食物，也用来判断要不要补充益生菌、往哪一类补。胃部管理卡负责幽门和要不要再看肠道；这一张专管测完之后怎么吃。菌群平稳，就把规律用餐和膳食纤维守住。某一类偏低，医生按报告讲补充。避开的是：没看过自己的菌群，却把益生菌长期当药吃。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split fig">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>便常规</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>基础检测</td><td>必测 100</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>—</td></tr><tr><td class='cat'>专项检查</td><td>常君策 · 肠道菌群检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>专项检查</td><td>肠道功能评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>无痛肠镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需升级，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>341</td><td class='c'>3,016</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>120</td><td class='c'>1,601</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#B0551F">先看菌群缺什么，再决定补不补</div>
+      <p class="who">便秘与腹泻交替、长期自购益生菌不见效，或抗生素、肠胃变弱之后想把饮食调回来的人。</p>
+      <p class="epi">2022 年我国结直肠癌新发 51.7 万例（国家癌症中心）。早期无症状，规范随访很重要。</p>
+      <div class="out alert"><b>有提示时</b><span>菌群失衡或便潜血有提示，医生给出饮食与补充方案，必要时安排无痛肠镜。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>菌群结构平稳，守住规律用餐与膳食纤维，不必长期补充益生菌。</span></div>
+      <p class="bound">菌群结果给饮食和补充作参考，不能诊断疾病，也不能代替肠镜。黑便、便血、消瘦或腹泻久不好，及时就医。</p>
+    </aside>
+    <figure class="infographic gut">
+      <img src="方案展示素材/gut.png" alt="肠道菌群示意">
+      <figcaption>先看肚子里缺的是哪一类，再决定要不要补、往哪一类补。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide" data-title="乳腺健康关注卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>14</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>乳腺健康关注卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">更年期前后，每一次发紧都会在心里过一遍</p>
+        <p>乳腺彩超看有没有需要分级的结节。CA15-3 作更贴近乳腺的血液参照，CA125 同时照看卵巢相关信号，两枚血和超声一起读，任何一枚都不能单独定性。家族史明确时，升级做 BRCA，看乳腺和卵巢相关的遗传风险。没有可疑结节，按年龄继续年度超声。有异常，医生按分级告诉您是复查、钼靶，还是乳腺磁共振。避开的是：自己吓自己，也避开有家族史却从不做评估。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>乳腺彩超</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>基线检查</td><td>CA125</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>CA15-3</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>遗传风险评估</td><td>BRCA 基因检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>乳腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>378</td><td class='c'>1,178</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>133</td><td class='c'>413</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#2B62A8">多一分了解，少一分担心</div>
+      <p class="who">适合近期为乳腺健康担心的女性，尤其是更年期前后激素水平不稳定的女性。先看乳腺彩超和常见指标，再由医生判断是否需要进一步检查。</p>
+      <p class="epi">我国女性乳腺癌年新发约 35.7 万例（国家癌症中心），发病中位年龄 47 岁。早筛能改善预后。</p>
+      <div class="out alert"><b>有提示时</b><span>超声或 CA15-3 异常，结合年龄与 BI-RADS 分级，建议乳腺专科复查、钼靶或 MRI。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>未见可疑结节，继续按年龄做年度超声或钼靶，保持月经后乳房自检习惯。</span></div>
+      <p class="bound">超声与肿瘤标志物受增生、月经周期影响，不能单独定性。乳房皮肤凹陷、乳头血性溢液，及时就诊。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="卵巢健康关注卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>15</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>卵巢健康关注卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">肚子发胀、裤腰紧，最容易被当成吃多了</p>
+        <p>子宫附件超声看有没有包块，TCT 看宫颈细胞，都不用空腹。升级补 HPV，并用泌思优看卵巢癌相关的外泌体信号，帮助判断要不要去专科。包块和指标都平稳时，继续年度妇科超声，并留意腹胀和腹围。有包块或外泌体有提示，转妇科，必要时做盆腔磁共振。避开的是：把需要妇科看的胀和紧，一直留在厨房里自己消化。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>子宫附件超声</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>宫颈 TCT</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>HPV</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>肿瘤风险</td><td>泌思优 · 卵巢癌外泌体</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>盆腔 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>294</td><td class='c'>1,562</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>103</td><td class='c'>547</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#B0551F">安静的器官，更值得被看见</div>
+      <p class="who">适合近期为卵巢健康担心的女性。先看子宫附件超声和宫颈 TCT，再由医生判断要不要做 HPV、泌思优或盆腔磁共振。</p>
+      <p class="epi">卵巢癌死亡率居妇科恶性肿瘤首位（国家卫健委指南）。约 70% 确诊时已是晚期，早期常常没有症状。</p>
+      <div class="out alert"><b>有提示时</b><span>超声提示包块或标志物升高，结合绝经状态，建议妇科复查，必要时做盆腔 MRI。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>未见包块、标志物平稳，继续年度妇科超声，留意腹胀、腹围增大等信号。</span></div>
+      <p class="bound">卵巢位置深，超声早期灵敏度有限。持续腹胀、食欲下降、腹围增大，及时就诊。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="肺结节关注卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>16</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>肺结节关注卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">「肺结节」三个字，够人醒好几个晚上</p>
+        <p>胸部 CT 回答有没有、多大、什么密度。医生按形态把随访写成 3 个月、6 个月或 12 个月，带走的是一个日子。肺癌抗体 7 项放在升级里，帮助判断这次随访要不要加快，代替不了 CT。没有需要处理的结节，这次就看清了，升级可以不做。高危的转胸外科。避开的是：没有大小、没有日期，只能自己吓自己。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>胸部 CT</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>肺癌抗体 7 项</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>528</td><td class='c'>800</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>185</td><td class='c'>280</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#2B62A8">每一次呼吸，都清清爽爽</div>
+      <p class="who">先做胸部 CT，看有没有结节、结节多大，以及需要间隔多久复查。</p>
+      <p class="epi">肺癌为我国发病和死亡第一位的癌种（国家癌症中心，2022 年新发 106 万）。早期多表现为肺结节，规范随访很重要。</p>
+      <div class="out alert"><b>有提示时</b><span>按结节大小、密度、形态定随访间隔（3、6 或 12 个月），同时解读抗体 7 项。高危转胸外科。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>未见需要处理的结节，本次 CT 已看清，不必加做项目。戒烟，并按年度低剂量 CT 随访。</span></div>
+      <p class="bound">肺结节靠影像动态随访。抗体不能替代 CT。咯血、持续胸痛、不明原因消瘦，及时就诊。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="胰腺健康关注卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>17</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>胰腺健康关注卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">该查的人，常常停在「再观察观察」</p>
+        <p>适合有家族史、有相关症状，或医生建议进一步检查的父母。CA19-9、CA242 和胰腺超声放在同一天，互相参照，一管血不能单独定性。基础三项有提示，升级再做逸力嘉 microRNA；还要看清楚，再按需做胰腺 MRI。指标平稳、没有占位，就把烟、酒和血糖管住。升高或看到占位，转专科。避开的是两头：该查的人一直拖，不该单独查的人被一枚指标吓住。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split fig">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>358</td><td class='c'>1,358</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>126</td><td class='c'>476</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#B0551F">隐匿的「癌中之王」，早一步发现</div>
+      <p class="who">适合有胰腺癌家族史、相关症状，或医生建议进一步检查的人。不作为普通无症状人群的单独筛查。</p>
+      <p class="epi">胰腺癌 5 年生存率约 5%–10%（国家癌症中心）。发病隐匿、进展快，发病数和死亡数接近。</p>
+      <div class="out alert"><b>有提示时</b><span>CA19-9 升高或超声见占位，结合腹痛、黄疸，建议加做逸力嘉 microRNA、增强 CT 或 MRI，并转专科。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>本次指标平稳、未见占位。重点控糖、戒酒、戒烟。出现症状不要等下一次体检，立即就诊。</span></div>
+      <p class="bound">CA19-9 可受胆胰炎症、胆道梗阻影响，不能单独定性。持续上腹痛、黄疸、腰背痛、短期内消瘦，及时就诊。</p>
+    </aside>
+    <figure class="infographic">
+      <img src="方案展示素材/pancreas.png" alt="胰腺相关症状：消瘦乏力、黄疸、腹痛、低热、血糖异常、尿色变深">
+      <figcaption>家里先留意这几件：消瘦乏力、黄疸、腹痛腹胀、低热、血糖异常、尿色变深。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide" data-title="长寿检测卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>18</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>长寿检测卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">想知道还能自己买菜，报告上却全是病名</p>
+        <p>评估细胞能量储备和线粒体代谢状态，看压力、长期炎症、长期不良生活方式对细胞复制储备的消耗，也用来解释容易疲劳、运动耐力差、恢复慢。结果给运动、恢复和营养方案作参考。NAD+ 很低的人，优先低强度有氧和恢复。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>分子检测</td><td>细胞 NAD+ 水平分析</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>分子检测</td><td>人端粒长度检测</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>758</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>266</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <div class="slogan" style="color:#2B62A8">回答「还剩多少余量」</div>
+      <p class="who">指标基本正常、想把「老得快不快」量出来，为未来一年的吃、动、睡定一个方向的人。</p>
+      <p class="epi">这一张不寻找新的病名。它看的是细胞能量和端粒长度这两项相对余量。</p>
+      <div class="out alert"><b>有提示时</b><span>生物学年龄明显高于实际年龄，或代谢指标异常，给出 3–6 个月的生活方式干预和复查计划。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>各项余量充足，保持现有作息与运动，年度复测即可。</span></div>
+      <p class="bound">端粒与 NAD+ 反映生物学年龄的相对水平，个体差异大，不用于诊断疾病，也不能预测具体寿命。肿瘤、结节、记忆和关节问题走对应专项卡。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="营养与代谢检测卡">
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项健康卡</span><b>19</b><span>/ 27</span></div>
+  </header>
+  <div class="title-row">
+    <h2>营养与代谢检测卡</h2>
+    <div class="narr-wrap">
+      <button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop" role="tooltip">
+        <p class="hook">饭吃得不少，人还是一年比一年没劲</p>
+        <p>腰围和血压是每天的水电表。胰岛素抵抗把饭后犯困、腰上的肉，和空腹血糖、胰岛素对上。超敏 C 反应蛋白看身体有没有一直在小声发炎，它是信号，用来决定先改哪一件生活。结果都稳，今年就走路、睡觉、少一口甜。有一个偏了，医生告诉您先动哪一件。避开的是：体检做完，仍然不知道明天的日子该怎么过。</p>
+      </div>
+    </div>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>空腹血糖</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基础检测</td><td>胰岛素</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基础检测</td><td>超敏 C 反应蛋白</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>专项检测</td><td>微量元素六项（铁、钙、铜、锌、镁、铅）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>专项检测</td><td>25-羟基维生素 D2+D3</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>专项检测</td><td>辅酶 Q10</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>专项检测</td><td>红细胞叶酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>采血</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>206</td><td class='c'>1,510</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>73</td><td class='c'>529</td><td></td></tr></tbody></table>
+      <p class="fine">个检报告和一对一解读含在每一档里。医生把看不懂的报告讲成家里能听懂的话。价格以国宾普区为例。标成「按需」的影像不计入卡价。</p>
+    </div>
+    <aside class="side">
+      <img class="shot coq" src="方案展示素材/coq10.png" alt="线粒体电子传递链中的辅酶Q10">
+      <div class="slogan" style="color:#B0551F">缺哪一种，就补哪一种</div>
+      <p class="who">适合胃口变小、长期吃得很素、补了几年钙仍然腿抽筋，或化验单上一个箭头不知道吃什么的人。</p>
+      <p class="epi">基础档看血糖、胰岛素和炎症信号。升级档补微量元素、维生素 D、辅酶 Q10 和叶酸，用来回答「缺的是哪一种」。</p>
+      <div class="out alert"><b>有提示时</b><span>某项偏低或偏高，给出补充、疗程和复查时间，避免长期自行叠加。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>本次各项在参考范围，维持均衡饮食，不额外叠加补充，年度复查。</span></div>
+      <p class="bound">微量元素受近期饮食和补充剂影响，采血前按医嘱停用相关补充剂。持续乏力、体重下降、贫血，需要进一步就诊。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide" data-title="磁共振专项 · 按需加购">
+  <header class="top"><img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>专项加购</span><b>20</b><span>/ 27</span></div></header>
+  <div class="title-row"><h2>磁共振专项 · 按需加购</h2>
+    <div class="narr-wrap"><button type="button" class="narr-btn">叙事</button>
+      <div class="narr-pop"><p class="hook">想精准排查病灶，项目太多，分不清该选哪个部位</p><p>血管和脏器是身体的管道和仓库。MRI 看得清软组织、韧带、脏器内部和微小病灶。平扫做初筛，怀疑异常再做增强。脊柱看椎间盘和神经根，关节看软骨和韧带，腹盆看肝胆胰、前列腺和子宫附件，头部看脑组织、血管、微小出血和梗塞。结果都稳，按周期随访。一旦有异常，医生告诉您优先复查和进一步诊疗。避开的是：做完核磁，仍然看不懂片子，不知道下一步。</p></div></div></div>
+  <div class="split">
+    <div class="tbl-scroll">
+<table class="pkg"><thead><tr><th>项目</th><th>范围</th><th>市场价</th></tr></thead><tbody>
+<tr><td>单部位 MRI</td><td>头部、心脏、颈椎、胸椎、腰椎、腹部、盆腔、肝脏、胰腺、胆胰管、乳腺、前列腺，以及肩、肘、腕、髋、膝、踝</td><td class="c">1,526 元/部位</td></tr>
+<tr><td>全身 MRI</td><td>女士全身、男士全身</td><td class="c">女士 21,000 元 / 男士 18,000 元</td></tr>
+<tr><td>个检报告</td><td>电子版个检报告</td><td class="c">含</td></tr>
+<tr><td>一对一解读</td><td>把看不懂的片子讲成下一步</td><td class="c">含</td></tr>
+</tbody></table>
+<p class="fine">平扫做初筛，怀疑异常再做增强。体内金属植入、幽闭恐惧、早孕需提前评估。增强检查要评估肾功能。</p></div>
+    <aside class="side">
+      <div class="slogan" style="color:#2B62A8">按需选择，平扫初筛，增强精查</div>
+      <p class="who">适合颈肩腰腿痛、头晕头痛、脏器结节随访、妇科或前列腺筛查、运动关节损伤，拿到影像结论不知道要不要紧的人。</p>
+      <p class="epi">单部位市场价 1,526 元。全身 MRI 女士 21,000 元，男士 18,000 元。不进主题卡的打包价，按需另购。</p>
+      <div class="out alert"><b>有提示时</b><span>影像发现结节、损伤或信号异常，给出随访周期和专科就诊建议，避免盲目反复检查。</span></div>
+      <div class="out ok"><b>无明显异常时</b><span>本次影像未见明确病灶，按健康周期体检。有不适及时就诊。</span></div>
+      <p class="bound">体内金属植入物、幽闭恐惧、早孕需提前告知。增强检查要评估肾功能。疼痛、包块、持续不适请专科就诊。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="slide flowpage" data-title="分院接待流程：从推开门那一刻起，就有人陪着">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>线下流程</span><b>21</b><span>/ 27</span></div>
+  </header>
+  <h2>分院接待流程：从推开门那一刻起，就有人陪着</h2>
+  <div class="proc six">
+    <div class="node"><i>1</i><b>迎宾问候</b><span>前台主动迎接，递上一杯按老年体质调配的爱康特色茶饮，先化解陌生感。</span></div>
+    <div class="node"><i>2</i><b>身份核验</b><span>凭一张身份证快速核销家庭卡，全程无需手机操作，子女远程预约即可。</span></div>
+    <div class="node"><i>3</i><b>专人引导</b><span>导检一对一陪同至专属服务区，独立接待空间，免排队、少等待。</span></div>
+    <div class="node"><i>4</i><b>全程陪检</b><span>检查全程有人陪、有人讲，每到一个科室都有人接，老人不孤单。</span></div>
+    <div class="node"><i>5</i><b>当面解读</b><span>医生一对一讲解报告，把指标讲明白；子女端同步收到健康信息。</span></div>
+    <div class="node"><i>6</i><b>温暖送别</b><span>离店前提醒下次复查时间，健康小结推送给子女，服务有始有终。</span></div>
+  </div>
+  <div class="escort">
+    <b>跨院就医陪诊（增值加购）——去公立医院，也有人全程陪着</b>
+    <div class="proc three">
+      <div class="node"><i>前</i><b>陪前</b><span>提前 1 天电话确认就诊信息、用药史与特殊需求，约定碰面地点。</span></div>
+      <div class="node"><i>中</i><b>陪中</b><span>医院门口接人，全程陪同挂号、候诊、问诊、取药；医嘱当面复述，关键节点同步子女。</span></div>
+      <div class="node"><i>后</i><b>陪后</b><span>当日提交陪诊小结：就诊结论、用药清单、复诊提醒，同步到子女端。</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide flowpage" data-title="家庭健康日：每周二下午，像老友聚会一样做完半日">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>线下活动</span><b>22</b><span>/ 27</span></div>
+  </header>
+  <h2>家庭健康日：每周二下午，像老友聚会一样做完半日</h2>
+  <p class="lead">示例：脑健康主题。每周二下午，子女线上下单后老人到店，完成「讲座 + 专项体检 + 报告解读 + 医生咨询」半日闭环。50 人起场。</p>
+  <div class="dayboard">
+    <div class="proc six">
+      <div class="node"><i>1</i><b>脑健康专题健康讲座</b><span>30 分钟。医生讲记忆衰退与阿尔茨海默预防、家庭照护要点。</span></div>
+      <div class="node"><i>2</i><b>脑健康 · 记忆力专项体检</b><span>APOE、Aβ40/42、Tau217、microRNA 等分子早筛。</span></div>
+      <div class="node"><i>3</i><b>现场报告解读</b><span>医生一对一看报告，解释指标意义与随访间隔。</span></div>
+      <div class="node"><i>4</i><b>医生健康咨询</b><span>慢病用药复核、生活方式建议、认知风险答疑、慢病指标管理。</span></div>
+      <div class="node"><i>5</i><b>家庭用药整理</b><span>核查多重用药冲突风险，药师协助常用药品分装，储存与不良反应科普。</span></div>
+      <div class="node"><i>6</i><b>健康伴手礼</b><span>中医代茶饮、科普折页、下次活动预约、脑健康主题伴手礼赠送。</span></div>
+    </div>
+    <div class="photos">
+      <figure><img src="方案展示素材/lecture.jpg" alt="健康讲座现场"><figcaption>健康讲座现场</figcaption></figure>
+      <figure><img src="方案展示素材/consult.jpg" alt="报告解读与医生咨询"><figcaption>报告解读 / 医生咨询</figcaption></figure>
+    </div>
+  </div>
+  <div class="escort">
+    <b>当日服务流程（周二下午）</b>
+    <div class="proc time">
+      <div class="node"><i>1</i><b>13:30</b><span>签到</span></div>
+      <div class="node"><i>2</i><b>14:00</b><span>讲座</span></div>
+      <div class="node"><i>3</i><b>14:40</b><span>体检</span></div>
+      <div class="node"><i>4</i><b>15:40</b><span>解读</span></div>
+      <div class="node"><i>5</i><b>16:10</b><span>咨询</span></div>
+      <div class="node"><i>6</i><b>16:40</b><span>推送</span></div>
+    </div>
+    <p class="tiny">老人端最小操作：凭身份证到店即可；子女端全程远程看到报告与提醒。</p>
+  </div>
+</section>
+
+<section class="slide " data-title="合作设想一 · 权益卡模式">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>合作方式</span><b>23</b><span>/ 27</span></div>
+  </header>
+  <h2>合作设想一 · 权益卡模式</h2>
+  
+<div class="coop">
+  <div class="tbl-scroll"><table class="grid">
+  <thead><tr><th>类别</th><th>服务明细</th><th>基础</th><th>升级</th><th>尊享</th></tr></thead>
+  <tbody>
+  <tr><td rowspan="2">综合体检卡</td><td>肿瘤深度筛查</td><td rowspan="2">/</td><td rowspan="2">/</td><td rowspan="2">二选一</td></tr>
+  <tr><td>心脑血管深度筛查</td></tr>
+  <tr><td rowspan="12">主题健康卡</td><td>脑健康 · 记忆力评估卡</td><td rowspan="12">十二选二</td><td rowspan="12">十二选四</td><td rowspan="12">十二选四</td></tr>
+  <tr><td>脑健康 · 中风关注卡</td></tr>
+  <tr><td>骨健康 · 关节守护卡</td></tr>
+  <tr><td>心脏健康 · 关心卡</td></tr>
+  <tr><td>消化健康 · 胃部管理卡</td></tr>
+  <tr><td>消化健康 · 肠道管理卡</td></tr>
+  <tr><td>乳腺健康关注卡</td></tr>
+  <tr><td>卵巢健康关注卡</td></tr>
+  <tr><td>肺结节关注卡</td></tr>
+  <tr><td>胰腺健康关注卡</td></tr>
+  <tr><td>长寿检测卡</td></tr>
+  <tr><td>营养与代谢检测卡</td></tr>
+  <tr><td>陪诊服务</td><td>就医陪诊</td><td>/</td><td>1 次</td><td>2 次</td></tr>
+  <tr><td>增值服务</td><td>健康日</td><td>2 次</td><td>4 次</td><td>4 次</td></tr>
+  </tbody></table></div>
+  <div class="sidebox">
+    <h3>方案一 · 打包采购</h3>
+    <p>阿里按客户采购权益卡。指定城市由爱康开放一定数量的健康日，对应阿里保证一定采购量。</p>
+    <h3>方案二 · 拆分采购</h3>
+    <p>权益卡不含健康日。阿里按场次另购健康日，跟客户数量和安排走。</p>
+    <h3 style="color:#C2410C">模式特点</h3>
+    <p>内容丰富、选择性高、好讲。客户自费从基础档升到升级档的路径清楚，成本略高。</p>
+    <p class="fine">到店均含一对一医生问诊、一对一药师、中医代茶饮和全程陪检。</p>
+  </div>
+</div>
+</section>
+
+<section class="slide " data-title="合作设想二 · 按需结算模式">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>合作方式</span><b>24</b><span>/ 27</span></div>
+  </header>
+  <h2>合作设想二 · 按需结算模式</h2>
+  
+<div class="coop">
+  <div class="tbl-scroll"><table class="grid">
+  <thead><tr><th>类别</th><th>服务明细</th></tr></thead><tbody>
+  <tr><td rowspan="2">综合体检卡</td><td>肿瘤深度筛查体检卡</td></tr><tr><td>心脑血管深度筛查体检卡</td></tr>
+  <tr><td rowspan="12">主题健康卡</td><td>脑健康 · 记忆力评估卡</td></tr>
+  <tr><td>脑健康 · 中风关注卡</td></tr>
+  <tr><td>骨健康 · 关节守护卡</td></tr>
+  <tr><td>心脏健康 · 关心卡</td></tr>
+  <tr><td>消化健康 · 胃部管理卡</td></tr>
+  <tr><td>消化健康 · 肠道管理卡</td></tr>
+  <tr><td>乳腺健康关注卡</td></tr>
+  <tr><td>卵巢健康关注卡</td></tr>
+  <tr><td>肺结节关注卡</td></tr>
+  <tr><td>胰腺健康关注卡</td></tr>
+  <tr><td>长寿检测卡</td></tr>
+  <tr><td>营养与代谢检测卡</td></tr>
+  <tr><td>陪诊服务</td><td>就医陪诊服务</td></tr>
+  </tbody></table></div>
+  <div class="sidebox">
+    <h3>方案一 · 全排期承接</h3>
+    <p>阿里自行设计客户权益。客户用了哪一项，就结算哪一项。自费升级开放。爱康用全部排期接。</p>
+    <h3>方案二 · 排期 + 健康日</h3>
+    <p>同样按使用结算，可自费升级。另开放一定数量的家庭健康日，对应阿里保证单场 10 位以上到店。</p>
+    <h3 style="color:var(--navy)">模式特点</h3>
+    <p>成本更可控。客户能感知到的权益丰富度，会低于打包的权益卡。</p>
+  </div>
+</div>
+</section>
+
+<section class="slide " data-title="首期试点：选对城市，选好分院">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>试点</span><b>25</b><span>/ 27</span></div>
+  </header>
+  <h2>首期试点：选对城市，选好分院</h2>
+  
+<div class="lead">优先淘系高消费人群集中、爱康分院成熟且下午有资源、老年客群充足的城市。</div>
+<div class="cols two" style="margin-top:10px">
+  <div>
+    <b style="color:var(--navy)">首批城市</b>
+    <div class="chiprow" style="margin-top:8px">
+      <span class="chip">北京</span><span class="chip">上海</span><span class="chip">广州</span>
+      <span class="chip">深圳</span><span class="chip">杭州</span><span class="chip">福州</span>
+      <span class="chip">贵阳</span><span class="chip">常州</span><span class="chip">重庆</span>
+    </div>
+    <div class="reserve">预留扩城：长沙、郑州、合肥。看首期效果再增补。</div>
+    <p class="fine">各城市具体分院经双方评估后确定，优先服务能力强、口碑好的旗舰分院。</p>
+  </div>
+  <div class="panel gold">
+    <b style="color:#C2410C">首批试点分院的五个标准</b>
+    <ul class="std" style="list-style:none;padding:8px 0 0">
+      <li>有独立的老年客群接待空间，能办家庭健康专场。</li>
+      <li>前台和导检完成家庭健康卡核销培训。</li>
+      <li>有慢病和老年报告解读医生，有专职药师，能做电话回访和用药咨询。</li>
+      <li>有自有陪诊团队，能跨院陪诊。</li>
+      <li>分院位置能在阿里预约页用定位透出。</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section class="slide " data-title="落地节奏：先跑通链路，再扩城扩店">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="方案展示素材/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>落地</span><b>26</b><span>/ 27</span></div>
+  </header>
+  <h2>落地节奏：先跑通链路，再扩城扩店</h2>
+  
+<p class="note" style="margin-top:0">时间窗口：2026 年 12 月 — 2027 年 3 月</p>
+<div class="sop">
+  <div>
+    <b style="color:var(--navy)">01 / 分院家庭健康日标准动作</b>
+    <div style="margin-top:8px">
+      <div class="sop-item"><i>1</i><div><b>预约限流</b><span style="color:var(--muted);font-size:12.5px">子女端提前锁定名额。每周二下午专场，控场保障体验。</span></div></div>
+      <div class="sop-item"><i>2</i><div><b>到店接待</b><span style="color:var(--muted);font-size:12.5px">凭身份证到店，前台核验家庭卡，专人领进专属区，全程陪同，减少等待。</span></div></div>
+      <div class="sop-item"><i>3</i><div><b>现场服务</b><span style="color:var(--muted);font-size:12.5px">医生讲座、主题卡使用、血压血糖复测、居家用药整理。纸质报告当面讲，一对一答疑。</span></div></div>
+      <div class="sop-item"><i>4</i><div><b>档案回流</b><span style="color:var(--muted);font-size:12.5px">数据同步到 App 并推送给子女，形成检测、反馈、干预的闭环。</span></div></div>
+    </div>
+  </div>
+  <div>
+    <b style="color:#C2410C">02 / 首期要看的四个数</b>
+    <div class="kpis" style="margin-top:8px">
+      <div class="kpi c1"><b>转化</b><span>服务包暴露量、领取率、线下到店率。看线上流量能不能接住。</span></div>
+      <div class="kpi c2"><b>履约</b><span>预约成功率、到店核销率、活动到场率。看线上预约和线下履约是否对得上。</span></div>
+      <div class="kpi c3"><b>服务</b><span>报告解读完成率、用户满意度。看服务是否安全、是否被感受到。</span></div>
+      <div class="kpi c4"><b>商业</b><span>线上升级加购率、线下服务转化率。看长期价值。</span></div>
+    </div>
+  </div>
+</div>
+<div class="banner">首期先跑通一条链路：子女下单，父母到店，子女收到提醒。规模放在链路之后。</div>
+</section>
+
+<section class="slide close" data-title="收束">
+  <div class="bar"></div>
+  <img class="logo" src="方案展示素材/logo.png" alt="iKang 爱康 以质取信">
+  <h2>家庭健康卡产品方案</h2>
+  <p>子女心中无尽牵挂</p>
+  <p style="margin-top:8px">爱康予您妥帖安心</p>
+</section>
+<button class="nav prev" id="prev" aria-label="上一页">‹</button>
+<button class="nav next" id="next" aria-label="下一页">›</button>
+<nav class="book" id="book" aria-label="目录"></nav>
+</div></div>
+<div class="hint">方向键或左右滑动换页 · 右侧页签即目录</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const SHORT=['封面','痛点','竞品','承诺','方案','体检','专项','记忆','中风','关节','心脏','胃部','肠道','乳腺','卵巢','肺结节','胰腺','长寿','营养','核磁','接待','健康日','权益卡','按需','试点','落地','收束'];
+const MARK={'脑健康 · 记忆力评估卡':'忆','脑健康 · 中风风险评估卡':'脉','骨健康 · 关节守护卡':'骨','心脏健康 · 关心卡':'心','消化健康 · 胃部管理':'胃','消化健康 · 肠道管理':'肠','乳腺健康关注卡':'乳','卵巢健康关注卡':'巢','肺结节关注卡':'肺','胰腺健康关注卡':'胰','长寿检测卡':'寿','营养与代谢检测卡':'营','磁共振专项 · 按需加购':'磁'};
+function mix(a,b,t){
+  const n=s=>parseInt(s,16);
+  const c=i=>Math.round(n(a.slice(i,i+2))+(n(b.slice(i,i+2))-n(a.slice(i,i+2)))*t).toString(16).padStart(2,'0');
+  return '#'+c(1)+c(3)+c(5);
+}
+function grad(i,n){
+  const stops=['#F26A21','#E89D01','#1D50A2','#00978C'];
+  if(n<=1) return stops[0];
+  const x=i/(n-1)*(stops.length-1);
+  const k=Math.min(stops.length-2, Math.floor(x));
+  return mix(stops[k], stops[k+1], x-k);
+}
+slides.forEach(s=>{
+  const wrap=s.querySelector('.narr-wrap');
+  if(!wrap) return;
+  s.classList.add('leaflet');
+  const paras=[...wrap.querySelectorAll('.narr-pop p')];
+  const hook=paras[0]?paras[0].textContent.trim():'';
+  const quote=paras.length>1?paras[paras.length-1].textContent.trim():'';
+  const row=s.querySelector('.title-row');
+  if(hook && row){
+    const p=document.createElement('p');
+    p.className='hookline';
+    p.textContent=hook;
+    row.insertAdjacentElement('afterend', p);
+  }
+  const side=s.querySelector('.side');
+  const sale=s.querySelector('tr.sale');
+  const mkt=s.querySelector('tr.mkt');
+  if(quote && sale){
+    const cells=[...sale.children];
+    let cell=cells[cells.length-1];
+    if(cell.classList.contains('c')){
+      cell=document.createElement('td');
+      sale.appendChild(cell);
+    }
+    cell.className='explain-cell';
+    const hold=document.createElement('span');
+    hold.className='explain';
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='explain-btn';
+    btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3h9.2L20 7.8V21a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 1.5V8h3.5L14 4.5zM8 11h8v1.4H8V11zm0 3h8v1.4H8V14zm0 3h5.2v1.4H8V17z"/></svg><span>产品解释</span>';
+    const pop=document.createElement('div');
+    pop.className='explain-pop';
+    pop.textContent=quote;
+    hold.append(btn,pop);
+    cell.appendChild(hold);
+  }
+  if(side){
+    const mark=document.createElement('div');
+    mark.className='mark';
+    mark.textContent=MARK[s.dataset.title]||'卡';
+    const slogan=side.querySelector('.slogan');
+    const line=document.createElement('div');
+    line.className='brandline';
+    if(slogan){
+      slogan.before(line);
+      line.append(mark,slogan);
+    }else side.prepend(line,mark);
+    if(sale){
+      const sc=[...sale.querySelectorAll('td.c')].map(td=>td.textContent.trim()).filter(t=>t && t!=='—');
+      const mc=mkt?[...mkt.querySelectorAll('td.c')].map(td=>td.textContent.trim()):[];
+      const board=document.createElement('div');
+      board.className='tickets';
+      const names=sc.length>1?['基础卡','升级卡']:['本卡'];
+      sc.forEach((price,idx)=>{
+        const d=document.createElement('div');
+        const em=document.createElement('em'); em.textContent=names[idx]||'加购';
+        const b=document.createElement('b'); b.textContent=price;
+        const sp=document.createElement('span'); sp.textContent=mc[idx]?'市场价 '+mc[idx]:'';
+        d.append(em,b,sp);
+        board.appendChild(d);
+      });
+      line.after(board);
+    }
+  }
+  if(quote && !sale && side){
+    const hold=document.createElement('span');
+    hold.className='explain';
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='explain-btn';
+    btn.style.color='#1D50A2';
+    btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3h9.2L20 7.8V21a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 1.5V8h3.5L14 4.5zM8 11h8v1.4H8V11zm0 3h8v1.4H8V14zm0 3h5.2v1.4H8V17z"/></svg><span>产品解释</span>';
+    const pop=document.createElement('div');
+    pop.className='explain-pop';
+    pop.textContent=quote;
+    hold.append(btn,pop);
+    side.prepend(hold);
+  }
+  const coq=s.querySelector('.shot.coq');
+  if(coq){
+    const left=s.querySelector('.tbl-scroll');
+    if(left) left.appendChild(coq);
+  }
+  if(s.dataset.title==='脑健康 · 记忆力评估卡'){
+    const left=s.querySelector('.tbl-scroll');
+    if(left){
+      const fig=document.createElement('figure');
+      fig.className='labshot';
+      const img=document.createElement('img');
+      img.src='方案展示素材/lab-memory.png';
+      img.alt='实验室分子检测';
+      fig.appendChild(img);
+      left.appendChild(fig);
+    }
+  }
+  wrap.remove();
+});
+let i=0;
+const book=document.getElementById('book');
+function paintBook(){
+  [...book.children].forEach((b,k)=>{
+    b.classList.toggle('on', k===i);
+    b.style.marginLeft='0';
+  });
+}
+function show(n){
+  i=(n+slides.length)%slides.length;
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  slides[i].querySelectorAll('.tbl-scroll,aside,.side,.exam article').forEach(el=>el.scrollTop=0);
+  paintBook();
+}
+slides.forEach((s,k)=>{
+  const b=document.createElement('button');
+  b.type='button';
+  b.textContent=SHORT[k]||String(k+1);
+  b.style.background=grad(k, slides.length);
+  b.style.marginLeft='0';
+  b.addEventListener('click',()=>show(k));
+  book.appendChild(b);
+});
+document.getElementById('prev').onclick=()=>show(i-1);
+document.getElementById('next').onclick=()=>show(i+1);
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1)}
+  if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(i-1)}
+});
+const stage=document.getElementById('stage');
+let x0=null,y0=null;
+stage.addEventListener('pointerdown',e=>{
+  if(e.target.closest('button,a,.tbl-scroll')) return;
+  x0=e.clientX; y0=e.clientY;
+});
+stage.addEventListener('pointerup',e=>{
+  if(x0==null) return;
+  const dx=e.clientX-x0, dy=e.clientY-y0;
+  if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.2) show(i+(dx<0?1:-1));
+  x0=y0=null;
+});
+document.querySelectorAll('.tile[data-go]').forEach(el=>el.addEventListener('click',()=>show(+el.dataset.go)));
+show(0);
+</script>
+</body></html>
