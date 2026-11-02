@@ -353,30 +353,30 @@ table.grid td,table.pkg td{padding:9px 12px}
 .explain-btn svg{width:14px;height:14px;flex:none}
 .explain-pop{display:none;position:absolute;z-index:12;right:0;bottom:calc(100% + 8px);width:min(360px,46vw);background:#FDF3E7;color:#3A342E;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;font-weight:500;text-align:left;box-shadow:0 10px 24px rgba(58,52,46,.18)}
 .explain:hover .explain-pop,.explain:focus-within .explain-pop,.ditem:hover .explain-pop,.ditem:focus-within .explain-pop{display:block}
-h2.pain-title{display:flex;flex-direction:column;align-items:flex-start;gap:2px;color:#2A2A2A;line-height:1.25}
+h2.pain-title{display:flex;flex-direction:row;align-items:center;color:#2A2A2A;line-height:calc(1.25em + 5px)}
 h2.pain-title::before{content:none}
-h2.pain-title .leadline{display:flex;align-items:center;gap:8px}
+h2.pain-title .leadline{display:flex;align-items:center;gap:8px;flex:none}
 h2.pain-title .leadline::before{content:"";width:5px;height:.85em;border-radius:2px;background:#F26A21;flex:none}
-h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:13px}
-.painboard{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(300px,1.42fr) minmax(0,1.02fr);grid-template-rows:minmax(0,1fr) auto;column-gap:6px;align-items:center}
+h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10px}
+.painboard{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(300px,1.42fr) minmax(0,1.02fr);grid-template-rows:auto auto;column-gap:6px;align-items:center;align-content:start;padding-top:18px}
 .pain-side.l{transform:translateX(28px)}
 .pain-side.r{transform:translateX(-28px)}
-.pain-who{text-align:center;margin:0 0 10px}
-.pain-who b{display:block;font-size:22px;line-height:1.1;font-weight:800}
+.pain-who{text-align:center;margin:0 0 6px}
+.pain-who b{display:block;font-size:24px;line-height:1.1;font-weight:800}
 .pain-side.l .pain-who b{color:#F07A1A}
 .pain-side.r .pain-who b{color:#2F62D6}
-.pain-who span{display:block;margin-top:2px;font-size:13px;color:#8A93A3;font-weight:650}
-.pain-art{grid-column:2;grid-row:1;margin:0;min-height:0;height:100%;display:flex;align-items:center;justify-content:center}
+.pain-who span{display:block;margin-top:3px;font-size:15px;color:#8A93A3;font-weight:650}
+.pain-art{grid-column:2;grid-row:1;margin:0;min-height:0;height:auto;display:flex;align-items:center;justify-content:center}
 .pain-art img{display:block;max-width:100%;max-height:100%;object-fit:contain}
-.pain-side{grid-row:1;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;gap:8px;min-height:0;padding:4px 0 36px}
+.pain-side{grid-row:1;display:flex;flex-direction:column;justify-content:center;gap:14px;min-height:0}
 .pain-side.l{grid-column:1}
 .pain-side.r{grid-column:3}
-.pchip{display:flex;align-items:center;gap:8px;border-radius:10px;min-height:44px}
-.pain-side.l .pchip{background:linear-gradient(90deg,#FFF3E6 0%,rgba(255,243,230,0) 100%);padding:3px 6px 3px 3px}
-.pain-side.r .pchip{background:linear-gradient(270deg,#F2F6FB 0%,rgba(242,246,251,0) 100%);padding:3px 3px 3px 8px;justify-content:flex-end;text-align:right}
-.pchip b{flex:none;min-width:62px;text-align:center;color:#fff;background:linear-gradient(180deg,#F7B15A,#F08A2C);border-radius:8px;padding:7px 8px;font-size:14px;font-weight:800}
+.pchip{display:flex;align-items:center;gap:10px;border-radius:10px;min-height:52px}
+.pain-side.l .pchip{background:linear-gradient(90deg,#FFF3E6 0%,rgba(255,243,230,0) 100%);padding:4px 8px 4px 4px}
+.pain-side.r .pchip{background:linear-gradient(270deg,#F2F6FB 0%,rgba(242,246,251,0) 100%);padding:4px 4px 4px 8px;justify-content:flex-end;text-align:right}
+.pchip b{flex:none;min-width:70px;text-align:center;color:#fff;background:linear-gradient(180deg,#F7B15A,#F08A2C);border-radius:8px;padding:8px 10px;font-size:16px;font-weight:800}
 .pain-side.r .pchip b{color:#3E4C63;background:linear-gradient(180deg,#F8FAFC,#E4EBF5)}
-.pchip span{font-size:13px;line-height:1.35;color:#5C6573}
+.pchip span{font-size:15px;line-height:1.4;color:#5C6573}
 .pain-cap{grid-column:1 / -1;grid-row:2;justify-self:center;margin-top:-28px;position:relative;z-index:2;background:linear-gradient(90deg,#F8B15A,#F07A28);color:#fff;font-weight:800;font-size:18px;letter-spacing:.12em;border-radius:999px;padding:9px 40px;box-shadow:0 8px 16px rgba(240,122,40,.28)}
 .twoguard{display:flex;flex-direction:column;gap:20px;flex:1;min-height:0;justify-content:flex-start}
 .guard{background:transparent;padding:0;box-shadow:none}
@@ -685,16 +685,16 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:13p
     <article class="guard">
       <div class="linehead"><i class="tick"></i><b>防线二 · 专项健康卡</b><em>十大主题 · 按需自选</em><span>从家里的难题讲起，针对性强化筛查</span></div>
       <div class="themes">
-        <button type="button" data-go="5"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 20v-1.5A3.5 3.5 0 0 0 6.2 15 3.6 3.6 0 0 1 8 8.4 4 4 0 0 1 12 4a4 4 0 0 1 4 4.4A3.6 3.6 0 0 1 17.8 15 3.5 3.5 0 0 0 15 18.5V20"/><path d="M10 20h4"/></svg><b>脑健康</b><span>子女先发现</span></button>
-        <button type="button" data-go="7"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 7.5c0-2 1.4-3.5 3.2-3.5 1.2 0 2 .6 2.4 1.5.4-.9 1.2-1.5 2.4-1.5 1.8 0 3.2 1.5 3.2 3.5 0 1.4-.7 2.4-1.6 3.1L14.2 14H9.8L6.4 10.6C5.5 9.9 4.8 8.9 4.8 7.5"/><path d="M9 14.5c.4 2.2 1.2 4 3 5.5 1.8-1.5 2.6-3.3 3-5.5"/></svg><b>骨关节</b><span>上楼扶栏杆</span></button>
-        <button type="button" data-go="8"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20s-7-4.2-7-9.2C5 8 6.8 6.2 9 6.2c1.2 0 2.3.6 3 1.5.7-.9 1.8-1.5 3-1.5 2.2 0 4 1.8 4 4.6C19 15.8 12 20 12 20z"/></svg><b>心脏</b><span>胸闷成习惯</span></button>
-        <button type="button" data-go="9"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 5.5c0-1.4 1.2-2.5 2.6-2.5h.2c2.4 0 4.2 2 4.2 4.6 0 1.5-.6 2.6-1.4 3.4L13 13.2V16a2 2 0 0 1-2 2h-.2"/><path d="M8.5 9.5c-1.6.3-2.8 1.6-2.8 3.3 0 2.4 2.2 4.2 5 4.2"/><path d="M10 18.2V20"/></svg><b>消化</b><span>一筷传一桌</span></button>
-        <button type="button" data-go="11"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 4c2.2 2.4 3.4 4.4 3.4 6.6A3.4 3.4 0 0 1 12 14a3.4 3.4 0 0 1-3.4-3.4C8.6 8.4 9.8 6.4 12 4z"/><path d="M12 14c0 2.2-1.6 4.4-4.2 5.6"/><path d="M12 14c0 2.2 1.6 4.4 4.2 5.6"/></svg><b>乳腺</b><span>发紧放心上</span></button>
-        <button type="button" data-go="12"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 8.5a3 3 0 1 1 3.2-3"/><path d="M16 8.5a3 3 0 1 0-3.2-3"/><path d="M8.2 9.2c-1.6 1.6-2.2 3.6-1.6 5.6 1 3.2 3.4 5.2 5.4 5.2s4.4-2 5.4-5.2c.6-2-.1-4-1.6-5.6"/><path d="M12 14.5V20"/></svg><b>卵巢</b><span>发胀当吃多</span></button>
-        <button type="button" data-go="13"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 19c-4.2-.4-7-3-7-6.2C5 9.2 7.4 6.8 10.2 6.2 11 4.8 11.6 4 12 4s1 .8 1.8 2.2c2.8.6 5.2 3 5.2 6.6 0 3.2-2.8 5.8-7 6.2z"/><path d="M12 10.5v5"/><path d="M9.2 13.2c.8 1.6 1.8 2.4 2.8 2.4s2-.8 2.8-2.4"/></svg><b>肺结节</b><span>三个字醒夜</span></button>
-        <button type="button" data-go="14"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="16" height="8" rx="4"/><path d="M12 8v8"/></svg><b>胰腺</b><span>停在再观察</span></button>
-        <button type="button" data-go="15"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 19s-6-3.6-6-7.6C6 8.6 7.6 7 9.6 7c1 0 1.9.5 2.4 1.2C12.5 7.5 13.4 7 14.4 7 16.4 7 18 8.6 18 11.4 18 15.4 12 19 12 19z"/><path d="M12 9.2v4.2M10 11.3h4"/></svg><b>长寿</b><span>报告全是病</span></button>
-        <button type="button" data-go="16"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13c0-3 1.6-6 4-8 2.4 2 4 5 4 8 0 2.6-1.6 4.5-4 4.5S8 15.6 8 13z"/><path d="M7 20c1.4-1 2.8-1.5 5-1.5s3.6.5 5 1.5"/></svg><b>营养代谢</b><span>吃饱仍没劲</span></button>
+        <button type="button" data-go="5"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 20v-1.5A3.5 3.5 0 0 0 6.2 15 3.6 3.6 0 0 1 8 8.4 4 4 0 0 1 12 4a4 4 0 0 1 4 4.4A3.6 3.6 0 0 1 17.8 15 3.5 3.5 0 0 0 15 18.5V20"/><path d="M10 20h4"/></svg>脑健康</button>
+        <button type="button" data-go="7"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 7.5c0-2 1.4-3.5 3.2-3.5 1.2 0 2 .6 2.4 1.5.4-.9 1.2-1.5 2.4-1.5 1.8 0 3.2 1.5 3.2 3.5 0 1.4-.7 2.4-1.6 3.1L14.2 14H9.8L6.4 10.6C5.5 9.9 4.8 8.9 4.8 7.5"/><path d="M9 14.5c.4 2.2 1.2 4 3 5.5 1.8-1.5 2.6-3.3 3-5.5"/></svg>骨关节</button>
+        <button type="button" data-go="8"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20s-7-4.2-7-9.2C5 8 6.8 6.2 9 6.2c1.2 0 2.3.6 3 1.5.7-.9 1.8-1.5 3-1.5 2.2 0 4 1.8 4 4.6C19 15.8 12 20 12 20z"/></svg>心脏</button>
+        <button type="button" data-go="9"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 5.5c0-1.4 1.2-2.5 2.6-2.5h.2c2.4 0 4.2 2 4.2 4.6 0 1.5-.6 2.6-1.4 3.4L13 13.2V16a2 2 0 0 1-2 2h-.2"/><path d="M8.5 9.5c-1.6.3-2.8 1.6-2.8 3.3 0 2.4 2.2 4.2 5 4.2"/><path d="M10 18.2V20"/></svg>消化</button>
+        <button type="button" data-go="11"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 4c2.2 2.4 3.4 4.4 3.4 6.6A3.4 3.4 0 0 1 12 14a3.4 3.4 0 0 1-3.4-3.4C8.6 8.4 9.8 6.4 12 4z"/><path d="M12 14c0 2.2-1.6 4.4-4.2 5.6"/><path d="M12 14c0 2.2 1.6 4.4 4.2 5.6"/></svg>乳腺</button>
+        <button type="button" data-go="12"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M8 8.5a3 3 0 1 1 3.2-3"/><path d="M16 8.5a3 3 0 1 0-3.2-3"/><path d="M8.2 9.2c-1.6 1.6-2.2 3.6-1.6 5.6 1 3.2 3.4 5.2 5.4 5.2s4.4-2 5.4-5.2c.6-2-.1-4-1.6-5.6"/><path d="M12 14.5V20"/></svg>卵巢</button>
+        <button type="button" data-go="13"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 19c-4.2-.4-7-3-7-6.2C5 9.2 7.4 6.8 10.2 6.2 11 4.8 11.6 4 12 4s1 .8 1.8 2.2c2.8.6 5.2 3 5.2 6.6 0 3.2-2.8 5.8-7 6.2z"/><path d="M12 10.5v5"/><path d="M9.2 13.2c.8 1.6 1.8 2.4 2.8 2.4s2-.8 2.8-2.4"/></svg>肺结节</button>
+        <button type="button" data-go="14"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="16" height="8" rx="4"/><path d="M12 8v8"/></svg>胰腺</button>
+        <button type="button" data-go="15"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 19s-6-3.6-6-7.6C6 8.6 7.6 7 9.6 7c1 0 1.9.5 2.4 1.2C12.5 7.5 13.4 7 14.4 7 16.4 7 18 8.6 18 11.4 18 15.4 12 19 12 19z"/><path d="M12 9.2v4.2M10 11.3h4"/></svg>长寿</button>
+        <button type="button" data-go="16"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13c0-3 1.6-6 4-8 2.4 2 4 5 4 8 0 2.6-1.6 4.5-4 4.5S8 15.6 8 13z"/><path d="M7 20c1.4-1 2.8-1.5 5-1.5s3.6.5 5 1.5"/></svg>营养代谢</button>
       </div>
     </article>
     <div class="guard-foot">
