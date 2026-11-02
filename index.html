@@ -106,6 +106,9 @@ table.pkg td.yes{color:var(--navy)}
 table.pkg td.no{color:#C5CDD8;font-weight:500}
 table.pkg td.need{color:#C2410C;font-size:11px}
 table.pkg td.note{color:var(--muted);font-size:11.5px}
+table.pkg td.note:has(.poster){display:flex;flex-direction:column;align-items:flex-start;gap:5px;line-height:1.45;vertical-align:top}
+table.pkg td.note .note-txt{display:block;color:var(--muted)}
+table.pkg td.note .poster{margin:0;align-self:flex-start}
 table.pkg tr.mkt td,table.pkg tr.sale td{background:#E89D01;color:#fff;font-weight:750}
 table.pkg tr.sale td{font-size:16px}
 .fine{margin:0;padding:6px 8px 8px;font-size:11px;color:var(--muted);line-height:1.4}
@@ -566,13 +569,17 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .wish h3{display:block;margin:2px 0 6px;font-size:26px;line-height:1.25;color:#2A2A2A;font-weight:800}
 .wish p{display:block;margin:0;max-width:none;font-size:15px;line-height:1.5;color:#3A342E}
 .ideas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;flex:none;min-height:0;align-items:stretch}
-.ideas article,.caregrid article,.svcgrid article{background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 8px 18px rgba(29,80,162,.06);display:flex;flex-direction:column;justify-content:center}
+.ideas article,.caregrid article{background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 8px 18px rgba(29,80,162,.06);display:flex;flex-direction:column;justify-content:center}
 .ideas .no,.caregrid .no{color:#F26A21;font-weight:800;font-size:13px;letter-spacing:.06em}
-.ideas h3,.caregrid h3,.svcgrid h3{margin:4px 0;font-size:16px;color:#1D50A2}
-.ideas p,.caregrid p,.svcgrid p{margin:0;font-size:13.5px;line-height:1.45;color:#3A342E}
-.svcgrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;flex:1;min-height:0}
-.svcgrid h3{font-size:17px}
-.svcgrid p{font-size:14.5px;line-height:1.5}
+.ideas h3,.caregrid h3{margin:4px 0;font-size:16px;color:#1D50A2}
+.ideas p,.caregrid p{margin:0;font-size:13.5px;line-height:1.45;color:#3A342E}
+.valueband{flex:none;margin-top:14px;padding:12px 16px 16px;background:#F4F7FB;border-radius:16px;display:flex;flex-direction:column;gap:14px}
+.valueband .subhead{flex:none;display:flex;align-items:center;gap:8px;margin:0;font-size:15px;font-weight:750;color:#6A7A90;letter-spacing:.04em}
+.valueband .subhead::before{content:"";width:4px;height:13px;border-radius:2px;background:#B7C6DA;flex:none}
+.svcgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;flex:none;align-items:stretch}
+.svcgrid article{background:#fff;border:1px solid #E4EBF3;border-radius:12px;padding:14px 14px 12px;box-shadow:none;display:flex;flex-direction:column;justify-content:flex-start;height:auto}
+.svcgrid h3{margin:0 0 6px;font-size:15px;font-weight:750;color:#4E6FA8}
+.svcgrid p{margin:0;font-size:13px;line-height:1.5;color:#6B7280}
 .gsecs{margin:2px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
 .gsecs li{display:grid;grid-template-columns:108px minmax(0,1fr);gap:8px;align-items:start;margin:0;font-size:13.5px;line-height:1.4}
 .gsecs li b{color:#1D50A2;font-size:13.5px;font-weight:800}
@@ -625,11 +632,14 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     <article><span class="no">02</span><h3>先回答有没有事</h3><p>年度体检把大病风险挡在前面。专项从家里的一件事讲起，先看有没有事，再决定要不要往下查。</p></article>
     <article><span class="no">03</span><h3>到店就有人陪</h3><p>分院里的迎宾、陪检、解读、送别含在到店服务里。去三甲医院的陪诊单独按需加购。</p></article>
   </div>
-  <div class="svcgrid">
-    <article><h3>一对一医生问诊</h3><p>专属医生面对面，把健康疑问当场讲清楚。子女不在身边，结论也会同步过去。</p></article>
-    <article><h3>一对一药师服务</h3><p>专业药师按家里正在吃的药整理分药，提醒怎么吃，避免漏服、重复吃。</p></article>
-    <article><h3>爱康特色中医代茶饮</h3><p>按父母体质调配。坐下有一杯暖茶；需要空腹的抽血和检查做完再喝。</p></article>
-    <article><h3>全程陪伴检查</h3><p>导检一对一陪同，每到一个科室都有人接，让体检是「有人陪」的。</p></article>
+  <div class="valueband">
+    <h3 class="subhead">特色服务</h3>
+    <div class="svcgrid">
+      <article><h3>一对一医生问诊</h3><p>专属医生面对面，把健康疑问当场讲清楚。子女不在身边，结论也会同步过去。</p></article>
+      <article><h3>一对一药师服务</h3><p>专业药师按家里正在吃的药整理分药，提醒怎么吃，避免漏服、重复吃。</p></article>
+      <article><h3>爱康特色中医代茶饮</h3><p>按父母体质调配。坐下有一杯暖茶；需要空腹的抽血和检查做完再喝。</p></article>
+      <article><h3>全程陪伴检查</h3><p>导检一对一陪同，每到一个科室都有人接，让体检是「有人陪」的。</p></article>
+    </div>
   </div>
 </section>
 
@@ -851,7 +861,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>血管损伤因子</td><td>同型半胱氨酸</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>血管损伤因子</td><td>心无忧</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>无需空腹；升级档不含此项 <span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/3.jpeg" alt="心无忧产品海报"></span></span></td></tr><tr><td class='cat'>血管损伤因子</td><td>辅酶 Q10</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>血管损伤因子</td><td>低密度脂蛋白亚分型</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>AI 辅助</td><td>心安诊 · 冠脉钙化积分</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT，需要加做 CT</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>386</td><td class='c'>1,091</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>136</td><td class='c'>382</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>血管损伤因子</td><td>同型半胱氨酸</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>血管损伤因子</td><td>心无忧</td><td class="c yes">√</td><td class="c no">—</td><td class='note'><span class="note-txt">无需空腹；升级档不含此项</span><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/3.jpeg" alt="心无忧产品海报"></span></span></td></tr><tr><td class='cat'>血管损伤因子</td><td>辅酶 Q10</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>血管损伤因子</td><td>低密度脂蛋白亚分型</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>AI 辅助</td><td>心安诊 · 冠脉钙化积分</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT，需要加做 CT</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>386</td><td class='c'>1,091</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>136</td><td class='c'>382</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -881,7 +891,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>C13 呼气试验</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>空腹</td></tr><tr><td class='cat'>一管四测</td><td>幽门螺杆菌感染评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>一管四测</td><td>幽门螺杆菌耐药评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>一管四测</td><td>肠癌风险评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>一管四测</td><td>肠道菌群评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>大型设备</td><td>磁控胶囊胃镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需升级，不计入卡价 <span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-capsule.jpg" alt="磁控胶囊胃镜产品海报"></span></span></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>347</td><td class='c'>1,500</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>122</td><td class='c'>525</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>C13 呼气试验</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>空腹</td></tr><tr><td class='cat'>一管四测</td><td>幽门螺杆菌感染评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>一管四测</td><td>幽门螺杆菌耐药评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>一管四测</td><td>肠癌风险评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>一管四测</td><td>肠道菌群评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>大型设备</td><td>磁控胶囊胃镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'><span class="note-txt">按需升级，不计入卡价</span><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-capsule.jpg" alt="磁控胶囊胃镜产品海报"></span></span></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>347</td><td class='c'>1,500</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>122</td><td class='c'>525</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
