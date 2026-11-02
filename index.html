@@ -344,7 +344,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 .book{position:absolute;z-index:20;left:100%;top:10px;bottom:10px;width:92px;display:flex;flex-direction:column;justify-content:center;gap:3px;overflow:hidden;margin:0}
 .book button{border:0;color:#fff;font-weight:700;font-size:12px;text-align:left;padding:0 8px;height:20px;flex:0 0 20px;width:100%;margin-left:0;border-radius:0 8px 8px 0;cursor:pointer;letter-spacing:.02em}
 .book button.on{box-shadow:inset 0 0 0 2px #fff}
-.leaflet .tbl-scroll,.leaflet .split>.tbl-scroll{overflow-x:hidden;overflow-y:auto;min-height:0;max-height:100%;flex:1 1 auto;-webkit-overflow-scrolling:touch}
+.leaflet .tbl-scroll,.leaflet .split>.tbl-scroll{overflow:visible}
 .brandline{display:flex;align-items:center;gap:10px;margin:0 0 8px;flex-wrap:nowrap}
 .brandline .mark{margin:0;flex:none}
 .brandline .slogan{margin:0;font-size:18px;line-height:1.25}
@@ -484,7 +484,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .leaflet .split.fig .tbl-scroll{align-self:start;height:auto}
 .leaflet .split.fig .pull{flex:none}
 .leaflet .split.fig .infographic{min-height:168px}
-.leaflet tr.sale td{color:#fff}
+.leaflet tr.sale td{font-size:17px;color:#fff}
 .leaflet .slogan{font-size:22px}
 .brandfoot{position:absolute;left:16px;bottom:16px;z-index:8;margin:0;font-size:9px;line-height:1;font-weight:500;color:#1D50A2;letter-spacing:.04em;pointer-events:none;white-space:nowrap}
 .brandfoot span{margin-left:8px}
@@ -545,21 +545,19 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .out{padding:8px 10px}
 .flowpage .escort{padding:10px 12px 10px}
 .slide.leaflet{padding-bottom:36px}
-.leaflet .split,.leaflet .split.fig{padding:12px 12px 14px;flex:1 1 auto;min-height:0;height:auto;align-items:stretch;grid-template-columns:minmax(0,1.24fr) minmax(0,.76fr)}
+.leaflet .split,.leaflet .split.fig{padding:14px 14px 16px;flex:1 1 auto;min-height:0;height:auto;align-items:stretch}
 .leaflet .split>.side{min-height:0;height:100%;align-self:stretch}
 .leaflet .split.fig{grid-template-rows:auto minmax(0,1fr)}
 .leaflet .split.fig .infographic{min-height:0;max-height:none;height:100%;overflow:hidden}
-.leaflet .side{display:flex;flex-direction:column;height:100%;min-height:0;align-items:stretch}
+.leaflet .side{display:flex;flex-direction:column;height:100%;min-height:0}
 .leaflet .dossier{flex:none}
-.leaflet table.pkg{font-size:11.5px;line-height:1.32}
-.leaflet table.pkg thead th{font-size:11px;padding:5px 6px;white-space:normal;line-height:1.25}
-.leaflet table.pkg td{padding:4px 6px;vertical-align:middle}
-.leaflet table.pkg td.cat{white-space:normal;font-size:10.5px;line-height:1.25;max-width:4.6em}
-.leaflet table.pkg td.c{width:40px;padding:4px 3px;font-size:11px}
-.leaflet table.pkg td.note{font-size:10px;line-height:1.3}
-.leaflet table.pkg tbody td:nth-child(2){word-break:break-word;hyphens:auto}
-.leaflet table.pkg tr.mkt td{font-size:11px;padding:5px 6px}
-.leaflet table.pkg tr.sale td{font-size:13px;padding:5px 6px}
+.leaflet table.pkg{font-size:15px}
+.leaflet table.pkg th{padding:10px 12px;background:linear-gradient(90deg,#1D50A2,#2B62A8);white-space:nowrap;font-weight:650}
+.leaflet table.pkg td{padding:9px 12px;vertical-align:top}
+.leaflet table.pkg td.cat{white-space:nowrap;font-weight:650;color:var(--navy)}
+.leaflet table.pkg td.c{width:58px;white-space:nowrap}
+.leaflet table.pkg td.note{font-size:11.5px}
+.leaflet table.pkg tr.sale td{font-size:17px}
 .leaflet .split>.withfig{min-height:0;overflow:hidden;display:flex;flex-direction:column}
 .leaflet .brandline,.leaflet .sidefig{align-self:center;width:100%;max-width:100%}
 .leaflet .out.alert,.leaflet .out.ok{flex:none}
@@ -1595,18 +1593,9 @@ function fitSlide(s){
   sheet.style.height='100%';
   sheet.style.minHeight='0';
   if(s.classList.contains('leaflet')){
-    const split=s.querySelector('.split');
-    const d=s.querySelector('.dossier');
-    if(split && d && !s.dataset.shrunk){
-      const edge=split.getBoundingClientRect().bottom-2;
-      const over=[d, ...s.querySelectorAll('.split .fine, .split table, .split img, .split figcaption')].some(el=>el.getBoundingClientRect().bottom>edge);
-      if(over){
-        s.dataset.shrunk='1';
-        const els=[...s.querySelectorAll('.sheet *')];
-        const sizes=els.map(el=>parseFloat(getComputedStyle(el).fontSize));
-        els.forEach((el,n)=>{ if(sizes[n]>=12) el.style.fontSize=(sizes[n]-1)+'px'; });
-      }
-    }
+    s.querySelectorAll('.tbl-scroll').forEach(el=>el.classList.remove('tbl-fit','tbl-fit-2'));
+    s.querySelectorAll('.sheet [style*="font-size"]').forEach(el=>{ el.style.fontSize=''; });
+    delete s.dataset.shrunk;
     return;
   }
   sheet.style.height='auto';
