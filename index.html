@@ -344,7 +344,7 @@ table.grid td,table.pkg td{padding:9px 12px}
 .book{position:absolute;z-index:20;left:100%;top:10px;bottom:10px;width:92px;display:flex;flex-direction:column;justify-content:center;gap:3px;overflow:hidden;margin:0}
 .book button{border:0;color:#fff;font-weight:700;font-size:12px;text-align:left;padding:0 8px;height:20px;flex:0 0 20px;width:100%;margin-left:0;border-radius:0 8px 8px 0;cursor:pointer;letter-spacing:.02em}
 .book button.on{box-shadow:inset 0 0 0 2px #fff}
-.leaflet .tbl-scroll,.leaflet .split>.tbl-scroll{overflow:visible}
+.leaflet .tbl-scroll,.leaflet .split>.tbl-scroll{overflow-x:hidden;overflow-y:auto;min-height:0;max-height:100%;flex:1 1 auto;-webkit-overflow-scrolling:touch}
 .brandline{display:flex;align-items:center;gap:10px;margin:0 0 8px;flex-wrap:nowrap}
 .brandline .mark{margin:0;flex:none}
 .brandline .slogan{margin:0;font-size:18px;line-height:1.25}
@@ -416,12 +416,25 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .perks svg{width:28px;height:28px;color:#F07A1A;flex:none}
 .clinicshot{margin:0;min-height:0;height:100%;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 20px rgba(29,80,162,.06)}
 .clinicshot img{width:100%;height:100%;object-fit:contain;display:block}
-.sidefig{flex:1;min-height:0;margin:0 0 8px;border-radius:14px;overflow:hidden;background:#F7FAFE;display:flex;align-items:center;justify-content:center}
-.sidefig img{width:100%;height:100%;max-height:100%;object-fit:contain;display:block}
-.sidefig:has(figcaption){display:grid;grid-template-columns:minmax(0,1fr) 142px;align-items:center;justify-items:end;padding:6px 8px 6px 4px;gap:8px;min-height:0}
-.sidefig:has(figcaption) img{width:auto;height:auto;max-width:100%;max-height:100%;min-height:0;object-fit:contain}
-.sidefig figcaption{justify-self:start;margin:0;max-height:100%;padding:0 0 0 10px;border-left:3px solid #F26A21;font-size:12.5px;line-height:1.5;letter-spacing:.04em;color:#3A342E;font-weight:650}
-.sidefig figcaption::before{content:"“";display:block;margin:0 0 1px -1px;font-size:22px;line-height:.75;color:#F26A21;font-weight:800;letter-spacing:0}
+.sidefig{flex:0 1 auto;min-height:0;max-height:min(38vh,168px);margin:0 auto 8px;width:100%;border-radius:14px;overflow:hidden;background:#F7FAFE;display:flex;align-items:center;justify-content:center}
+.sidefig img{width:auto;height:auto;max-width:100%;max-height:min(38vh,168px);object-fit:contain;display:block}
+.sidefig:has(figcaption){display:flex;flex-direction:row;align-items:flex-start;justify-content:center;gap:10px;padding:8px 10px;max-height:none;overflow:visible}
+.sidefig:has(figcaption) img{flex:0 1 auto;width:auto;height:auto;min-height:0;object-fit:contain}
+.sidefig figcaption{flex:1 1 148px;max-width:158px;margin:0;padding:0 0 0 10px;border-left:3px solid #F26A21;font-size:10.5px;line-height:1.38;letter-spacing:.02em;color:#3A342E;font-weight:650;text-align:left;overflow:visible}
+.sidefig figcaption::before{content:"“";display:inline;font-size:14px;line-height:1;color:#F26A21;font-weight:800;margin:0 1px 0 0;vertical-align:-1px}
+.sidefig:has(figcaption) img{max-width:min(42%,160px);max-height:min(32vh,136px)}
+.leaflet .split.fig .infographic{flex-direction:row;align-items:flex-start;justify-content:center;gap:10px;padding:8px 12px;min-height:0}
+.leaflet .split.fig .infographic img{flex:0 1 auto;width:auto;max-width:min(48%,190px);max-height:148px;object-fit:contain}
+.leaflet .split.fig .infographic figcaption{flex:1 1 148px;max-width:158px;margin:0;padding:0 0 0 10px;border-left:3px solid #F26A21;font-size:10.5px;line-height:1.38;color:#3A342E;font-weight:650;text-align:left}
+.leaflet .split.fig .infographic figcaption::before{content:"“";display:inline;font-size:14px;color:#F26A21;font-weight:800;margin-right:1px;vertical-align:-1px}
+.leaflet .sidefig figcaption{font-size:9.5px;line-height:1.32;max-width:168px}
+.leaflet .split.fig .infographic figcaption{font-size:9.5px;line-height:1.32;max-width:168px}
+.leaflet .split.fig .infographic{overflow:visible}
+.city-tier{margin:10px 0 0;padding:10px 12px;background:#F7FAFF;border-radius:10px;box-shadow:inset 0 0 0 1px #D9E6F5}
+.city-tier-lead{margin:0 0 6px;font-size:13px;font-weight:750;color:#1D50A2;line-height:1.4}
+.city-tier ul{margin:0;padding:0 0 0 16px;list-style:disc}
+.city-tier li{margin:0 0 4px;font-size:12.5px;line-height:1.45;color:#3A342E}
+.city-tier li strong{font-weight:750;color:#1D50A2}
 .pain-visual{margin:0;align-self:center;border-radius:0;overflow:visible;background:transparent;box-shadow:none}
 .pain-visual img{display:block;width:100%;height:auto;max-height:340px;object-fit:contain}
 .pain-col{background:#fff;border-radius:14px;box-shadow:0 8px 22px rgba(29,80,162,.06);padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-height:0;overflow:visible}
@@ -471,7 +484,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .leaflet .split.fig .tbl-scroll{align-self:start;height:auto}
 .leaflet .split.fig .pull{flex:none}
 .leaflet .split.fig .infographic{min-height:168px}
-.leaflet tr.sale td{font-size:17px;color:#fff}
+.leaflet tr.sale td{color:#fff}
 .leaflet .slogan{font-size:22px}
 .brandfoot{position:absolute;left:16px;bottom:16px;z-index:8;margin:0;font-size:9px;line-height:1;font-weight:500;color:#1D50A2;letter-spacing:.04em;pointer-events:none;white-space:nowrap}
 .brandfoot span{margin-left:8px}
@@ -532,12 +545,24 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .out{padding:8px 10px}
 .flowpage .escort{padding:10px 12px 10px}
 .slide.leaflet{padding-bottom:36px}
-.leaflet .split,.leaflet .split.fig{padding:14px 14px 16px;flex:1 1 auto;min-height:0;height:auto;align-items:stretch}
+.leaflet .split,.leaflet .split.fig{padding:12px 12px 14px;flex:1 1 auto;min-height:0;height:auto;align-items:stretch;grid-template-columns:minmax(0,1.24fr) minmax(0,.76fr)}
 .leaflet .split>.side{min-height:0;height:100%;align-self:stretch}
 .leaflet .split.fig{grid-template-rows:auto minmax(0,1fr)}
 .leaflet .split.fig .infographic{min-height:0;max-height:none;height:100%;overflow:hidden}
-.leaflet .side{display:flex;flex-direction:column;height:100%;min-height:0}
+.leaflet .side{display:flex;flex-direction:column;height:100%;min-height:0;align-items:stretch}
 .leaflet .dossier{flex:none}
+.leaflet table.pkg{font-size:11.5px;line-height:1.32}
+.leaflet table.pkg thead th{font-size:11px;padding:5px 6px;white-space:normal;line-height:1.25}
+.leaflet table.pkg td{padding:4px 6px;vertical-align:middle}
+.leaflet table.pkg td.cat{white-space:normal;font-size:10.5px;line-height:1.25;max-width:4.6em}
+.leaflet table.pkg td.c{width:40px;padding:4px 3px;font-size:11px}
+.leaflet table.pkg td.note{font-size:10px;line-height:1.3}
+.leaflet table.pkg tbody td:nth-child(2){word-break:break-word;hyphens:auto}
+.leaflet table.pkg tr.mkt td{font-size:11px;padding:5px 6px}
+.leaflet table.pkg tr.sale td{font-size:13px;padding:5px 6px}
+.leaflet .split>.withfig{min-height:0;overflow:hidden;display:flex;flex-direction:column}
+.leaflet .brandline,.leaflet .sidefig{align-self:center;width:100%;max-width:100%}
+.leaflet .out.alert,.leaflet .out.ok{flex:none}
 .coqfig{flex:1;min-height:0;max-height:none}
 .flowpage:not(:has(.dayboard)) .proc.six{flex:none;margin-top:auto}
 .flowpage:not(:has(.dayboard)) .escort{margin-bottom:auto}
@@ -892,7 +917,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>心无忧检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'><span class="note-txt">无需空腹采血</span><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/3.jpeg" alt="心无忧产品海报"></span></span></td></tr><tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>AI 辅助检查</td><td>心安诊 · 冠脉钙化积分评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT 需要加做 CT 检查</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>596</td><td class='c'>1,391</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>209</td><td class='c'>487</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'><span class="note-txt">无需空腹采血</span><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-coq10.jpg" alt="辅酶Q10精准检测产品海报"></span></span></td></tr><tr><td class='cat'>血管损伤因子评估</td><td>心无忧检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'><span class="note-txt">无需空腹采血</span><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/3.jpeg" alt="心无忧产品海报"></span></span></td></tr><tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>AI 辅助检查</td><td>心安诊 · 冠脉钙化积分评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT 需要加做 CT 检查</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>596</td><td class='c'>1,391</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>209</td><td class='c'>487</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1360,6 +1385,13 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <li>有自有陪诊团队，支持跨院陪诊，解决父母就医难题。</li>
       <li>LBS 定位信息可在阿里预约页精准透出，提升本地用户触达效率。</li>
     </ul>
+    <div class="city-tier">
+      <p class="city-tier-lead">首批开放城市中：</p>
+      <ul>
+        <li><strong>一线城市：</strong>北京、上海、广州、深圳</li>
+        <li><strong>新一线城市：</strong>杭州、重庆</li>
+      </ul>
+    </div>
     <p class="hangzhou">杭州暂无核磁设备</p>
   </div>
 </div>
