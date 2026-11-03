@@ -480,9 +480,10 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .mri-promo figcaption{margin:0;padding:6px 10px;font-size:12px;line-height:1.35;color:#5A6278;text-align:center;background:#fff;flex:none}
 .caregrid .care-photo{margin-top:8px;border-radius:10px;overflow:hidden;background:#F7FAFE;box-shadow:0 0 0 1px #E8EEF5;flex:1 1 0;min-height:0;display:flex;align-items:center;justify-content:center;padding:6px}
 .caregrid .care-photo img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.caregrid .care-photo.duo{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:6px;background:transparent;box-shadow:none;padding:0;min-height:0;align-items:stretch}
-.caregrid .care-photo.duo span{min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:8px;background:#F7FAFE;box-shadow:inset 0 0 0 1px #E8EEF5}
-.caregrid .care-photo.duo img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.caregrid .care-photo.duo,.caregrid .care-photo.trio{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:6px;background:transparent;box-shadow:none;padding:0;min-height:0;align-items:stretch}
+.caregrid .care-photo.trio{grid-template-columns:repeat(3,1fr)}
+.caregrid .care-photo.duo span,.caregrid .care-photo.trio span{min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:8px;background:#F7FAFE;box-shadow:inset 0 0 0 1px #E8EEF5}
+.caregrid .care-photo.duo img,.caregrid .care-photo.trio img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .flowpage .tiny{margin:6px 0 0;font-size:13px;color:#B0551F;font-weight:650}
 .dayboard .photos{display:flex;flex-direction:column;gap:8px;min-height:0}
 .dayboard .photos figure{margin:0;flex:none;display:flex;flex-direction:column;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px #E6E0D6}
@@ -643,17 +644,23 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .gsecs li{display:grid;grid-template-columns:108px minmax(0,1fr);gap:8px;align-items:start;margin:0;font-size:13.5px;line-height:1.4}
 .gsecs li b{color:#1D50A2;font-size:13.5px;font-weight:800}
 .gsecs li span{color:#3A342E}
-.caregrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:12px;flex:1;min-height:0;width:100%;align-items:stretch}
+.caregrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto minmax(0,1fr);gap:12px;flex:1;min-height:0;width:100%;align-items:stretch}
 .caregrid article{background:#fff;border-radius:14px;padding:12px 14px 10px;box-shadow:0 0 0 1px #F3E4D6,0 8px 18px rgba(29,80,162,.06);display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .caregrid article.has-photo .care-photo{flex:1 1 0;min-height:0}
-.caregrid article.has-photo p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.caregrid article.has-photo p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
 .caregrid article:not(.has-photo) p{-webkit-line-clamp:unset;display:block}
 .caregrid .no{color:#F26A21;font-weight:750;font-size:14px;letter-spacing:.04em;line-height:1.35}
 .caregrid h3{margin:6px 0 8px;font-size:16px;font-weight:800;line-height:1.35;color:#C2410C}
 .caregrid p{margin:0;font-size:13.5px;line-height:1.45;color:#3A342E}
-.caregrid article.care-tea-tall{grid-column:2;grid-row:2 / 4;min-height:0}
-.caregrid article.care-venue{grid-column:1;grid-row:3;align-self:stretch}
-.caregrid article.care-tea-tall p{-webkit-line-clamp:3}
+.caregrid article.care-text-top{grid-row:1;min-height:0}
+.caregrid article.care-text-top:nth-child(1){grid-column:1}
+.caregrid article.care-text-top:nth-child(2){grid-column:2}
+.caregrid article.care-text-top:nth-child(3){grid-column:3}
+.caregrid article.care-text-top h3{font-size:15px;margin-bottom:6px}
+.caregrid article.care-text-top p{font-size:12.5px;line-height:1.42}
+.caregrid article.care-pillbox{grid-row:2;grid-column:1;min-height:0}
+.caregrid article.care-tea-block{grid-row:2;grid-column:2 / 4;min-height:0}
+.caregrid article.care-pillbox p,.caregrid article.care-tea-block p{-webkit-line-clamp:2}
 .slide[data-title="人文关怀（讨论部分）"] .lead{font-size:16px;line-height:calc(1.45em + 5px)}
 .hangzhou{margin:14px 0 0;padding:8px 10px;border-radius:8px;background:#FFF4EC;color:#C2410C;font-weight:750;font-size:15px}
 .exam-fuse{margin:2px 0 10px}
@@ -719,7 +726,8 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   .caregrid{grid-template-columns:1fr}
   .cardflow{grid-template-columns:1fr}
   .aimatrix{grid-template-columns:1fr}
-  .caregrid article.care-tea-tall,.caregrid article.care-venue{grid-column:1;grid-row:auto}
+  .caregrid article.care-text-top,.caregrid article.care-pillbox,.caregrid article.care-tea-block{grid-column:auto;grid-row:auto}
+  .caregrid .care-photo.trio{grid-template-columns:1fr 1fr}
   .proc.time{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   .trio{flex-wrap:wrap;gap:10px;margin-bottom:16px}
   .trio img{width:26vw;height:26vw;max-width:108px;max-height:108px;border-radius:12px}
@@ -1679,11 +1687,11 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="discuss-body">
   <p class="lead">这些是家庭卡到店和健康日之外的陪伴，条目还在讨论，先把父母用得上的几件事放在一起。</p>
   <div class="caregrid">
-    <article class="has-photo"><span class="no">01 随身识别</span><h3>家庭卡专属手环</h3><p>父母到店戴着这只手环，前台一眼知道是家庭卡的客人，少问一句、少等一会。手环用来认人和归属，不代替身份证核验。</p><figure class="care-photo"><img src="images/care-wristband.png" alt="爱康国宾体检腕带"></figure></article>
-    <article class="has-photo"><span class="no">02 用药整理</span><h3>30 天药盒随手礼</h3><p>解读之后，药师按家里正在吃的药，把一个月的量分进药盒。父母回家按格子吃，子女打电话时也能对上今天该吃哪一格。</p><figure class="care-photo"><img src="images/care-pillbox.png" alt="30天分格药盒"></figure></article>
-    <article><span class="no">03 日常补充</span><h3>维生素礼盒</h3><p>按营养代谢那张卡看出缺哪一种，再配一小盒，不把一堆保健品一起塞给父母。盒子里附一张说明：吃什么、先不吃什么。</p></article>
-    <article class="has-photo care-tea-tall"><span class="no">04 到店即有</span><h3>爱康门诊中医茶饮</h3><p>坐下先奉一杯按父母体质调的茶。需要空腹的抽血和检查做完再喝，不耽误该空腹的项目。</p><figure class="care-photo duo"><span><img src="images/care-tea-1.png" alt="爱康门诊草本茶饮"></span><span><img src="images/care-tea-2.png" alt="爱康门诊中医调理中心茶饮礼盒"></span></figure></article>
-    <article class="care-venue"><span class="no">05 场域氛围</span><h3>分院显示屏</h3><p>家庭健康日当天，大厅和专场区的屏幕换成这一天的画面：今日主题、开始时间、子女可以远程看报告。平时不占屏，专场才亮。</p></article>
+    <article class="care-text-top"><span class="no">01 随身识别</span><h3>家庭卡专属手环</h3><p>父母到店戴着这只手环，前台一眼知道是家庭卡的客人，少问一句、少等一会。手环用来认人和归属，不代替身份证核验。</p></article>
+    <article class="care-text-top"><span class="no">03 日常补充</span><h3>维生素礼盒</h3><p>按营养代谢那张卡看出缺哪一种，再配一小盒，不把一堆保健品一起塞给父母。盒子里附一张说明：吃什么、先不吃什么。</p></article>
+    <article class="care-text-top"><span class="no">05 场域氛围</span><h3>分院显示屏</h3><p>家庭健康日当天，大厅和专场区的屏幕换成这一天的画面：今日主题、开始时间、子女可以远程看报告。平时不占屏，专场才亮。</p></article>
+    <article class="has-photo care-pillbox"><span class="no">02 用药整理</span><h3>30 天药盒随手礼</h3><p>解读之后，药师按家里正在吃的药，把一个月的量分进药盒。父母回家按格子吃，子女打电话时也能对上今天该吃哪一格。</p><figure class="care-photo"><img src="images/care-pillbox.png" alt="30天分格药盒"></figure></article>
+    <article class="has-photo care-tea-block"><span class="no">04 到店即有</span><h3>爱康门诊中医茶饮</h3><p>坐下先奉一杯按父母体质调的茶。需要空腹的抽血和检查做完再喝，不耽误该空腹的项目。</p><figure class="care-photo trio"><span><img src="images/care-wristband.png" alt="爱康国宾体检腕带"></span><span><img src="images/care-tea-1.png" alt="爱康门诊草本茶饮"></span><span><img src="images/care-tea-2.png" alt="爱康门诊中医调理中心茶饮礼盒"></span></figure></article>
   </div>
   </div>
 </section>
