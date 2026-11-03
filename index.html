@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>爱康 × 阿里健康 · 家庭健康卡 · v4</title>
+<title>爱康 × 阿里健康 · 家庭健康卡 · v5</title>
 <style>
 :root{
   --navy:#1D50A2; --gold:#E89D01; --ink:#3A342E; --title:#404040;
@@ -250,8 +250,10 @@ table.grid td,table.pkg td{padding:9px 12px}
 .coop .tbl-scroll{border-radius:12px;align-self:stretch;display:flex;flex-direction:column}
 .coop table.grid{font-size:12.5px;height:100%}
 .coop table.grid th,.coop table.grid td{padding:3px 8px;line-height:1.25;white-space:normal;vertical-align:middle}
-.coop table.grid td:first-child{font-weight:750;color:#1D50A2;white-space:nowrap}
-.coop table.grid td[rowspan]{text-align:center;background:#F4F8FC;font-weight:750;color:#1D50A2}
+.coop table.grid td[rowspan],
+.coop table.grid tr.coop-cat-row > td:first-child{text-align:center;vertical-align:middle;background:#F4F8FC;font-weight:750;color:#1D50A2}
+.coop table.grid td:first-child{white-space:nowrap}
+.coop table.grid tbody td:nth-child(n+3){text-align:center;vertical-align:middle}
 .coop .sidebox{background:#fff;border-radius:12px;box-shadow:0 0 0 1px var(--line);padding:14px 16px;display:flex;flex-direction:column;justify-content:center}
 .withfig{display:flex;flex-direction:column;min-height:0;gap:8px}
 .withfig .tbl-scroll{flex:none}
@@ -695,6 +697,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   .steps,.layers,.escort .three{grid-template-columns:1fr}
   .guard-cards{grid-template-columns:1fr}
   .caregrid{grid-template-columns:1fr}
+  .aimatrix{grid-template-columns:1fr}
   .caregrid article:last-child{grid-column:1}
   .proc.time{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   .trio{flex-wrap:wrap;gap:10px;margin-bottom:16px}
@@ -741,6 +744,21 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   .slide{padding-bottom:calc(48px + env(safe-area-inset-bottom,0px))}
 }
 
+
+.pain-bridge-flow{align-items:center;justify-content:center;padding:4px 0}
+.bridge-flow{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;max-width:300px;margin:0 auto}
+.bridge-flow-top,.bridge-flow-bottom{margin:0;font-size:15px;font-weight:750;line-height:1.35;text-align:center;color:#6B78F0;letter-spacing:.02em}
+.bridge-flow-img{width:100%;max-width:280px;height:auto;max-height:min(28vh,200px);object-fit:contain;display:block}
+
+
+.aimatrix-lead{font-size:14.5px;line-height:1.5;margin:0 0 10px}
+.aimatrix{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0}
+.aimatrix article{background:#fff;border-radius:14px;padding:10px 12px 12px;box-shadow:0 8px 22px rgba(29,80,162,.06);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.aimatrix h3{margin:0 0 6px;font-size:15px;font-weight:750;color:#1D50A2;text-align:center}
+.aimatrix figure{margin:0;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:#F7FAFE;border-radius:10px;padding:4px;overflow:hidden}
+.aimatrix figure img{width:100%;max-height:min(36vh,220px);object-fit:contain;display:block}
+.aimatrix .cap{margin:8px 0 0;font-size:12.5px;line-height:1.45;color:#3A342E;font-weight:650}
+
 </style>
 </head>
 <body>
@@ -768,7 +786,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>设计思路</span><b>02</b><span>/ 27</span></div>
+    <div class="pager"><span>设计思路</span><b>02</b><span>/ 28</span></div>
   </header>
   <h2>设计思路</h2>
   <div class="wish">
@@ -796,7 +814,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>痛点</span><b>03</b><span>/ 27</span></div>
+    <div class="pager"><span>痛点</span><b>03</b><span>/ 28</span></div>
   </header>
   <h2 class="pain-title"><span class="leadline">痛点分析</span><em>想尽孝的心意，卡在两地之间</em></h2>
   <div class="painboard">
@@ -811,8 +829,12 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <div class="pchip"><b>看不懂</b><span>报告术语难懂，异常指标无人解读</span></div>
       <div class="pchip"><b>怕踩坑</b><span>担心消费陷阱，更盼异常提醒直达手机</span></div>
     </div>
-    <figure class="pain-art">
-      <img src="images/pain-bridge.png" alt="远方的子女、到店的医生和父母，由爱康把断开的桥接上">
+    <figure class="pain-art pain-bridge-flow">
+      <div class="bridge-flow">
+        <p class="bridge-flow-top">子女线上轻松预约</p>
+        <img class="bridge-flow-img" src="images/pain-bridge-center.png" alt="子女与父母健康连接示意">
+        <p class="bridge-flow-bottom">父母线下就近筛查</p>
+      </div>
     </figure>
     <div class="pain-side r">
       <div class="pain-who"><b>父母端</b><span>使用方</span></div>
@@ -821,7 +843,6 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <div class="pchip"><span>害怕过度检查，专业术语与报告看不懂</span><b>怕花钱</b></div>
       <div class="pchip"><span>挂号难、无人陪同、来回奔波成最大障碍</span><b>没人陪</b></div>
     </div>
-    <div class="pain-cap">爱康 就是这座桥</div>
   </div>
 </section>
 
@@ -829,7 +850,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>竞品</span><b>04</b><span>/ 27</span></div>
+    <div class="pager"><span>竞品</span><b>04</b><span>/ 28</span></div>
   </header>
   <h2>竞品分析</h2>
   <p class="lead">市面产品只做了一半。</p>
@@ -855,7 +876,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>方案</span><b>05</b><span>/ 27</span></div>
+    <div class="pager"><span>方案</span><b>05</b><span>/ 28</span></div>
   </header>
   <h2>家庭健康卡方案总览</h2>
   
@@ -881,7 +902,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>年度体检</span><b>06</b><span>/ 27</span></div>
+    <div class="pager"><span>年度体检</span><b>06</b><span>/ 28</span></div>
   </header>
   <h2>年度体检</h2>
   <p class="lead exam-fuse">每套体检均含一对一陪检与深度报告解读，支持标准预约与线下服务，检后复查指引、用药指导与就医协助。</p>
@@ -926,7 +947,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项</span><b>07</b><span>/ 27</span></div>
+    <div class="pager"><span>专项</span><b>07</b><span>/ 28</span></div>
   </header>
   <h2>家庭健康卡—专项主题卡总览</h2>
   <p class="lead">基础卡项目上下午都可执行，升级卡项目必须上午执行。</p>
@@ -936,7 +957,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="脑健康 · 记忆力评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>记忆</span><b>08</b><span>/ 27</span></div>
+    <div class="pager"><span>记忆</span><b>08</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>脑健康 · 记忆力评估</h2>
@@ -966,7 +987,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="脑健康 · 中风风险评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>中风</span><b>09</b><span>/ 27</span></div>
+    <div class="pager"><span>中风</span><b>09</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>脑健康 · 中风风险评估</h2>
@@ -979,7 +1000,16 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>颅脑 CT 检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>基础检测</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>大型设备检查</td><td>颅脑 MRI 检查</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>798</td><td class='c'>3,423</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>280</td><td class='c'>1,199</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
+<tr><td class='cat'>基础检测</td><td>颅脑 CT 检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
+<tr><td class='cat'>血管损伤因子评估</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
+<tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>大型设备检查</td><td>颅脑 MRI 检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>798</td><td class='c'>1,533</td><td></td></tr>
+<tr class='sale'><td colspan='2'>销售价</td><td class='c'>347</td><td class='c'>605</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -996,7 +1026,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="骨健康 · 骨关节评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>骨关节</span><b>10</b><span>/ 27</span></div>
+    <div class="pager"><span>骨关节</span><b>10</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>骨健康 · 骨关节评估</h2>
@@ -1009,7 +1039,19 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>25-羟基维生素 D2+D3 质谱法定量检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>基线检查</td><td>血清钙（Ca）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基线检查</td><td>血清磷（P）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>联合指标溯源</td><td>骨标志物两项</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>联合指标溯源</td><td>骨密度检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 左膝关节+右膝关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 髋关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>营养补剂</td><td>Move Free 益节维骨力氨糖软骨素钙片 80 粒</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备深度检测</td><td>关节 MRI 检查</td><td class="c no">—</td><td class="c no">—</td><td class='note'>市场价：1526 元，按需加购</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>836</td><td class='c'>1,158</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>419</td><td class='c'>532</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
+<tr><td class='cat'>基线检查</td><td>25-羟基维生素 D2+D3 质谱法定量检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
+<tr><td class='cat'>基线检查</td><td>血清钙（Ca）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>基线检查</td><td>血清磷（P）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>联合指标溯源</td><td>骨标志物两项</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>联合指标溯源</td><td>骨密度检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 左膝关节+右膝关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 髋关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>大型设备深度检测</td><td>关节 MRI 检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class='mkt'><td colspan='2'>市场价（以国宾普区价格为准）</td><td class='c'>642</td><td class='c'>964</td><td></td></tr>
+<tr class='sale'><td colspan='2'>销售价</td><td class='c'>265</td><td class='c'>378</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1026,7 +1068,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="心脏健康 · 冠脉血管评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>心脏</span><b>11</b><span>/ 27</span></div>
+    <div class="pager"><span>心脏</span><b>11</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>心脏健康 · 冠脉血管评估</h2>
@@ -1039,7 +1081,17 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'><span class="note-txt">无需空腹采血</span><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-coq10.jpg" alt="辅酶Q10精准检测产品海报"></span></span></td></tr><tr><td class='cat'>血管损伤因子评估</td><td>心无忧检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'><span class="note-txt">无需空腹采血</span><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/3.jpeg" alt="心无忧产品海报"></span></span></td></tr><tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>AI 辅助检查</td><td>心安诊 · 冠脉钙化积分评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT 需要加做 CT 检查</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>596</td><td class='c'>1,391</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>209</td><td class='c'>487</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
+<tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>血管损伤因子评估</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
+<tr><td class='cat'>血管损伤因子评估</td><td>心无忧检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
+<tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>AI 辅助检查</td><td>心安诊 · 冠脉钙化积分评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT 需要加做 CT 检查</td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>596</td><td class='c'>1,391</td><td></td></tr>
+<tr class='sale'><td colspan='2'>销售价</td><td class='c'>277</td><td class='c'>555</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1056,7 +1108,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="消化健康 · 胃部评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>胃部</span><b>12</b><span>/ 27</span></div>
+    <div class="pager"><span>胃部</span><b>12</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>消化健康 · 胃部评估</h2>
@@ -1064,12 +1116,21 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <button type="button" class="narr-btn">叙事</button>
       <div class="narr-pop" role="tooltip">
         <p class="hook">一双筷子，能把一个人的幽门螺杆菌传给全家</p>
-        <p>碳 13 呼气看当前有没有感染，需要空腹。同住的两位可以一起做。要看耐药、肠道风险和菌群，升级做一管四测，大便送检，不用空腹。阳性就把清除方案、分餐公筷和要不要看药敏讲明白。没有感染，公筷继续，胃不舒服再单独评估。避开的是：感染在饭桌上反复传，也避开只知道「有」，不知道下一步怎么治、要不要看肠道。</p>
+        <p>围绕幽门感染、肠道菌群、胃黏膜影像搭建分层消化道筛查方案。基础卡包含幽智策，用于幽门螺杆菌相关风险筛查；升级卡升级为幽敏策，同时增加常智策、常君策肠道菌群检测，同步评估幽门菌株分型、肠道菌群结构、菌群平衡状态；磁控胶囊胃镜为可选升级项目，无需插管，随水吞服即可直观观察胃内黏膜情况，查看胃炎、糜烂、息肉等病变。</p>
       </div>
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>C13 呼气试验</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>空腹</td></tr><tr><td class='cat'>一管四测</td><td>幽门螺杆菌感染评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>一管四测</td><td>幽门螺杆菌耐药评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>一管四测</td><td>肠癌风险评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>一管四测</td><td>肠道菌群评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>大便送检</td></tr><tr><td class='cat'>大型设备</td><td>磁控胶囊胃镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'><span class="note-txt">按需升级，不计入卡价</span><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-capsule.jpg" alt="磁控胶囊胃镜产品海报"></span></span></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>347</td><td class='c'>1,500</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>122</td><td class='c'>525</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
+<tr><td class='cat'>消化道检测</td><td>幽智策</td><td class="c yes">√</td><td class="c no">—</td><td class='note' rowspan="4">无需空腹，大便送检</td></tr>
+<tr><td class='cat'>消化道检测</td><td>幽敏策</td><td class="c no">—</td><td class="c yes">√</td></tr>
+<tr><td class='cat'>消化道检测</td><td>常智策</td><td class="c no">—</td><td class="c yes">√</td></tr>
+<tr><td class='cat'>消化道检测</td><td>常君策</td><td class="c no">—</td><td class="c yes">√</td></tr>
+<tr><td class='cat'>大型设备检查</td><td>磁控胶囊胃镜</td><td colspan="2" class='note'>按需升级</td><td></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>300</td><td class='c'>1,500</td><td></td></tr>
+<tr class='sale'><td colspan='2'>销售价</td><td class='c'>105</td><td class='c'>525</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1078,7 +1139,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <p class="epi">2022 年我国结直肠癌新发 51.7 万例（国家癌症中心）。早期往往没有症状，早筛能提高生存机会。</p>
       <div class="out alert"><b>有提示时</b><span>幽门螺杆菌阳性或肠道风险有提示，说明根除方案、家庭分餐与药敏，必要时做一管四测。</span></div>
       <div class="out ok"><b>无明显异常时</b><span>本次未检出感染、没有报警症状，建议家人分餐公筷，有胃部不适再单独评估。</span></div>
-      <p class="bound">C13 呼气试验快速检出幽门螺杆菌现症感染，帮子女排查父母胃部感染隐患，阻断家庭交叉传播。升级全消化道深度一管四测，同步评估感染、耐药、肠癌风险、肠道菌群，精准指导除菌与肠道健康管理，按需搭配磁控胶囊胃镜查看胃黏膜，一站式守护父母胃肠健康。</p>
+      <p class="bound">很多肠胃不适是幽门感染叠加肠道菌群紊乱共同造成，套餐把幽门评估 + 肠道菌群检测组合在一起，同步看肠道微生态，找到腹胀、反酸、排便异常的综合原因，支撑功能医学调理方案。</p>
     </aside>
   </div>
 </section>
@@ -1086,7 +1147,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="消化健康 · 肠道评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>肠道</span><b>13</b><span>/ 27</span></div>
+    <div class="pager"><span>肠道</span><b>13</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>消化健康 · 肠道评估</h2>
@@ -1120,7 +1181,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="消化健康 · 胰腺评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>胰腺</span><b>14</b><span>/ 27</span></div>
+    <div class="pager"><span>胰腺</span><b>14</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>消化健康 · 胰腺评估</h2>
@@ -1154,7 +1215,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="她健康 · 乳腺评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>乳腺</span><b>15</b><span>/ 27</span></div>
+    <div class="pager"><span>乳腺</span><b>15</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>她健康 · 乳腺评估</h2>
@@ -1184,7 +1245,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="她健康 · 卵巢评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>卵巢</span><b>16</b><span>/ 27</span></div>
+    <div class="pager"><span>卵巢</span><b>16</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>她健康 · 卵巢评估</h2>
@@ -1192,12 +1253,21 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <button type="button" class="narr-btn">叙事</button>
       <div class="narr-pop" role="tooltip">
         <p class="hook">肚子发胀、裤腰紧，最容易被当成吃多了</p>
-        <p>子宫附件超声看有没有包块，TCT 看宫颈细胞，都不用空腹。升级补 HPV，并用泌思优看卵巢癌相关的外泌体信号，帮助判断要不要去专科。包块和指标都平稳时，继续年度妇科超声，并留意腹胀和腹围。有包块或外泌体有提示，转妇科，必要时做盆腔磁共振。避开的是：把需要妇科看的胀和紧，一直留在厨房里自己消化。</p>
+        <p>子宫附件超声看有没有包块，泌思优看卵巢癌相关的外泌体信号，帮助判断要不要去专科。包块和指标都平稳时，继续年度妇科超声，并留意腹胀和腹围。有包块或外泌体有提示，转妇科，必要时做盆腔磁共振。避开的是：把需要妇科看的胀和紧，一直留在厨房里自己消化。</p>
       </div>
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>子宫附件超声</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>宫颈 TCT</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>HPV</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>肿瘤风险</td><td>泌思优 · 卵巢癌外泌体</td><td class="c no">—</td><td class="c yes">√</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-bisiyou.jpg" alt="泌思优产品海报"></span></span></td></tr><tr><td class='cat'>大型设备</td><td>盆腔 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>294</td><td class='c'>1,562</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>103</td><td class='c'>547</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
+<tr><td class='cat'>基线检查</td><td>子宫附件超声</td><td class="c yes">√</td><td class="c yes">√</td><td class='note' rowspan="4">均无需空腹</td></tr>
+<tr><td class='cat'>肿瘤风险外泌体评估</td><td>泌思优 · 卵巢癌外泌体检查</td><td class="c yes">√</td><td class="c yes">√</td></tr>
+<tr><td class='cat'>专项检测</td><td>类固醇激素分析</td><td class="c no">—</td><td class="c yes">√</td></tr>
+<tr><td class='cat'>专项检测</td><td>停经前/后荷尔蒙评估</td><td class="c no">—</td><td class="c yes">√</td></tr>
+<tr><td class='cat'>大型设备深度检测</td><td>盆腔磁共振检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>1,005</td><td class='c'>5,845</td><td></td></tr>
+<tr class='sale'><td colspan='2'>销售价</td><td class='c'>352</td><td class='c'>3,256</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1206,7 +1276,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <p class="epi">卵巢癌死亡率居妇科恶性肿瘤首位（国家卫健委指南）。约 70% 确诊时已是晚期，早期常常没有症状。</p>
       <div class="out alert"><b>有提示时</b><span>超声提示包块或标志物升高，结合绝经状态，建议妇科复查，必要时做盆腔 MRI。</span></div>
       <div class="out ok"><b>无明显异常时</b><span>未见包块、标志物平稳，继续年度妇科超声，留意腹胀、腹围增大等信号。</span></div>
-      <p class="bound">妇科卵巢基础评估，子宫附件超声联合 TCT 筛查，一对一解读报告，帮子女排查母亲卵巢、宫颈基础异常风险。升级 TCT+HPV 宫颈癌联合筛查，搭配卵巢癌外泌体专项早筛；按需升级盆腔磁共振，双重守护母亲宫颈与卵巢健康。</p>
+      <p class="bound">很多女性到了更年期前后，卵巢悄悄变化，很多问题早期没有明显感觉。这个卵巢评估套餐，先用超声看子宫卵巢的基础形态，搭配泌思优外泌体检测做卵巢肿瘤风险筛查；升级版本还会加做全套荷尔蒙评估，找到潮热、睡不好、月经不稳背后的激素原因；如果超声看到可疑，还可以做盆腔核磁进一步细看。不是只给一份报告，解读的时候帮您讲清楚盆腔情况、激素水平，告诉您后续是观察调理，还是去门诊进一步评估。</p>
     </aside>
   </div>
 </section>
@@ -1214,7 +1284,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="肺健康 · 结节评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>肺结节</span><b>17</b><span>/ 27</span></div>
+    <div class="pager"><span>肺结节</span><b>17</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>肺健康 · 结节评估</h2>
@@ -1222,12 +1292,20 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <button type="button" class="narr-btn">叙事</button>
       <div class="narr-pop" role="tooltip">
         <p class="hook">「肺结节」三个字，够人醒好几个晚上</p>
-        <p>胸部 CT 回答有没有、多大、什么密度。医生按形态把随访写成 3 个月、6 个月或 12 个月，带走的是一个日子。肺癌抗体 7 项放在升级里，帮助判断这次随访要不要加快，代替不了 CT。没有需要处理的结节，这次就看清了，升级可以不做。高危的转胸外科。避开的是：没有大小、没有日期，只能自己吓自己。</p>
+        <p>查出肺结节之后很多人心里一直悬着，不知道结节是稳的还是有风险。基础版用胸部 CT 看结节形态大小；升级卡多了肺癌抗体分子筛查、肺功能，还有心肺运动试验，不光看结节，还能看看肺通气和心肺储备。做完有医生一对一解读，跟您说清楚结节多久复查、要不要进一步去门诊评估，不用自己对着 CT 报告瞎担心。</p>
       </div>
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>胸部 CT</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>肺癌抗体 7 项</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>528</td><td class='c'>800</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>185</td><td class='c'>280</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
+<tr><td class='cat'>基础检测</td><td>胸部 CT 检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>分子早筛</td><td>肺癌抗体 7 项检查</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr>
+<tr><td class='cat'>专项检查</td><td>肺功能检查</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr>
+<tr><td class='cat'>专项检查</td><td>CPET（心肺运动试验）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>落地分院：爱康卓悦北京阜成门万通大厦分院、上海 WA 臻景医疗中心、爱康悦养功能医学中心</td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>528</td><td class='c'>3,400</td><td></td></tr>
+<tr class='sale'><td colspan='2'>销售价</td><td class='c'>185</td><td class='c'>1,490</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1236,7 +1314,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <p class="epi">肺癌为我国发病和死亡第一位的癌种（国家癌症中心，2022 年新发 106 万）。早期多表现为肺结节，规范随访很重要。</p>
       <div class="out alert"><b>有提示时</b><span>按结节大小、密度、形态定随访间隔（3、6 或 12 个月），同时解读抗体 7 项。高危转胸外科。</span></div>
       <div class="out ok"><b>无明显异常时</b><span>未见需要处理的结节，本次 CT 已看清，不必加做项目。戒烟，并按年度低剂量 CT 随访。</span></div>
-      <p class="bound">肺结节基础筛查，胸部 CT 排查肺部结节，明确结节大小形态，为随访复查提供依据。升级胸部 CT 搭配肺癌抗体 7 项分子早筛，影像 + 指标联合评估，帮医生精准判断风险、科学安排随访。</p>
+      <p class="bound">从影像、分子早筛、肺功能、心肺储备多维度评估肺部情况。基础卡包含胸部 CT，清晰查看肺内结节大小、形态，是肺部结节常规影像筛查；升级卡增加肺癌抗体 7 项分子早筛、肺功能检查、CPET 心肺运动试验，不止看肺部有没有结节，还能辅助评估结节风险、通气功能以及运动状态下心肺协同能力。</p>
     </aside>
   </div>
 </section>
@@ -1244,7 +1322,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="长寿评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>长寿</span><b>18</b><span>/ 27</span></div>
+    <div class="pager"><span>长寿</span><b>18</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>长寿评估</h2>
@@ -1252,13 +1330,19 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <button type="button" class="narr-btn">叙事</button>
       <div class="narr-pop" role="tooltip">
         <p class="hook">循养身体根基，伴父母安康久安</p>
-        <p>评估细胞能量储备和线粒体代谢状态，看压力、长期炎症、长期不良生活方式对细胞复制储备的消耗，也用来解释容易疲劳、运动耐力差、恢复慢。结果给运动、恢复和营养方案作参考。NAD+ 很低的人，优先低强度有氧和恢复。</p>
+        <p>通过 NAD+、端粒这些衰老相关分子指标，看看身体的老化节奏，同时做全套免疫评估，摸清自身抵抗力。拿到报告后医生帮您解读清楚指标代表什么，哪些地方需要调整，给到适合您的养护方向，不是只拿到一堆看不懂的化验数字。</p>
       </div>
     </div>
   </div>
   <div class="split">
     <div class="withfig">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>分子检测</td><td>细胞 NAD+ 水平分析</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>分子检测</td><td>人端粒长度检测</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>758</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>266</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
+<tr><td class='cat'>分子早筛</td><td>细胞 NAD+ 水平分析检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note' rowspan="2">均无需空腹</td></tr>
+<tr><td class='cat'>分子早筛</td><td>人端粒长度检测</td><td class="c yes">√</td><td class="c yes">√</td></tr>
+<tr><td class='cat'>专项检查</td><td>免疫功能综合评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>4<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>758</td><td class='c'>2,658</td><td></td></tr>
+<tr class='sale'><td colspan='2'>销售价</td><td class='c'>455</td><td class='c'>1,595</td><td></td></tr></tbody></table>
       
     </div>
     <figure class="coqfig"><img src="images/coq10.png" alt="线粒体电子传递链中的辅酶Q10"></figure>
@@ -1269,7 +1353,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <p class="epi">这一张不寻找新的病名。它看的是细胞能量和端粒长度这两项相对余量。</p>
       <div class="out alert"><b>有提示时</b><span>生物学年龄明显高于实际年龄，或代谢指标异常，给出 3–6 个月的生活方式干预和复查计划。</span></div>
       <div class="out ok"><b>无明显异常时</b><span>各项余量充足，保持现有作息与运动，年度复测即可。</span></div>
-      <p class="bound">通过端粒长度 + 细胞 NAD+ 水平两项分子检测，把看不见的衰老进度量化评估，读懂细胞层面的衰老状态；以此为依据，定制下一年吃、动、睡的健康方案，科学管理衰老，助力健康长寿。</p>
+      <p class="bound">从衰老分子指标、免疫状态两个维度，评估身体衰老节奏与防御能力。细胞 NAD + 水平分析检测，评估细胞能量代谢、衰老相关的基础状态；人端粒长度检测，作为衰老的分子标志物，辅助判断细胞衰老进程；免疫功能综合评估，全面查看机体免疫平衡情况，了解自身抵抗力水平。</p>
     </aside>
   </div>
 </section>
@@ -1277,7 +1361,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="营养代谢评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>营养</span><b>19</b><span>/ 27</span></div>
+    <div class="pager"><span>营养</span><b>19</b><span>/ 28</span></div>
   </header>
   <div class="title-row">
     <h2>营养代谢评估</h2>
@@ -1290,7 +1374,19 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>空腹血糖</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基础检测</td><td>胰岛素</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基础检测</td><td>超敏 C 反应蛋白</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>专项检测</td><td>微量元素六项（铁、钙、铜、锌、镁、铅）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>专项检测</td><td>25-羟基维生素 D2+D3 质谱法定量检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>专项检测</td><td>辅酶 Q10 检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>专项检测</td><td>红细胞叶酸检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>950</td><td class='c'>1,510</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>333</td><td class='c'>529</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
+<tr><td class='cat'>基础检测</td><td>空腹血糖</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>基础检测</td><td>胰岛素</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>基础检测</td><td>超敏 C 反应蛋白</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
+<tr><td class='cat'>专项检测</td><td>微量元素六项（铁、钙、铜、锌、镁、铅）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
+<tr><td class='cat'>专项检测</td><td>25-羟基维生素 D2+D3 质谱法定量检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
+<tr><td class='cat'>专项检测</td><td>辅酶 Q10 检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
+<tr><td class='cat'>专项检测</td><td>红细胞叶酸检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
+<tr><td class='cat'>营养评估</td><td>营养师一对一评估</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>评估饮食结构、调整饮食方案</td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>1,150</td><td class='c'>1,510</td><td></td></tr>
+<tr class='sale'><td colspan='2'>销售价</td><td class='c'>747</td><td class='c'>1,010</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1306,7 +1402,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 
 <section class="slide" data-title="核磁专项（讨论部分）">
   <header class="top"><img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>核磁</span><b>20</b><span>/ 27</span></div></header>
+    <div class="pager"><span>核磁</span><b>20</b><span>/ 28</span></div></header>
   <div class="title-row"><h2>核磁专项（讨论部分）</h2>
     <div class="narr-wrap"><button type="button" class="narr-btn">叙事</button>
       <div class="narr-pop"><p class="hook">想精准排查病灶，项目太多，分不清该选哪个部位</p><p>血管和脏器是身体的管道和仓库。MRI 看得清软组织、韧带、脏器内部和微小病灶。平扫做初筛，怀疑异常再做增强。脊柱看椎间盘和神经根，关节看软骨和韧带，腹盆看肝胆胰、前列腺和子宫附件，头部看脑组织、血管、微小出血和梗塞。结果都稳，按周期随访。一旦有异常，医生告诉您优先复查和进一步诊疗。避开的是：做完核磁，仍然看不懂片子，不知道下一步。</p></div></div></div>
@@ -1336,11 +1432,33 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   </div>
 </section>
 
+<section class="slide" data-title="AI矩阵">
+  <div class="bar"></div>
+  <header class="top">
+    <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>AI矩阵</span><b>21</b><span>/ 28</span></div>
+  </header>
+  <h2>AI矩阵 · 爱康优势</h2>
+  <p class="lead aimatrix-lead">爱康引入肿瘤液体活检技术，并打造 Ai 健康筛查矩阵，希望通过颠覆性诊断技术的引进以及 AI 的深度赋能，让疾病在更早期被发现、更早期被干预，从而达到更好的预后效果。方案依托爱康两大服务矩阵，为阿里健康用户设计深度医疗检测服务。</p>
+  <div class="aimatrix">
+    <article>
+      <h3>爱康液体活检产品矩阵</h3>
+      <figure><img src="images/ai-matrix-biopsy.png" alt="爱康液体活检产品矩阵示意"></figure>
+      <p class="cap">覆盖食管癌、胃癌、肺癌、肠癌、乳腺癌、胰腺癌、泌尿系统肿瘤、卵巢癌、子宫颈癌等十多种肿瘤的基因检测和液体活检技术。</p>
+    </article>
+    <article>
+      <h3>爱康 AI 矩阵</h3>
+      <figure><img src="images/ai-matrix-ai.png" alt="爱康 AI 矩阵示意"></figure>
+      <p class="cap">覆盖眼底、肺、心脏、脑血管、乳腺、牙齿、骨骼等专项健康筛查的数十款人工智能赋能医学诊断产品。</p>
+    </article>
+  </div>
+</section>
+
 <section class="slide flowpage" data-title="家庭健康卡——陪诊服务">
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>陪诊</span><b>21</b><span>/ 27</span></div>
+    <div class="pager"><span>陪诊</span><b>22</b><span>/ 28</span></div>
   </header>
   <h2>家庭健康卡——陪诊服务</h2>
   <div class="escort escort-inhouse">
@@ -1368,7 +1486,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>健康日</span><b>22</b><span>/ 27</span></div>
+    <div class="pager"><span>健康日</span><b>23</b><span>/ 28</span></div>
   </header>
   <h2>家庭健康卡——健康日</h2>
   <p class="lead">示例：脑健康主题。每周二下午，子女线上下单后父母到店，完成「讲座 + 专项体检 + 报告解读 + 医生咨询」半日闭环。50 人起场。</p>
@@ -1404,7 +1522,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>权益</span><b>23</b><span>/ 27</span></div>
+    <div class="pager"><span>权益</span><b>24</b><span>/ 28</span></div>
   </header>
   <h2>合作模式探讨 · 权益卡（讨论部分）</h2>
   
@@ -1426,8 +1544,8 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <tr><td>胰腺健康关注卡</td></tr>
   <tr><td>长寿检测卡</td></tr>
   <tr><td>营养与代谢检测卡</td></tr>
-  <tr><td>陪诊服务</td><td>就医陪诊</td><td>/</td><td>1 次</td><td>2 次</td></tr>
-  <tr><td>增值服务</td><td>健康日</td><td>2 次</td><td>4 次</td><td>4 次</td></tr>
+  <tr class="coop-cat-row"><td>陪诊服务</td><td>就医陪诊</td><td>/</td><td>1 次</td><td>2 次</td></tr>
+  <tr class="coop-cat-row"><td>增值服务</td><td>健康日</td><td>2 次</td><td>4 次</td><td>4 次</td></tr>
   </tbody></table></div>
   <div class="sidebox">
     <h3>方案一 · 打包采购</h3>
@@ -1445,7 +1563,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>按需</span><b>24</b><span>/ 27</span></div>
+    <div class="pager"><span>按需</span><b>25</b><span>/ 28</span></div>
   </header>
   <h2>合作模式探讨 · 按需结算（讨论部分）</h2>
   
@@ -1465,7 +1583,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <tr><td>胰腺健康关注卡</td></tr>
   <tr><td>长寿检测卡</td></tr>
   <tr><td>营养与代谢检测卡</td></tr>
-  <tr><td>陪诊服务</td><td>就医陪诊服务</td></tr>
+  <tr class="coop-cat-row"><td>陪诊服务</td><td>就医陪诊服务</td></tr>
   </tbody></table></div>
   <div class="sidebox">
     <h3>方案一 · 全排期承接</h3>
@@ -1482,7 +1600,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>城市</span><b>25</b><span>/ 27</span></div>
+    <div class="pager"><span>城市</span><b>26</b><span>/ 28</span></div>
   </header>
   <h2>首批开放城市建议（讨论部分）</h2>
   
@@ -1530,7 +1648,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>人文</span><b>26</b><span>/ 27</span></div>
+    <div class="pager"><span>人文</span><b>27</b><span>/ 28</span></div>
   </header>
   <h2>人文关怀（讨论部分）</h2>
   <p class="lead">这些是家庭卡到店和健康日之外的陪伴，条目还在讨论，先把父母用得上的几件事放在一起。</p>
@@ -1547,7 +1665,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>指标</span><b>27</b><span>/ 27</span></div>
+    <div class="pager"><span>指标</span><b>28</b><span>/ 28</span></div>
   </header>
   <h2>项目关键指标（讨论部分）</h2>
   <p class="lead">先跑通链路，再扩城扩店。</p>
@@ -1575,7 +1693,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <div class="hint" id="hint">方向键左右换页 · 右侧页签即目录</div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];
-const SHORT=['封面','设计思路','痛点分析','竞品分析','方案总览','年度体检','专项总览','记忆评估','中风评估','关节评估','冠脉评估','胃部评估','肠道评估','胰腺评估','乳腺评估','卵巢评估','结节评估','长寿评估','营养评估','核磁专项','陪诊服务','健康日','权益探讨','按需探讨','开放城市','人文关怀','关键指标'];
+const SHORT=['封面','设计思路','痛点分析','竞品分析','方案总览','年度体检','专项总览','记忆评估','中风评估','关节评估','冠脉评估','胃部评估','肠道评估','胰腺评估','乳腺评估','卵巢评估','结节评估','长寿评估','营养评估','核磁专项','AI矩阵','陪诊服务','健康日','权益探讨','按需探讨','开放城市','人文关怀','关键指标'];
 const MARK={'脑健康 · 记忆力评估':'忆','脑健康 · 中风风险评估':'脉','骨健康 · 骨关节评估':'骨','心脏健康 · 冠脉血管评估':'心','消化健康 · 胃部评估':'胃','消化健康 · 肠道评估':'肠','消化健康 · 胰腺评估':'胰','她健康 · 乳腺评估':'乳','她健康 · 卵巢评估':'巢','肺健康 · 结节评估':'肺','长寿评估':'寿','营养代谢评估':'营','核磁专项（讨论部分）':'磁'};
 function mix(a,b,t){
   const n=s=>parseInt(s,16);
