@@ -347,7 +347,8 @@ table.grid td,table.pkg td{padding:9px 12px}
 .brandrow .op{height:clamp(40px,7vh,58px);width:auto}
 .vbar{width:1px;height:34px;background:#C5CDD6;flex:none}
 .trio{display:flex;gap:16px;justify-content:center;margin:0 0 clamp(12px,2.4vh,26px)}
-.trio img{width:clamp(128px,22vh,200px);height:clamp(128px,22vh,200px);object-fit:cover;border-radius:18px}
+.trio img:not(.zoomview){width:clamp(128px,22vh,200px);height:clamp(128px,22vh,200px);object-fit:cover;border-radius:18px}
+.trio .zoomhost{display:flex;line-height:0;cursor:zoom-in}
 .cover .sub{margin:0;max-width:none;font-size:clamp(14px,2vh,18px);color:#595959;font-weight:500;letter-spacing:.01em}
 .cover h1{margin:clamp(8px,1.4vh,14px) 0 0;font-size:clamp(28px,4.4vh,42px);line-height:1.2;color:#1D50A2;font-weight:750;letter-spacing:0}
 .cover .line4{margin:clamp(8px,1.4vh,14px) 0 0;max-width:none;font-size:clamp(13px,1.8vh,16px);color:#5A6278;font-weight:500}
@@ -464,12 +465,23 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .clinicshot{margin:0;min-height:0;height:100%;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 20px rgba(29,80,162,.06)}
 .clinicshot img{width:100%;height:100%;object-fit:contain;display:block}
 .sidefig{flex:0 1 auto;min-height:0;max-height:min(38vh,168px);margin:0 auto 8px;width:100%;border-radius:14px;overflow:hidden;background:#F7FAFE;display:flex;align-items:center;justify-content:center}
-.sidefig img{width:auto;height:auto;max-width:100%;max-height:min(38vh,168px);object-fit:contain;display:block}
+.sidefig img:not(.zoomview){width:auto;height:auto;max-width:100%;max-height:min(38vh,168px);object-fit:contain;display:block}
 .sidefig:has(figcaption){display:flex;flex-direction:row;align-items:flex-start;justify-content:center;gap:10px;padding:8px 10px;max-height:none;overflow:visible}
-.sidefig:has(figcaption) img{flex:0 1 auto;width:auto;height:auto;min-height:0;object-fit:contain}
+.sidefig:has(figcaption) img:not(.zoomview){flex:0 1 auto;width:auto;height:auto;min-height:0;object-fit:contain}
 .sidefig figcaption{flex:1 1 148px;max-width:158px;margin:0;padding:0 0 0 10px;border-left:3px solid #F26A21;font-size:10.5px;line-height:1.38;letter-spacing:.02em;color:#3A342E;font-weight:650;text-align:left;overflow:visible}
 .sidefig figcaption::before{content:"“";display:inline;font-size:14px;line-height:1;color:#F26A21;font-weight:800;margin:0 1px 0 0;vertical-align:-1px}
-.sidefig:has(figcaption) img{max-width:min(42%,160px);max-height:min(32vh,136px)}
+.sidefig:has(figcaption) img:not(.zoomview){max-width:min(42%,160px);max-height:min(32vh,136px)}
+.sidefig{cursor:zoom-in}
+.sidefig img.zoomview,.zoomhost>img.zoomview{
+  display:none;position:fixed;z-index:100;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:auto;height:auto;max-width:none;max-height:none;pointer-events:none;
+  box-shadow:0 18px 48px rgba(29,80,162,.28);border-radius:10px;background:#fff;
+}
+.sidefig:hover img.zoomview,.zoomhost:hover>img.zoomview{display:block}
+.corner-logo{position:absolute;left:74%;top:2.5%;width:24.3%;height:6.8%;margin:0;padding:0;border:0;background:transparent;cursor:zoom-in;z-index:6}
+.zoomview.logo-pair{display:none;position:fixed;z-index:100;left:50%;top:50%;transform:translate(-50%,-50%);align-items:center;gap:24px;pointer-events:none;background:transparent;box-shadow:none}
+.corner-logo:hover>.zoomview.logo-pair{display:flex}
+.zoomview.logo-pair img{display:block;width:auto;height:auto;max-width:none;max-height:none;box-shadow:0 18px 48px rgba(29,80,162,.28);border-radius:10px;background:#fff}
 .leaflet .split.fig .infographic{flex-direction:row;align-items:flex-start;justify-content:center;gap:10px;padding:8px 12px;min-height:0}
 .leaflet .split.fig .infographic img{flex:0 1 auto;width:auto;max-width:min(48%,190px);max-height:148px;object-fit:contain}
 .leaflet .split.fig .infographic figcaption{flex:1 1 148px;max-width:158px;margin:0;padding:0 0 0 10px;border-left:3px solid #F26A21;font-size:10.5px;line-height:1.38;color:#3A342E;font-weight:650;text-align:left}
@@ -804,7 +816,8 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   .caregrid .care-photo.trio{grid-template-columns:1fr 1fr}
   .proc.time{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   .trio{flex-wrap:wrap;gap:10px;margin-bottom:16px}
-  .trio img{width:26vw;height:26vw;max-width:108px;max-height:108px;border-radius:12px}
+  .trio img:not(.zoomview){width:26vw;height:26vw;max-width:108px;max-height:108px;border-radius:12px}
+  .corner-logo{display:none}
   .cover{padding:12px 16px calc(58px + env(safe-area-inset-bottom,0px))}
   .cover h1{font-size:26px}
   .leaflet .split,.leaflet .split.fig{display:flex;flex-direction:column;gap:10px;overflow:visible;padding:8px 8px 10px}
@@ -826,7 +839,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   .clinic-pair th,.clinic-pair td{padding:2px 4px}
   .clinic-board{zoom:1!important}
   .sidefig{max-height:none;flex-direction:column!important;align-items:stretch!important}
-  .sidefig img,.sidefig:has(figcaption) img{max-width:100%!important;max-height:140px!important;margin:0 auto}
+  .sidefig img:not(.zoomview),.sidefig:has(figcaption) img:not(.zoomview){max-width:100%!important;max-height:140px!important;margin:0 auto}
   .sidefig figcaption,.leaflet .sidefig figcaption{
     flex:none;max-width:100%;margin:8px 0 0;padding:8px 0 0;
     border-left:0;border-top:3px solid #F26A21;font-size:11px;line-height:1.4;
@@ -2018,6 +2031,21 @@ slides.forEach(s=>{
         fig.appendChild(cap);
       }
       line.after(fig);
+      const shot=fig.querySelector('img:not(.zoomview)');
+      if(shot && !fig.querySelector('.zoomview')){
+        const zoom=shot.cloneNode(true);
+        zoom.className='zoomview';
+        zoom.alt='';
+        const zoomScale={'消化健康 · 肠道评估':1,'消化健康 · 胰腺评估':1,'长寿评估':1,'营养代谢评估':0.5,'她健康 · 卵巢评估':0.5,'核磁专项（讨论部分）':0.5}[s.dataset.title]??0.8;
+        const fit=()=>{
+          if(!zoom.naturalWidth) return;
+          zoom.style.width=Math.round(zoom.naturalWidth*zoomScale)+'px';
+          zoom.style.height=Math.round(zoom.naturalHeight*zoomScale)+'px';
+        };
+        if(zoom.complete && zoom.naturalWidth) fit();
+        else zoom.addEventListener('load', fit);
+        fig.appendChild(zoom);
+      }
       const split=s.querySelector('.split');
       if(split) split.classList.remove('fig');
     }
@@ -2296,6 +2324,47 @@ document.querySelectorAll('.poster').forEach(el=>{
   pop.addEventListener('mouseleave', hide);
   el.addEventListener('focusout', e=>{ if(!el.contains(e.relatedTarget) && !pop.contains(e.relatedTarget)) hide(); });
 });
+const coverRight=document.querySelector('.cover .trio img:last-child');
+if(coverRight && !coverRight.closest('.zoomhost')){
+  const host=document.createElement('span');
+  host.className='zoomhost';
+  coverRight.before(host);
+  host.appendChild(coverRight);
+  const zoom=coverRight.cloneNode(true);
+  zoom.className='zoomview';
+  zoom.alt='';
+  const fit=()=>{
+    if(!zoom.naturalWidth) return;
+    zoom.style.width=Math.round(zoom.naturalWidth*0.7)+'px';
+    zoom.style.height=Math.round(zoom.naturalHeight*0.7)+'px';
+  };
+  if(zoom.complete && zoom.naturalWidth) fit();
+  else zoom.addEventListener('load', fit);
+  host.appendChild(zoom);
+}
+const idea=document.querySelector('.slide[data-title="设计思路"]');
+if(idea && !idea.querySelector('.corner-logo')){
+  const host=document.createElement('button');
+  host.type='button';
+  host.className='corner-logo zoomhost';
+  host.setAttribute('aria-label','爱康标志');
+  const view=document.createElement('span');
+  view.className='zoomview logo-pair';
+  ['images/logo-mark.png','images/cover-outpatient.png'].forEach(src=>{
+    const img=document.createElement('img');
+    img.src=src;
+    img.alt='';
+    const fit=()=>{
+      if(!img.naturalWidth) return;
+      img.style.width=Math.round(img.naturalWidth*0.7)+'px';
+      img.style.height=Math.round(img.naturalHeight*0.7)+'px';
+    };
+    img.addEventListener('load', fit);
+    view.appendChild(img);
+  });
+  host.appendChild(view);
+  idea.appendChild(host);
+}
 document.addEventListener('contextmenu', e=>e.preventDefault());
 ['copy','cut','dragstart','selectstart'].forEach(type=>{
   document.addEventListener(type, e=>e.preventDefault());
