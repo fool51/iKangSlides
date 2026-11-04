@@ -737,6 +737,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     margin:0!important;border-radius:0;box-shadow:none;
     overflow:hidden;
   }
+  .stage.bg{background:#fff}
   .book{
     position:fixed;left:0;right:0;top:auto;bottom:0;
     width:100%;height:auto;max-height:42dvh;
@@ -754,9 +755,20 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     margin:0!important;padding:0 11px;border-radius:999px;
     font-size:11px;text-align:center;white-space:nowrap;
   }
-  .slide{padding:10px 12px calc(58px + env(safe-area-inset-bottom,0px))}
-  .slide:not(.cover):not(.close){
+  .slide{padding:10px 12px calc(86px + env(safe-area-inset-bottom,0px))}
+  .slide{
     overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+  .sheet,.slide.leaflet .sheet{
+    display:flex;flex-direction:column;
+    height:auto!important;max-height:none!important;min-height:0;
+    flex:none!important;overflow:visible!important;transform:none!important;
+  }
+  .sheet>*,
+  .leaflet .split,.leaflet .split.fig,.leaflet .split>*,
+  .discuss-body,.exam-body,.flowpage .escort,.cmap-wrap,.dayboard{
+    flex:none!important;height:auto!important;max-height:none!important;overflow:visible;
   }
   .slide:not(.cover):not(.close) h2{padding-right:0;font-size:21px;margin:0 0 8px;line-height:1.3}
   .title-row{flex-wrap:wrap;gap:6px}
@@ -795,14 +807,24 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   .trio img{width:26vw;height:26vw;max-width:108px;max-height:108px;border-radius:12px}
   .cover{padding:12px 16px calc(58px + env(safe-area-inset-bottom,0px))}
   .cover h1{font-size:26px}
-  .leaflet .split{display:flex;flex-direction:column;gap:10px;overflow:visible;padding:10px 12px 12px}
-  .leaflet .split>.side{order:1;flex:none}
-  .leaflet .split>.tbl-scroll{order:2;flex:1 1 auto;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch}
-  .leaflet table.pkg{font-size:13px;min-width:min(100%,520px)}
-  .leaflet table.pkg th,.leaflet table.pkg td{padding:7px 8px}
-  .leaflet table.pkg tr.sale td{font-size:15px}
-  table.pkg td.cat{white-space:normal}
-  table.pkg th{white-space:normal;font-size:13px}
+  .leaflet .split,.leaflet .split.fig{display:flex;flex-direction:column;gap:10px;overflow:visible;padding:8px 8px 10px}
+  .leaflet .split>.tbl-scroll,.leaflet .split>.withfig>.tbl-scroll{order:1;flex:none;min-width:0;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch}
+  .leaflet .split>.side{order:2;flex:none;height:auto}
+  .leaflet .split>.withfig{order:1}
+  .leaflet .split.fig .infographic{order:3}
+  .leaflet table.pkg,.leaflet table.grid,table.pkg,table.grid{font-size:12px;min-width:0;width:100%}
+  .leaflet table.pkg th,.leaflet table.pkg td,table.pkg th,table.pkg td{padding:5px 6px}
+  .leaflet table.pkg tr.sale td,table.pkg tr.sale td{font-size:14px}
+  table.pkg td.cat,table.pkg th,table.pkg td.note{white-space:normal}
+  table.pkg td.c{width:2.2em;padding-left:2px;padding-right:2px}
+  .leaflet .split.fig .infographic{flex-direction:column;align-items:stretch;height:auto;padding:8px}
+  .leaflet .split.fig .infographic img{max-width:100%;max-height:160px;margin:0 auto}
+  .leaflet .split.fig .infographic figcaption{max-width:none;font-size:12px;line-height:1.45;border-left:0;border-top:3px solid #F26A21;padding:8px 0 0}
+  .side .slogan{font-size:16px}
+  .side .who,.side .epi,.side .bound,.out span{font-size:12px}
+  .clinic-pair table{font-size:10px}
+  .clinic-pair th,.clinic-pair td{padding:2px 4px}
+  .clinic-board{zoom:1!important}
   .sidefig{max-height:none;flex-direction:column!important;align-items:stretch!important}
   .sidefig img,.sidefig:has(figcaption) img{max-width:100%!important;max-height:140px!important;margin:0 auto}
   .sidefig figcaption,.leaflet .sidefig figcaption{
@@ -1066,7 +1088,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>遗传风险评估</td><td>APOE（阿尔茨海默遗传风险）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Aβ 蛋白 40/42</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Tau217</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基因分子评估</td><td>microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>350</td><td class='c'>1,870</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>145</td><td class='c'>737</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>遗传风险评估</td><td>APOE（阿尔茨海默遗传风险）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Aβ 蛋白 40/42</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Tau217</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基因分子评估</td><td>microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>350</td><td class='c'>1,870</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>145</td><td class='c'>737</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1103,7 +1125,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
 <tr><td class='cat'>大型设备检查</td><td>颅脑 MRI 检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>998</td><td class='c'>1,733</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>417</td><td class='c'>675</td><td></td></tr></tbody></table>
       
@@ -1145,7 +1167,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 髋关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>大型设备深度检测</td><td>关节 MRI 检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区价格为准）</td><td class='c'>842</td><td class='c'>1,164</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>335</td><td class='c'>448</td><td></td></tr></tbody></table>
       
@@ -1185,7 +1207,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
 <tr><td class='cat'>AI 辅助检查</td><td>心安诊 · 冠脉钙化积分评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT 需要加做 CT 检查</td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>796</td><td class='c'>1,591</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>347</td><td class='c'>634</td><td></td></tr></tbody></table>
       
@@ -1224,7 +1246,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>消化道检测</td><td>常君策</td><td class="c no">—</td><td class="c yes">√</td></tr>
 <tr><td class='cat'>大型设备检查</td><td>磁控胶囊胃镜</td><td colspan="2" class='note'>按需升级</td><td></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>500</td><td class='c'>2,025</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>190</td><td class='c'>983</td><td></td></tr></tbody></table>
       
@@ -1256,7 +1278,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split fig">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>便常规</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>基础检测</td><td>必测 100</td><td class="c yes">√</td><td class="c no">—</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-bice100.jpg" alt="必测100产品海报"></span></span></td></tr><tr><td class='cat'>专项检查</td><td>常君策 · 肠道菌群检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>专项检查</td><td>肠道功能评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>无痛肠镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需升级，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>541</td><td class='c'>3,216</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>190</td><td class='c'>1,795</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>便常规</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>基础检测</td><td>必测 100</td><td class="c yes">√</td><td class="c no">—</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-bice100.jpg" alt="必测100产品海报"></span></span></td></tr><tr><td class='cat'>专项检查</td><td>常君策 · 肠道菌群检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>专项检查</td><td>肠道功能评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>无痛肠镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需升级，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>541</td><td class='c'>3,216</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>190</td><td class='c'>1,795</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1290,7 +1312,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split fig">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/1.png" alt="逸力嘉产品海报：一次抽血，早期检测胰腺癌风险"></span></span></td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>558</td><td class='c'>1,558</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>196</td><td class='c'>694</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/1.png" alt="逸力嘉产品海报：一次抽血，早期检测胰腺癌风险"></span></span></td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>558</td><td class='c'>1,558</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>196</td><td class='c'>694</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1324,7 +1346,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>乳腺彩超</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>基线检查</td><td>CA125</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>CA15-3</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>遗传风险评估</td><td>BRCA 基因检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>乳腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>578</td><td class='c'>1,378</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>203</td><td class='c'>483</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>乳腺彩超</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>基线检查</td><td>CA125</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>CA15-3</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>遗传风险评估</td><td>BRCA 基因检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>乳腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>578</td><td class='c'>1,378</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>203</td><td class='c'>483</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1361,7 +1383,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>专项检测</td><td>停经前/后荷尔蒙评估</td><td class="c no">—</td><td class="c yes">√</td></tr>
 <tr><td class='cat'>大型设备深度检测</td><td>盆腔磁共振检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>1,205</td><td class='c'>6,045</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>422</td><td class='c'>3,326</td><td></td></tr></tbody></table>
       
@@ -1399,7 +1421,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>专项检查</td><td>肺功能检查</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>专项检查</td><td>CPET（心肺运动试验）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>落地分院：爱康卓悦北京阜成门万通大厦分院、上海 WA 臻景医疗中心、爱康悦养功能医学中心</td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>728</td><td class='c'>3,600</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>255</td><td class='c'>1,560</td><td></td></tr></tbody></table>
       
@@ -1437,7 +1459,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>分子早筛</td><td>人端粒长度检测</td><td class="c yes">√</td><td class="c yes">√</td></tr>
 <tr><td class='cat'>专项检查</td><td>免疫功能综合评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>958</td><td class='c'>2,858</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>525</td><td class='c'>1,665</td><td></td></tr></tbody></table>
       
@@ -1481,7 +1503,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>专项检测</td><td>红细胞叶酸检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>营养评估</td><td>营养师一对一评估</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>评估饮食结构、调整饮食方案</td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>1,350</td><td class='c'>1,910</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>817</td><td class='c'>1,080</td><td></td></tr></tbody></table>
       
@@ -1552,8 +1574,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class="cat">专项检查</td><td>人细胞角蛋白18片段（CK18-M30+M65）早期肝细胞受损检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="c no">—</td><td class="note">无需空腹采血</td></tr>
 <tr><td class="cat">专项检查</td><td>福波看-脂肪肝及肝纤维化定量检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="c yes">√</td><td class="note">空腹 &gt; 3小时</td></tr>
 <tr><td class="cat">个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class="c no">—</td><td class="note">/</td></tr>
-<tr><td class="cat">一对一报告解读</td><td colspan="3" class="note">提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td>
-  <!--<td class="c no">—</td><--><td></td></tr>
+<tr><td class="cat">一对一报告解读</td><td class="note">提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 <tr class="mkt"><td colspan="2">市场价（以国宾普区为准）</td><td class="c">1,472</td><td class="c">820</td><td class="c">140</td><td></td></tr>
 <tr class="sale"><td colspan="2">销售价</td><td class="c">516</td><td class="c">287</td><td class="c">70</td><td></td></tr>
 </tbody></table></div>
@@ -1586,12 +1607,12 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
             <tr><td>宁波</td><td class="n">2</td></tr>
             <tr><td>青岛</td><td class="n">2</td></tr>
             <tr><td>潍坊</td><td class="n">2</td></tr>
+            <tr><td>无锡</td><td class="n">2</td></tr>
           </tbody>
         </table>
         <table>
           <thead><tr><th>城市</th><th class="n">落地分院数量</th></tr></thead>
           <tbody>
-            <tr><td>无锡</td><td class="n">2</td></tr>
             <tr><td>银川</td><td class="n">2</td></tr>
             <tr><td>郑州</td><td class="n">2</td></tr>
             <tr><td>毕节</td><td class="n">1</td></tr>
@@ -2062,6 +2083,24 @@ function fitSlide(s){
   sheet.style.flex='';
   sheet.style.height='100%';
   sheet.style.minHeight='0';
+  if(mqMobile.matches){
+    sheet.style.height='auto';
+    sheet.style.maxHeight='none';
+    sheet.style.flex='none';
+    sheet.style.overflow='visible';
+    s.querySelectorAll('.tbl-scroll').forEach(el=>{
+      el.classList.remove('tbl-scaled');
+      el.style.height='';
+      const t=el.querySelector('table.pkg');
+      if(!t) return;
+      t.style.zoom='';
+      t.style.transform='';
+      t.style.width='';
+    });
+    const board=s.querySelector('.clinic-board');
+    if(board) board.style.zoom='';
+    return;
+  }
   if(s.classList.contains('leaflet')){
     s.classList.toggle('leaflet-tight-table', s.dataset.title==='骨健康 · 骨关节评估');
     const clearTableScale=(table,tblScroll)=>{
@@ -2187,6 +2226,7 @@ function show(n){
   brandfoot.hidden=edge;
   stageEl.classList.toggle('bg', !edge);
   paintBook();
+  slides[i].scrollTop=0;
   fitSlide(slides[i]);
 }
 window.addEventListener('resize',()=>fitSlide(slides[i]));
@@ -2204,10 +2244,12 @@ document.addEventListener('keydown',e=>{
   if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(i-1)}
 });
 const stage=document.getElementById('stage');
-let x0=null,y0=null,textSelecting=false;
+let x0=null,y0=null,textSelecting=false,scroll0=0;
 stage.addEventListener('selectstart',()=>{ textSelecting=true; });
 stage.addEventListener('pointerdown',e=>{
   textSelecting=false;
+  const sc=e.target.closest('.slide');
+  scroll0=sc?sc.scrollTop:0;
   if(e.target.closest('button,a,.tbl-scroll')) return;
   x0=e.clientX; y0=e.clientY;
 });
@@ -2217,10 +2259,13 @@ stage.addEventListener('pointerup',e=>{
   x0=y0=null;
   const picked=textSelecting;
   textSelecting=false;
+  const sc=e.target.closest('.slide');
+  const scrolled=sc && Math.abs(sc.scrollTop-scroll0)>6;
   requestAnimationFrame(()=>{
     const sel=window.getSelection();
     const hasSel=picked || (sel && !sel.isCollapsed && sel.toString().trim());
-    if(hasSel) return;
+    if(hasSel||scrolled) return;
+    if(mqMobile.matches && Math.abs(dy)>=Math.abs(dx)) return;
     if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.2) show(i+(dx<0?1:-1));
   });
 });
