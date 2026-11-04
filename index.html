@@ -263,10 +263,20 @@ table.grid td,table.pkg td{padding:9px 12px}
 .mapbox{position:relative;width:min(100%, calc(100cqh * 1000 / 738));aspect-ratio:1000 / 738;margin:0 auto}
 .mapbox img.map{width:100%;height:100%;display:block;object-fit:fill}
 .mpin{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#F26A21;box-shadow:0 0 0 3px rgba(242,106,33,.28);color:#1D50A2;font-size:12px;font-weight:750;line-height:1}
-.mpin b{position:absolute;left:14px;top:-2px;font-weight:750;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff}
+.mpin b{position:absolute;left:14px;top:-2px;font-weight:750;white-space:nowrap;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 2px #fff}
 .mpin.up b{left:50%;top:-16px;transform:translateX(-50%)}
 .mpin.left b{left:auto;right:14px;top:-2px}
 .mpin.down b{left:50%;top:14px;transform:translateX(-50%)}
+.mpin.bj b{left:auto;right:12px;top:-18px;transform:none}
+.mpin.tj b{left:14px;top:0;transform:none}
+.mpin.nj b{left:50%;top:-18px;transform:translateX(-50%)}
+.mpin.su b{left:16px;top:-2px;transform:none}
+.mpin.sh b{left:16px;top:12px;transform:none}
+.mpin.hz b{left:auto;right:12px;top:12px;transform:none}
+.mpin.gz b{left:auto;right:14px;top:-16px;transform:none}
+.mpin.szn b{left:14px;top:10px;transform:none}
+.mpin.cd b{left:auto;right:14px;top:-2px;transform:none}
+.mpin.cq b{left:14px;top:-16px;transform:none}
 .banner{font-size:16px;padding:12px 14px}
 .layer b{font-size:15px}
 .layer span{font-size:14px;line-height:1.45}
@@ -395,7 +405,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .gcard{background:#fff;border-radius:16px;padding:12px 14px 10px;box-shadow:0 8px 20px rgba(29,80,162,.06)}
 .ghead{display:flex;align-items:center;margin-bottom:8px}
 .gcard h3{margin:0;font-size:17px;font-weight:800;color:#1A1A1A}
-.gsex-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:8px;border:1px solid #F3D7B0;border-radius:12px;background:#fff}
+.gsex-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:8px;border:1px solid #F3D7B0;border-radius:12px;background:#FFF6EC}
 .gsex-col{display:flex;flex-direction:column;min-width:0}
 .gsex{display:block;text-align:center;font-style:normal;font-size:13px;color:#8A8178;font-weight:750;margin:0 0 4px;line-height:1.2}
 .gticket{background:#fff;border:1px solid #F3D7B0;border-radius:10px;padding:7px 8px 6px;text-align:center;min-width:0}
@@ -415,6 +425,14 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .gpack-span>.sale{display:block;text-align:center;margin-top:4px;padding-top:3px;border-top:1px solid #F6E7D4;font-size:12px;line-height:1.2;color:#8A8178;font-weight:650}
 .gpack-span>.sale b{display:inline;margin:0 0 0 3px;font-size:15px;line-height:1;color:#B0551F;font-weight:800}
 .gpack-span .pack-body{margin:4px 0 0;font-size:10.5px;line-height:1.35;color:#3A342E;font-weight:500;text-align:left}
+.clinic-board{display:flex;flex-direction:column;min-height:0;background:transparent;padding:0;align-self:stretch}
+.clinic-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:start}
+.clinic-pair table{width:100%;border-collapse:separate;border-spacing:0;background:#F7FAFE;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px #E3EAF3;font-size:11px;line-height:1.15}
+.clinic-pair th{background:#EAF1FA;color:#1D50A2;font-weight:700;padding:3px 6px;text-align:left;white-space:nowrap;line-height:1.2}
+.clinic-pair th.n,.clinic-pair td.n{text-align:right;width:auto;white-space:nowrap}
+.clinic-pair td{padding:1px 6px;color:#3A342E;border-top:1px solid #E7EEF6}
+.clinic-pair td.n{color:#1A1A1A;font-weight:700}
+.clinic-board .cityfoot{margin:6px 0 0;text-align:center;font-size:14px;font-weight:800;color:#1A1A1A}
 .slide[data-title="年度体检"]{padding-bottom:72px}
 .slide[data-title="年度体检"] .exam-body{display:flex;flex-direction:column;flex:1;min-height:0;width:100%;overflow:visible}
 .slide[data-title="年度体检"] .exam-body>h2{margin-bottom:6px}
@@ -604,6 +622,12 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .leaflet table.pkg td.c{width:58px;white-space:nowrap}
 .leaflet table.pkg td.note{font-size:11.5px}
 .leaflet table.pkg tr.sale td{font-size:17px}
+.slide[data-title="GLP-1逆转脂肪肝疗效及副作用评估"] table.pkg{font-size:16px;line-height:1.25}
+.slide[data-title="GLP-1逆转脂肪肝疗效及副作用评估"] table.pkg th{padding:5px 8px;line-height:1.2}
+.slide[data-title="GLP-1逆转脂肪肝疗效及副作用评估"] table.pkg td{padding:3px 8px;line-height:1.25}
+.slide[data-title="GLP-1逆转脂肪肝疗效及副作用评估"] table.pkg td.note{font-size:13px;line-height:1.25}
+.slide[data-title="GLP-1逆转脂肪肝疗效及副作用评估"] table.pkg td.note:not([colspan]){white-space:nowrap}
+.slide[data-title="GLP-1逆转脂肪肝疗效及副作用评估"] table.pkg tr.sale td{font-size:18px;line-height:1.2}
 .leaflet .split>.tbl-scroll.tbl-scaled{overflow:visible;align-self:start}
 .leaflet .split>.tbl-scroll.tbl-scaled table.pkg{transform-origin:top left}
 .leaflet .tbl-scale-inner{transform-origin:top left;display:block}
@@ -803,7 +827,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 
 .pain-bridge-flow{align-items:center;justify-content:center;padding:4px 0}
 .bridge-flow{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;max-width:300px;margin:0 auto}
-.bridge-flow-top,.bridge-flow-bottom{margin:0;font-size:15px;font-weight:750;line-height:1.35;text-align:center;color:#6B78F0;letter-spacing:.02em}
+.bridge-flow-top,.bridge-flow-bottom{margin:0;font-size:15px;font-weight:750;line-height:1.35;text-align:center;color:#1D50A2;letter-spacing:.02em}
 .bridge-flow-img{width:100%;max-width:280px;height:auto;max-height:min(28vh,200px);object-fit:contain;display:block}
 
 
@@ -843,7 +867,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>设计思路</span><b>02</b><span>/ 28</span></div>
+    <div class="pager"><span>设计思路</span><b>02</b><span>/ 29</span></div>
   </header>
   <h2>设计思路</h2>
   <div class="cardflow-body">
@@ -876,7 +900,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>痛点</span><b>03</b><span>/ 28</span></div>
+    <div class="pager"><span>痛点</span><b>03</b><span>/ 29</span></div>
   </header>
   <h2 class="pain-title"><span class="leadline">痛点分析</span><em>想尽孝的心意，卡在两地之间</em></h2>
   <div class="painboard">
@@ -908,7 +932,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>竞品</span><b>04</b><span>/ 28</span></div>
+    <div class="pager"><span>竞品</span><b>04</b><span>/ 29</span></div>
   </header>
   <h2>竞品分析</h2>
   <p class="lead">市面产品只做了一半。</p>
@@ -934,7 +958,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>方案</span><b>05</b><span>/ 28</span></div>
+    <div class="pager"><span>方案</span><b>05</b><span>/ 29</span></div>
   </header>
   <h2>家庭健康卡方案总览</h2>
   
@@ -959,7 +983,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>年度体检</span><b>06</b><span>/ 28</span></div>
+    <div class="pager"><span>年度体检</span><b>06</b><span>/ 29</span></div>
   </header>
   <div class="exam-body">
   <h2>年度体检</h2>
@@ -1002,7 +1026,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>专项</span><b>07</b><span>/ 28</span></div>
+    <div class="pager"><span>专项</span><b>07</b><span>/ 29</span></div>
   </header>
   <h2>家庭健康卡—专项主题卡总览</h2>
   <p class="lead">基础卡项目上下午都可执行，升级卡项目必须上午执行。下午场50人起。</p>
@@ -1012,7 +1036,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="脑健康 · 记忆力评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>记忆</span><b>08</b><span>/ 28</span></div>
+    <div class="pager"><span>记忆</span><b>08</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>脑健康 · 记忆力评估</h2>
@@ -1042,7 +1066,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="脑健康 · 中风风险评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>中风</span><b>09</b><span>/ 28</span></div>
+    <div class="pager"><span>中风</span><b>09</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>脑健康 · 中风风险评估</h2>
@@ -1081,7 +1105,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="骨健康 · 骨关节评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>骨关节</span><b>10</b><span>/ 28</span></div>
+    <div class="pager"><span>骨关节</span><b>10</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>骨健康 · 骨关节评估</h2>
@@ -1123,7 +1147,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="心脏健康 · 冠脉血管评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>心脏</span><b>11</b><span>/ 28</span></div>
+    <div class="pager"><span>心脏</span><b>11</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>心脏健康 · 冠脉血管评估</h2>
@@ -1163,7 +1187,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="消化健康 · 胃部评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>胃部</span><b>12</b><span>/ 28</span></div>
+    <div class="pager"><span>胃部</span><b>12</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>消化健康 · 胃部评估</h2>
@@ -1202,7 +1226,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="消化健康 · 肠道评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>肠道</span><b>13</b><span>/ 28</span></div>
+    <div class="pager"><span>肠道</span><b>13</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>消化健康 · 肠道评估</h2>
@@ -1236,7 +1260,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="消化健康 · 胰腺评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>胰腺</span><b>14</b><span>/ 28</span></div>
+    <div class="pager"><span>胰腺</span><b>14</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>消化健康 · 胰腺评估</h2>
@@ -1270,7 +1294,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="她健康 · 乳腺评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>乳腺</span><b>15</b><span>/ 28</span></div>
+    <div class="pager"><span>乳腺</span><b>15</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>她健康 · 乳腺评估</h2>
@@ -1300,7 +1324,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="她健康 · 卵巢评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>卵巢</span><b>16</b><span>/ 28</span></div>
+    <div class="pager"><span>卵巢</span><b>16</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>她健康 · 卵巢评估</h2>
@@ -1339,7 +1363,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="肺健康 · 结节评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>肺结节</span><b>17</b><span>/ 28</span></div>
+    <div class="pager"><span>肺结节</span><b>17</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>肺健康 · 结节评估</h2>
@@ -1377,7 +1401,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="长寿评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>长寿</span><b>18</b><span>/ 28</span></div>
+    <div class="pager"><span>长寿</span><b>18</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>长寿评估</h2>
@@ -1395,7 +1419,8 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <tr><td class='cat'>分子早筛</td><td>细胞 NAD+ 水平分析检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note' rowspan="2">均无需空腹</td></tr>
 <tr><td class='cat'>分子早筛</td><td>人端粒长度检测</td><td class="c yes">√</td><td class="c yes">√</td></tr>
 <tr><td class='cat'>专项检查</td><td>免疫功能综合评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>4<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>一对一报告解读</td><td colspan="3" class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
 <tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>958</td><td class='c'>2,858</td><td></td></tr>
 <tr class='sale'><td colspan='2'>销售价</td><td class='c'>525</td><td class='c'>1,665</td><td></td></tr></tbody></table>
       
@@ -1416,7 +1441,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <section class="slide" data-title="营养代谢评估">
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>营养</span><b>19</b><span>/ 28</span></div>
+    <div class="pager"><span>营养</span><b>19</b><span>/ 29</span></div>
   </header>
   <div class="title-row">
     <h2>营养代谢评估</h2>
@@ -1457,7 +1482,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 
 <section class="slide" data-title="核磁专项（讨论部分）">
   <header class="top"><img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>核磁</span><b>20</b><span>/ 28</span></div></header>
+    <div class="pager"><span>核磁</span><b>20</b><span>/ 29</span></div></header>
   <div class="title-row"><h2>核磁专项（讨论部分）</h2>
     <div class="narr-wrap"><button type="button" class="narr-btn">叙事</button>
       <div class="narr-pop"><p class="hook">想精准排查病灶，项目太多，分不清该选哪个部位</p><p>核磁是“高清深度影像筛查”，和 CT 不一样，没有辐射，专门看软组织。很多 CT 看不出的微小腔隙脑梗、椎间盘压迫、半月板损伤、盆腔脏器隐匿病灶，核磁都能清晰识别。适合给父母做深度健康摸底，提前发现没有症状的潜在风险，早发现、早干预，避免突发中风、腰腿持续损伤等问题。</p></div></div></div>
@@ -1465,10 +1490,10 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     <div class="withfig mri-withfig">
     <div class="tbl-scroll">
 <table class="pkg"><thead><tr><th>项目</th><th>范围</th><th>市场价</th></tr></thead><tbody>
-<tr><td>单部位 MRI</td><td>头部、心脏、颈椎、胸椎、腰椎、腹部、盆腔、肝脏、胰腺、胆胰管、乳腺、前列腺，以及肩、肘、腕、髋、膝、踝</td><td class="c">1,526 元/部位</td></tr>
-<tr><td>全身 MRI</td><td>女士全身、男士全身</td><td class="c">女士 21,000 元 / 男士 18,000 元</td></tr>
-<tr><td>个检报告</td><td>电子版个检报告</td><td class="c">含</td></tr>
-<tr><td>一对一解读</td><td>把看不懂的片子讲成下一步</td><td class="c">含</td></tr>
+<tr><td class="cat">单部位 MRI</td><td>头部、心脏、颈椎、胸椎、腰椎、腹部、盆腔、肝脏、胰腺、胆胰管、乳腺、前列腺，以及肩、肘、腕、髋、膝、踝</td><td class="c">1,526 元/部位</td></tr>
+<tr><td class="cat">全身 MRI</td><td>女士全身、男士全身</td><td class="c">女士 21,000 元 / 男士 18,000 元</td></tr>
+<tr><td class="cat">个检报告</td><td>电子版个检报告</td><td class="c">含</td></tr>
+<tr><td class="cat">一对一解读</td><td>把看不懂的片子讲成下一步</td><td class="c">含</td></tr>
 </tbody></table>
 <p class="fine">平扫做初筛，怀疑异常再做增强。体内金属植入、幽闭恐惧、早孕需提前评估。增强检查要评估肾功能。</p></div>
     <figure class="mri-promo">
@@ -1487,11 +1512,106 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   </div>
 </section>
 
+<section class="slide leaflet" data-title="GLP-1逆转脂肪肝疗效及副作用评估">
+  <header class="top">
+    <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
+    <div class="pager"><span>GLP-1专项</span><b>21</b><span>/ 29</span></div>
+  </header>
+  <div class="title-row">
+    <h2>GLP-1逆转脂肪肝疗效及副作用评估</h2>
+  </div>
+  <div class="split">
+    <div class="tbl-scroll"><table class="pkg"><thead><tr><th>分类</th><th>检查项目</th><th>用药前</th><th>3个月后</th><th>备注</th></tr></thead><tbody>
+<tr><td class="cat">一般检查</td><td>一般检查A</td><td class="c yes">√</td><td class="c no">—</td><td class="note">无需空腹采血</td></tr>
+<tr><td class="cat">一般检查</td><td>人体成分分析（成人）</td><td class="c yes">√</td><td class="c no">—</td><td class="note">无需空腹采血</td></tr>
+<tr><td class="cat">一般检查</td><td>血常规(五分类)</td><td class="c yes">√</td><td class="c no">—</td><td class="note">无需空腹采血</td></tr>
+<tr><td class="cat">一般检查</td><td>尿常规</td><td class="c yes">√</td><td class="c no">—</td><td class="note">无需空腹采血</td></tr>
+<tr><td class="cat">一般检查</td><td>肝功十三项</td><td class="c yes">√</td><td class="c no">—</td><td class="note">空腹采血</td></tr>
+<tr><td class="cat">一般检查</td><td>肾功三项</td><td class="c yes">√</td><td class="c no">—</td><td class="note">空腹采血</td></tr>
+<tr><td class="cat">一般检查</td><td>空腹血糖(FBG)</td><td class="c yes">√</td><td class="c no">—</td><td class="note">空腹采血</td></tr>
+<tr><td class="cat">一般检查</td><td>胰岛素(INS)</td><td class="c yes">√</td><td class="c no">—</td><td class="note">空腹采血</td></tr>
+<tr><td class="cat">一般检查</td><td>血脂四项</td><td class="c yes">√</td><td class="c no">—</td><td class="note">空腹采血</td></tr>
+<tr><td class="cat">专项检查</td><td>壳佑测-壳多糖酶3样蛋白1检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="note">无需空腹采血</td></tr>
+<tr><td class="cat">专项检查</td><td>人细胞角蛋白18片段（CK18-M30+M65）早期肝细胞受损检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="note">无需空腹采血</td></tr>
+<tr><td class="cat">专项检查</td><td>福波看-脂肪肝及肝纤维化定量检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="note">空腹 &gt; 3小时</td></tr>
+<tr><td class="cat">个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class="note">/</td></tr>
+<tr><td class="cat">一对一报告解读</td><td colspan="3" class="note">提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td></td></tr>
+<tr class="mkt"><td colspan="2">市场价（以国宾普区为准）</td><td class="c">1,472</td><td class="c">820</td><td></td></tr>
+<tr class="sale"><td colspan="2">销售价</td><td class="c">516</td><td class="c">287</td><td></td></tr>
+</tbody></table></div>
+    <div class="clinic-board">
+      <div class="clinic-pair">
+        <table>
+          <thead><tr><th>城市</th><th class="n">落地分院数量</th></tr></thead>
+          <tbody>
+            <tr><td>北京</td><td class="n">18</td></tr>
+            <tr><td>上海</td><td class="n">9</td></tr>
+            <tr><td>成都</td><td class="n">8</td></tr>
+            <tr><td>广州</td><td class="n">6</td></tr>
+            <tr><td>南京</td><td class="n">6</td></tr>
+            <tr><td>深圳</td><td class="n">6</td></tr>
+            <tr><td>杭州</td><td class="n">6</td></tr>
+            <tr><td>苏州</td><td class="n">5</td></tr>
+            <tr><td>武汉</td><td class="n">5</td></tr>
+            <tr><td>天津</td><td class="n">4</td></tr>
+            <tr><td>重庆</td><td class="n">4</td></tr>
+            <tr><td>佛山</td><td class="n">3</td></tr>
+            <tr><td>贵阳</td><td class="n">3</td></tr>
+            <tr><td>西安</td><td class="n">3</td></tr>
+            <tr><td>烟台</td><td class="n">3</td></tr>
+            <tr><td>长沙</td><td class="n">3</td></tr>
+            <tr><td>常州</td><td class="n">2</td></tr>
+            <tr><td>东莞</td><td class="n">2</td></tr>
+            <tr><td>福州</td><td class="n">2</td></tr>
+            <tr><td>合肥</td><td class="n">2</td></tr>
+            <tr><td>济南</td><td class="n">2</td></tr>
+            <tr><td>宁波</td><td class="n">2</td></tr>
+            <tr><td>青岛</td><td class="n">2</td></tr>
+            <tr><td>潍坊</td><td class="n">2</td></tr>
+          </tbody>
+        </table>
+        <table>
+          <thead><tr><th>城市</th><th class="n">落地分院数量</th></tr></thead>
+          <tbody>
+            <tr><td>无锡</td><td class="n">2</td></tr>
+            <tr><td>银川</td><td class="n">2</td></tr>
+            <tr><td>郑州</td><td class="n">2</td></tr>
+            <tr><td>毕节</td><td class="n">1</td></tr>
+            <tr><td>六盘水</td><td class="n">1</td></tr>
+            <tr><td>南昌</td><td class="n">1</td></tr>
+            <tr><td>南通</td><td class="n">1</td></tr>
+            <tr><td>沈阳</td><td class="n">1</td></tr>
+            <tr><td>泰州</td><td class="n">1</td></tr>
+            <tr><td>威海</td><td class="n">1</td></tr>
+            <tr><td>温州</td><td class="n">1</td></tr>
+            <tr><td>孝感</td><td class="n">1</td></tr>
+            <tr><td>兴义</td><td class="n">1</td></tr>
+            <tr><td>长春</td><td class="n">1</td></tr>
+            <tr><td>镇江</td><td class="n">1</td></tr>
+            <tr><td>株洲</td><td class="n">1</td></tr>
+            <tr><td>遵义</td><td class="n">1</td></tr>
+            <tr><td>大连</td><td class="n">1</td></tr>
+            <tr><td>海口</td><td class="n">1</td></tr>
+            <tr><td>呼和浩特</td><td class="n">1</td></tr>
+            <tr><td>惠州</td><td class="n">1</td></tr>
+            <tr><td>江阴</td><td class="n">1</td></tr>
+            <tr><td>石家庄</td><td class="n">1</td></tr>
+            <tr><td>太原</td><td class="n">1</td></tr>
+            <tr><td>徐州</td><td class="n">1</td></tr>
+            <tr><td>宜昌</td><td class="n">1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cityfoot">落地分院：共计137家分院</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide" data-title="爱康优势">
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>爱康优势</span><b>21</b><span>/ 28</span></div>
+    <div class="pager"><span>爱康优势</span><b>22</b><span>/ 29</span></div>
   </header>
   <h2>爱康优势</h2>
   <p class="lead aimatrix-lead">爱康引入肿瘤液体活检技术，并打造 Ai 健康筛查矩阵，希望通过颠覆性诊断技术的引进以及 AI 的深度赋能，让疾病在更早期被发现、更早期被干预，从而达到更好的预后效果。方案依托爱康两大服务矩阵，为阿里健康用户设计深度医疗检测服务。</p>
@@ -1513,7 +1633,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>陪诊</span><b>22</b><span>/ 28</span></div>
+    <div class="pager"><span>陪诊</span><b>23</b><span>/ 29</span></div>
   </header>
   <h2>家庭健康卡——陪诊服务</h2>
   <div class="escort escort-inhouse">
@@ -1541,7 +1661,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>健康日</span><b>23</b><span>/ 28</span></div>
+    <div class="pager"><span>健康日</span><b>24</b><span>/ 29</span></div>
   </header>
   <h2>家庭健康卡——健康日</h2>
   <p class="lead">示例：脑健康主题。每周二下午，子女线上下单后父母到店，完成「讲座 + 专项体检 + 报告解读 + 医生咨询」半日闭环。50 人起场。</p>
@@ -1577,7 +1697,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>权益</span><b>24</b><span>/ 28</span></div>
+    <div class="pager"><span>权益</span><b>25</b><span>/ 29</span></div>
   </header>
   <h2>合作模式探讨 · 权益卡（讨论部分）</h2>
   
@@ -1618,7 +1738,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>按需</span><b>25</b><span>/ 28</span></div>
+    <div class="pager"><span>按需</span><b>26</b><span>/ 29</span></div>
   </header>
   <h2>合作模式探讨 · 按需结算（讨论部分）</h2>
   
@@ -1655,7 +1775,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>城市</span><b>26</b><span>/ 28</span></div>
+    <div class="pager"><span>城市</span><b>27</b><span>/ 29</span></div>
   </header>
   <h2>首批开放城市建议（讨论部分）</h2>
   <div class="discuss-body">
@@ -1670,16 +1790,16 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     <div class="cmap">
       <div class="mapbox">
         <img class="map" src="images/china.svg" alt="中国地图">
-        <span class="mpin up" style="left:68.42%;top:44.22%"><b>北京</b></span>
-        <span class="mpin up" style="left:69.85%;top:46.65%"><b>天津</b></span>
-        <span class="mpin" style="left:74.75%;top:63.35%"><b>南京</b></span>
-        <span class="mpin down" style="left:76.05%;top:65.55%"><b>苏州</b></span>
-        <span class="mpin" style="left:75.92%;top:66.22%"><b>上海</b></span>
-        <span class="mpin down" style="left:73.97%;top:68.51%"><b>杭州</b></span>
-        <span class="mpin left" style="left:63.76%;top:84.74%"><b>广州</b></span>
-        <span class="mpin down" style="left:64.94%;top:86.00%"><b>深圳</b></span>
-        <span class="mpin up" style="left:53.82%;top:70.19%"><b>重庆</b></span>
-        <span class="mpin left" style="left:51.45%;top:67.85%"><b>成都</b></span>
+        <span class="mpin bj" style="left:68.42%;top:44.22%"><b>北京</b></span>
+        <span class="mpin tj" style="left:69.85%;top:46.65%"><b>天津</b></span>
+        <span class="mpin nj" style="left:74.75%;top:63.35%"><b>南京</b></span>
+        <span class="mpin su" style="left:76.05%;top:65.55%"><b>苏州</b></span>
+        <span class="mpin sh" style="left:75.92%;top:66.22%"><b>上海</b></span>
+        <span class="mpin hz" style="left:73.97%;top:68.51%"><b>杭州</b></span>
+        <span class="mpin gz" style="left:63.76%;top:84.74%"><b>广州</b></span>
+        <span class="mpin szn" style="left:64.94%;top:86.00%"><b>深圳</b></span>
+        <span class="mpin cq" style="left:53.82%;top:70.19%"><b>重庆</b></span>
+        <span class="mpin cd" style="left:51.45%;top:67.85%"><b>成都</b></span>
       </div>
     </div>
     
@@ -1704,7 +1824,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>人文</span><b>27</b><span>/ 28</span></div>
+    <div class="pager"><span>人文</span><b>28</b><span>/ 29</span></div>
   </header>
   <h2>人文关怀（讨论部分）</h2>
   <div class="discuss-body">
@@ -1723,7 +1843,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   <div class="bar"></div>
   <header class="top">
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
-    <div class="pager"><span>指标</span><b>28</b><span>/ 28</span></div>
+    <div class="pager"><span>指标</span><b>29</b><span>/ 29</span></div>
   </header>
   <h2>项目关键指标（讨论部分）</h2>
   <p class="lead">先跑通链路，再扩城扩店。</p>
@@ -1751,8 +1871,8 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 <div class="hint" id="hint">方向键左右换页 · 右侧页签即目录</div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];
-const SHORT=['封面','设计思路','痛点分析','竞品分析','方案总览','年度体检','专项总览','记忆评估','中风评估','关节评估','冠脉评估','胃部评估','肠道评估','胰腺评估','乳腺评估','卵巢评估','结节评估','长寿评估','营养评估','核磁专项','爱康优势','陪诊服务','健康日','权益探讨','按需探讨','开放城市','人文关怀','关键指标'];
-const MARK={'脑健康 · 记忆力评估':'忆','脑健康 · 中风风险评估':'脉','骨健康 · 骨关节评估':'骨','心脏健康 · 冠脉血管评估':'心','消化健康 · 胃部评估':'胃','消化健康 · 肠道评估':'肠','消化健康 · 胰腺评估':'胰','她健康 · 乳腺评估':'乳','她健康 · 卵巢评估':'巢','肺健康 · 结节评估':'肺','长寿评估':'寿','营养代谢评估':'营','核磁专项（讨论部分）':'磁','爱康优势':'优'};
+const SHORT=['封面','设计思路','痛点分析','竞品分析','方案总览','年度体检','专项总览','记忆评估','中风评估','关节评估','冠脉评估','胃部评估','肠道评估','胰腺评估','乳腺评估','卵巢评估','结节评估','长寿评估','营养评估','核磁专项','GLP-1专项','爱康优势','陪诊服务','健康日','权益探讨','按需探讨','开放城市','人文关怀','关键指标'];
+const MARK={'脑健康 · 记忆力评估':'忆','脑健康 · 中风风险评估':'脉','骨健康 · 骨关节评估':'骨','心脏健康 · 冠脉血管评估':'心','消化健康 · 胃部评估':'胃','消化健康 · 肠道评估':'肠','消化健康 · 胰腺评估':'胰','她健康 · 乳腺评估':'乳','她健康 · 卵巢评估':'巢','肺健康 · 结节评估':'肺','长寿评估':'寿','营养代谢评估':'营','核磁专项（讨论部分）':'磁','GLP-1逆转脂肪肝疗效及副作用评估':'脂','爱康优势':'优'};
 function mix(a,b,t){
   const n=s=>parseInt(s,16);
   const c=i=>Math.round(n(a.slice(i,i+2))+(n(b.slice(i,i+2))-n(a.slice(i,i+2)))*t).toString(16).padStart(2,'0');
@@ -1987,7 +2107,20 @@ function fitSlide(s){
         applyTableScale(table,tblScroll,scale);
       }
     };
-    requestAnimationFrame(()=>{ fitLeafletTable(); requestAnimationFrame(fitLeafletTable); });
+    const fitClinic=()=>{
+      const board=s.querySelector('.clinic-board');
+      if(!board) return;
+      board.style.zoom='';
+      const footPad=mqMobile.matches?52:42;
+      const limit=s.getBoundingClientRect().bottom-footPad;
+      const bottom=board.getBoundingClientRect().bottom;
+      if(bottom<=limit+1) return;
+      const avail=Math.max(48, limit-board.getBoundingClientRect().top);
+      const natural=board.offsetHeight;
+      if(!natural) return;
+      board.style.zoom=Math.min(1, avail/natural).toFixed(4);
+    };
+    requestAnimationFrame(()=>{ fitLeafletTable(); fitClinic(); requestAnimationFrame(()=>{ fitLeafletTable(); fitClinic(); }); });
     return;
   }
   /* 与第 26 页一致：讨论区用 flex 铺满，不做整页 scale（scale 会造成「左右留白变大、像缩小一圈」） */
@@ -2043,16 +2176,25 @@ document.addEventListener('keydown',e=>{
   if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(i-1)}
 });
 const stage=document.getElementById('stage');
-let x0=null,y0=null;
+let x0=null,y0=null,textSelecting=false;
+stage.addEventListener('selectstart',()=>{ textSelecting=true; });
 stage.addEventListener('pointerdown',e=>{
+  textSelecting=false;
   if(e.target.closest('button,a,.tbl-scroll')) return;
   x0=e.clientX; y0=e.clientY;
 });
 stage.addEventListener('pointerup',e=>{
   if(x0==null) return;
   const dx=e.clientX-x0, dy=e.clientY-y0;
-  if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.2) show(i+(dx<0?1:-1));
   x0=y0=null;
+  const picked=textSelecting;
+  textSelecting=false;
+  requestAnimationFrame(()=>{
+    const sel=window.getSelection();
+    const hasSel=picked || (sel && !sel.isCollapsed && sel.toString().trim());
+    if(hasSel) return;
+    if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.2) show(i+(dx<0?1:-1));
+  });
 });
 document.querySelectorAll('.tile[data-go], .themes button[data-go]').forEach(el=>el.addEventListener('click',()=>show(+el.dataset.go)));
 document.querySelectorAll('.poster').forEach(el=>{
