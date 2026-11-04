@@ -395,13 +395,40 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .gcard{background:#fff;border-radius:16px;padding:12px 14px 10px;box-shadow:0 8px 20px rgba(29,80,162,.06)}
 .ghead{display:flex;align-items:center;margin-bottom:8px}
 .gcard h3{margin:0;font-size:17px;font-weight:800;color:#1A1A1A}
-.gtickets{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 10px}
-.gtickets div{background:#fff;border:1px solid #F3D7B0;border-radius:10px;padding:7px 8px 6px;text-align:center}
-.gtickets em{display:block;font-style:normal;font-size:13px;color:#8A8178;font-weight:650}
-.gtickets b{display:block;margin-top:1px;font-size:26px;line-height:1.05;color:#B0551F;font-weight:800}
-.gtickets small{margin-left:2px;font-size:13px;font-weight:700}
-.gtickets .sale{display:block;margin-top:4px;padding-top:4px;border-top:1px solid #F6E7D4;font-size:12px;line-height:1.2;color:#8A8178;font-weight:650}
-.gtickets .sale b{display:inline;margin:0 0 0 3px;font-size:16px;line-height:1;color:#B0551F;font-weight:800}
+.gsex-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:8px;border:1px solid #F3D7B0;border-radius:12px;background:#fff}
+.gsex-col{display:flex;flex-direction:column;min-width:0}
+.gsex{display:block;text-align:center;font-style:normal;font-size:13px;color:#8A8178;font-weight:750;margin:0 0 4px;line-height:1.2}
+.gticket{background:#fff;border:1px solid #F3D7B0;border-radius:10px;padding:7px 8px 6px;text-align:center;min-width:0}
+.gticket>.price{display:block;margin-top:0;font-size:22px;line-height:1.05;color:#B0551F;font-weight:800}
+.gticket>.price small{margin-left:2px;font-size:12px;font-weight:700}
+.gticket>.sale{display:block;margin-top:4px;padding-top:4px;border-top:1px solid #F6E7D4;font-size:12px;line-height:1.2;color:#8A8178;font-weight:650}
+.gticket>.sale b{display:inline;margin:0 0 0 3px;font-size:16px;line-height:1;color:#B0551F;font-weight:800}
+.gticket .gpack-core{margin-top:4px;padding-top:5px;border-top:1px solid #F6E7D4;text-align:left}
+.gticket .gpack-core p{margin:0 0 4px;font-size:11px;line-height:1.32;color:#3A342E}
+.gticket .gpack-core p:last-child{margin-bottom:0}
+.gticket .gpack-core b{display:block;margin:0 0 1px;font-size:11px;font-weight:800;color:#1D50A2;line-height:1.25}
+.gticket .gpack-core span{display:block;font-weight:500;color:#3A342E}
+.gpack-span{grid-column:1 / -1;margin-top:6px;padding:6px 10px 6px;border:1px solid #F3D7B0;border-radius:10px;background:#fff}
+.gpack-span .addon-line{display:flex;align-items:baseline;justify-content:center;gap:6px;flex-wrap:wrap;text-align:center}
+.gpack-span .addon-line b{font-size:12px;font-weight:800;color:#C2410C;line-height:1.3}
+.gpack-span .addon-line small{font-size:11px;font-weight:650;color:#C2410C;line-height:1.3}
+.gpack-span>.sale{display:block;text-align:center;margin-top:4px;padding-top:3px;border-top:1px solid #F6E7D4;font-size:12px;line-height:1.2;color:#8A8178;font-weight:650}
+.gpack-span>.sale b{display:inline;margin:0 0 0 3px;font-size:15px;line-height:1;color:#B0551F;font-weight:800}
+.gpack-span .pack-body{margin:4px 0 0;font-size:10.5px;line-height:1.35;color:#3A342E;font-weight:500;text-align:left}
+.slide[data-title="年度体检"]{padding-bottom:72px}
+.slide[data-title="年度体检"] .exam-body{display:flex;flex-direction:column;flex:1;min-height:0;width:100%;overflow:visible}
+.slide[data-title="年度体检"] .exam-body>h2{margin-bottom:6px}
+.slide[data-title="年度体检"] .exam-fuse{margin:0 0 6px;padding:8px 12px 8px 14px}
+.slide[data-title="年度体检"] .twoguard{flex:none;gap:8px;justify-content:flex-start;overflow:visible}
+.slide[data-title="年度体检"] .guard{display:flex;flex-direction:column;overflow:visible}
+.slide[data-title="年度体检"] .gcard{overflow:visible;display:flex;flex-direction:column;padding:8px 10px 8px}
+.slide[data-title="年度体检"] .ghead{margin-bottom:4px}
+.slide[data-title="年度体检"] .gcard h3{font-size:15px}
+.slide[data-title="年度体检"] .gticket{overflow:visible}
+.slide[data-title="年度体检"] .guard-foot{flex:none;margin-top:14px;padding-top:0}
+.slide[data-title="年度体检"] .perks{flex:none;min-height:auto;gap:8px}
+.slide[data-title="年度体检"] .perks span{padding:8px 6px;font-size:14px;gap:4px}
+.slide[data-title="年度体检"] .perks svg{width:22px;height:22px}
 .gcard ul{margin:0;padding:0;list-style:none}
 .gcard li{display:flex;gap:6px;align-items:flex-start;font-size:14px;line-height:1.45;margin:0 0 6px;color:#3A342E}
 .gcard li svg{width:15px;height:15px;flex:none;margin-top:2px;color:#F07A1A}
@@ -820,8 +847,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   </header>
   <h2>设计思路</h2>
   <div class="cardflow-body">
-    <p class="cardflow-intro">阿里健康按卡采购，用户到店完成卡内项目。需要进一步检查或诊疗时，再由用户自愿选择加做。
-</p>
+    <p class="cardflow-intro">阿里健康按卡采购，用户到店完成卡内项目。需要进一步检查或诊疗时，再由用户自愿选择加做。</p>
     <div class="cardflow">
       <article>
         <span class="no">01</span>
@@ -935,6 +961,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
     <img class="logo" src="images/logo-mark.png" alt="iKang 爱康">
     <div class="pager"><span>年度体检</span><b>06</b><span>/ 28</span></div>
   </header>
+  <div class="exam-body">
   <h2>年度体检</h2>
   <p class="lead exam-fuse">每套体检均含一对一陪检与深度报告解读，支持标准预约与线下服务，检后复查指引、用药指导与就医协助。</p>
   <div class="twoguard">
@@ -943,23 +970,19 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
       <div class="guard-cards">
         <div class="gcard">
           <div class="ghead"><h3>肿瘤深度筛查体检卡</h3></div>
-          <div class="gtickets"><div><em>男</em><b><small>销售价</small>791</b><span class="sale">市价<b>2260<small>起</small></b></span></div><div><em>女</em><b><small>销售价</small>917</b><span class="sale">市场价<b>2461<small>起</small></b></span></div></div>
-          <ul class="gsecs">
-            <li><b>基础检查</b><span>常规检查，肝肾功、血糖血脂、心电图、幽门螺杆菌</span></li>
-            <li><b>宫颈癌早筛</b><span>女性含 HPV 27 分型 + 宫颈 TCT</span></li>
-            <li><b>肿瘤影像筛查</b><span>腹部 / 甲状腺彩超、胸部 CT；女性含子宫、附件彩超</span></li>
-            <li><b>肿瘤分子早筛</b><span>食管癌-艾思宁；肺癌-抗体七项自身抗体；胃癌-卫益检多基因甲基化检测；胰腺癌-逸力嘉microRNA检测；肠癌-Septin9基因甲基化检测；泌尿系统肿瘤-艾光乐尿液脱落细胞甲基化；肝癌-甘预、甘欣安液体活检；宫颈癌-宫颈癌甲基化检测；卵巢癌-泌思优外泌体检测<b><small>（套餐内不含，自选加购）</small></b></span></li>
-          </ul>
+          <div class="gsex-row">
+            <div class="gsex-col"><em class="gsex">男</em><div class="gticket"><b class="price"><small>销售价</small>791</b><span class="sale">市场价<b>2260<small>起</small></b></span><div class="gpack-core"><p><b>基础检查</b><span>常规检查，肝肾功、血糖血脂、心电图、幽门螺杆菌</span></p><p><b>宫颈癌早筛</b><span>—</span></p><p><b>肿瘤影像筛查</b><span>腹部 / 甲状腺彩超、胸部 CT</span></p></div></div></div>
+            <div class="gsex-col"><em class="gsex">女</em><div class="gticket"><b class="price"><small>销售价</small>917</b><span class="sale">市场价<b>2461<small>起</small></b></span><div class="gpack-core"><p><b>基础检查</b><span>常规检查，肝肾功、血糖血脂、心电图、幽门螺杆菌</span></p><p><b>宫颈癌早筛</b><span>女性含 HPV 27 分型 + 宫颈 TCT</span></p><p><b>肿瘤影像筛查</b><span>腹部 / 甲状腺彩超、胸部 CT；女性含子宫、附件彩超</span></p></div></div></div>
+            <div class="gpack-span"><div class="addon-line"><b>肿瘤分子早筛</b><small>（套餐内不含，自选加购）</small></div><span class="sale">市场价<b>12678</b></span><p class="pack-body">食管癌-艾思宁；肺癌-抗体七项自身抗体；胃癌-卫益检多基因甲基化检测；胰腺癌-逸力嘉 microRNA 检测；肠癌-Septin9 基因甲基化检测；泌尿系统肿瘤-艾光乐尿液脱落细胞甲基化；肝癌-甘预、甘欣安液体活检；宫颈癌-宫颈癌甲基化检测；卵巢癌-泌思优外泌体检测</p></div>
+          </div>
         </div>
         <div class="gcard">
           <div class="ghead"><h3>心脑血管深度筛查体检卡</h3></div>
-          <div class="gtickets"><div><em>男</em><b><small>销售价</small>1257</b><span class="sale">市场价<b>3591<small>起</small></b></span></div><div><em>女</em><b><small>销售价</small>1257</b><span class="sale">市场价<b>3591<small>起</small></b></span></div></div>
-          <ul class="gsecs">
-            <li><b>基础检查</b><span>常规检查，腹部 / 甲状腺彩超、甲胎蛋白与癌胚抗原</span></li>
-            <li><b>心脑血管及代谢</b><span>心脏超声、颈动脉超声、胸部 CT、冠脉钙化积分</span></li>
-            <li><b>血管炎症分析</b><span>心无忧、低密度脂蛋白亚分型、超敏 C 反应蛋白</span></li>
-            <li><b>AI 影像深度筛查</b><span>心脏血管深度评估——冠脉CTA；颅脑血管深度评估——颅脑MRI+MRA<b><small>（套餐内不含，自选加购）</small></b></span></li>
-          </ul>
+          <div class="gsex-row">
+            <div class="gsex-col"><em class="gsex">男</em><div class="gticket"><b class="price"><small>销售价</small>1257</b><span class="sale">市场价<b>3591<small>起</small></b></span><div class="gpack-core"><p><b>基础检查</b><span>常规检查，腹部 / 甲状腺彩超、甲胎蛋白与癌胚抗原</span></p><p><b>心脑血管及代谢</b><span>心脏超声、颈动脉超声、胸部 CT、冠脉钙化积分</span></p><p><b>血管炎症分析</b><span>心无忧、低密度脂蛋白亚分型、超敏 C 反应蛋白</span></p></div></div></div>
+            <div class="gsex-col"><em class="gsex">女</em><div class="gticket"><b class="price"><small>销售价</small>1257</b><span class="sale">市场价<b>3591<small>起</small></b></span><div class="gpack-core"><p><b>基础检查</b><span>常规检查，腹部 / 甲状腺彩超、甲胎蛋白与癌胚抗原</span></p><p><b>心脑血管及代谢</b><span>心脏超声、颈动脉超声、胸部 CT、冠脉钙化积分</span></p><p><b>血管炎症分析</b><span>心无忧、低密度脂蛋白亚分型、超敏 C 反应蛋白</span></p></div></div></div>
+            <div class="gpack-span"><div class="addon-line"><b>AI 影像深度筛查</b><small>（套餐内不含，自选加购）</small></div><span class="sale">市场价<b>6760</b></span><p class="pack-body">心脏血管深度评估——冠脉 CTA；颅脑血管深度评估——颅脑 MRI+MRA</p></div>
+          </div>
         </div>
       </div>
     </article>
@@ -971,6 +994,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
         <span><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2.5v11M3.5 6.5h9"/></svg>就医协助</span>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -1967,13 +1991,16 @@ function fitSlide(s){
     return;
   }
   /* 与第 26 页一致：讨论区用 flex 铺满，不做整页 scale（scale 会造成「左右留白变大、像缩小一圈」） */
-  if(s.querySelector('.discuss-body')){
+  if(s.querySelector('.discuss-body, .exam-body')){
     sheet.style.transform='none';
     sheet.style.flex='1 1 auto';
-    sheet.style.height='100%';
+    const exam=!!s.querySelector('.exam-body');
+    sheet.style.height=exam?'auto':'100%';
     sheet.style.minHeight='0';
+    sheet.style.maxHeight=exam?'none':'100%';
     sheet.style.display='flex';
     sheet.style.flexDirection='column';
+    sheet.style.overflow=exam?'visible':'hidden';
     return;
   }
   sheet.style.height='auto';
