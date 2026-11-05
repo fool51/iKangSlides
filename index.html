@@ -415,6 +415,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .gticket>.sale{display:block;margin-top:4px;padding-top:4px;border-top:1px solid #F6E7D4;font-size:12px;line-height:1.2;color:#8A8178;font-weight:650}
 .gticket>.sale b{display:inline;margin:0 0 0 3px;font-size:16px;line-height:1;color:#B0551F;font-weight:800}
 .gticket .gpack-core{margin-top:4px;padding-top:5px;border-top:1px solid #F6E7D4;text-align:left}
+.gticket .gpack-core:first-child{margin-top:0;padding-top:0;border-top:0}
 .gticket .gpack-core p{margin:0 0 4px;font-size:11px;line-height:1.32;color:#3A342E}
 .gticket .gpack-core p:last-child{margin-bottom:0}
 .gticket .gpack-core b{display:block;margin:0 0 1px;font-size:11px;font-weight:800;color:#1D50A2;line-height:1.25}
@@ -442,7 +443,13 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
 .slide[data-title="年度体检"] .guard{display:flex;flex-direction:column;overflow:visible}
 .slide[data-title="年度体检"] .gcard{overflow:visible;display:flex;flex-direction:column;padding:8px 10px 8px}
 .slide[data-title="年度体检"] .ghead{margin-bottom:4px}
-.slide[data-title="年度体检"] .gcard h3{font-size:15px}
+.slide[data-title="年度体检"] .gcard h3{font-size:16px}
+.slide[data-title="年度体检"] .gsex{font-size:14px}
+.slide[data-title="年度体检"] .gticket .gpack-core p{font-size:12px;line-height:1.38;margin-bottom:5px}
+.slide[data-title="年度体检"] .gticket .gpack-core b{font-size:12px;line-height:1.3}
+.slide[data-title="年度体检"] .gpack-span .addon-line b{font-size:13px}
+.slide[data-title="年度体检"] .gpack-span .addon-line small{font-size:12px}
+.slide[data-title="年度体检"] .gpack-span .pack-body{font-size:11.5px;line-height:1.42}
 .slide[data-title="年度体检"] .gticket{overflow:visible}
 .slide[data-title="年度体检"] .guard-foot{flex:none;margin-top:14px;padding-top:0}
 .slide[data-title="年度体检"] .perks{flex:none;min-height:auto;gap:8px}
@@ -1044,20 +1051,20 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
         <div class="gcard">
           <div class="ghead"><h3>肿瘤深度筛查体检卡</h3></div>
           <div class="gsex-row">
-            <div class="gsex-col"><em class="gsex">男</em><div class="gticket"><b class="price"><small>销售价</small>791</b><span class="sale">市场价<b>2260<small>起</small></b></span><div class="gpack-core"><p><b>基础检查</b><span>常规检查，肝肾功、血糖血脂、心电图、幽门螺杆菌</span></p><p><b>宫颈癌早筛</b><span>—</span></p><p><b>肿瘤影像筛查</b><span>腹部 / 甲状腺彩超、胸部 CT</span></p></div></div></div>
-            <div class="gsex-col"><em class="gsex">女</em><div class="gticket"><b class="price"><small>销售价</small>917</b><span class="sale">市场价<b>2461<small>起</small></b></span><div class="gpack-core"><p><b>基础检查</b><span>常规检查，肝肾功、血糖血脂、心电图、幽门螺杆菌</span></p><p><b>宫颈癌早筛</b><span>女性含 HPV 27 分型 + 宫颈 TCT</span></p><p><b>肿瘤影像筛查</b><span>腹部 / 甲状腺彩超、胸部 CT；女性含子宫、附件彩超</span></p></div></div></div>
+            <div class="gsex-col"><em class="gsex">男</em><div class="gticket"><div class="gpack-core"><p><b>基础检查</b><span>常规检查，肝肾功、血糖血脂、心电图、幽门螺杆菌</span></p><p><b>宫颈癌早筛</b><span>—</span></p><p><b>肿瘤影像筛查</b><span>腹部 / 甲状腺彩超、胸部 CT</span></p></div></div></div>
+            <div class="gsex-col"><em class="gsex">女</em><div class="gticket"><div class="gpack-core"><p><b>基础检查</b><span>常规检查，肝肾功、血糖血脂、心电图、幽门螺杆菌</span></p><p><b>宫颈癌早筛</b><span>女性含 HPV 27 分型 + 宫颈 TCT</span></p><p><b>肿瘤影像筛查</b><span>腹部 / 甲状腺彩超、胸部 CT；女性含子宫、附件彩超</span></p></div></div></div>
             <div class="gpack-span"><div class="addon-line"><b>肿瘤分子早筛</b><small>（套餐内不含，自选加购）</small></div>
-            <!--<span class="sale">市场价<b>12678</b></span>-->
+            
             <p class="pack-body">食管癌-艾思宁；肺癌-抗体七项自身抗体；胃癌-卫益检多基因甲基化检测；胰腺癌-逸力嘉 microRNA 检测；肠癌-Septin9 基因甲基化检测；泌尿系统肿瘤-艾光乐尿液脱落细胞甲基化；肝癌-甘预、甘欣安液体活检；宫颈癌-宫颈癌甲基化检测；卵巢癌-泌思优外泌体检测</p></div>
           </div>
         </div>
         <div class="gcard">
           <div class="ghead"><h3>心脑血管深度筛查体检卡</h3></div>
           <div class="gsex-row">
-            <div class="gsex-col"><em class="gsex">男</em><div class="gticket"><b class="price"><small>销售价</small>1266</b><span class="sale">市场价<b>3591<small>起</small></b></span><div class="gpack-core"><p><b>基础检查</b><span>常规检查，腹部 / 甲状腺彩超、甲胎蛋白与癌胚抗原</span></p><p><b>心脑血管及代谢</b><span>心脏超声、颈动脉超声、胸部 CT、冠脉钙化积分</span></p><p><b>血管炎症分析</b><span>心无忧、低密度脂蛋白亚分型、超敏 C 反应蛋白</span></p></div></div></div>
-            <div class="gsex-col"><em class="gsex">女</em><div class="gticket"><b class="price"><small>销售价</small>1266</b><span class="sale">市场价<b>3591<small>起</small></b></span><div class="gpack-core"><p><b>基础检查</b><span>常规检查，腹部 / 甲状腺彩超、甲胎蛋白与癌胚抗原</span></p><p><b>心脑血管及代谢</b><span>心脏超声、颈动脉超声、胸部 CT、冠脉钙化积分</span></p><p><b>血管炎症分析</b><span>心无忧、低密度脂蛋白亚分型、超敏 C 反应蛋白</span></p></div></div></div>
+            <div class="gsex-col"><em class="gsex">男</em><div class="gticket"><div class="gpack-core"><p><b>基础检查</b><span>常规检查，腹部 / 甲状腺彩超、甲胎蛋白与癌胚抗原</span></p><p><b>心脑血管及代谢</b><span>心脏超声、颈动脉超声、胸部 CT、冠脉钙化积分</span></p><p><b>血管炎症分析</b><span>心无忧、低密度脂蛋白亚分型、超敏 C 反应蛋白</span></p></div></div></div>
+            <div class="gsex-col"><em class="gsex">女</em><div class="gticket"><div class="gpack-core"><p><b>基础检查</b><span>常规检查，腹部 / 甲状腺彩超、甲胎蛋白与癌胚抗原</span></p><p><b>心脑血管及代谢</b><span>心脏超声、颈动脉超声、胸部 CT、冠脉钙化积分</span></p><p><b>血管炎症分析</b><span>心无忧、低密度脂蛋白亚分型、超敏 C 反应蛋白</span></p></div></div></div>
             <div class="gpack-span"><div class="addon-line"><b>AI 影像深度筛查</b><small>（套餐内不含，自选加购）</small></div>
-            <!--<span class="sale">市场价<b>6760</b></span>-->
+            
             <list><p class="pack-body">心脏血管深度评估——冠脉 CTA；</p></list> <list><p class="pack-body">颅脑血管深度评估——颅脑 MRI+MRA </p></list></div>
           </div>
         </div>
@@ -1102,7 +1109,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>遗传风险评估</td><td>APOE（阿尔茨海默遗传风险）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Aβ 蛋白 40/42</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Tau217</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基因分子评估</td><td>microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>350</td><td class='c'>1,870</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>145</td><td class='c'>737</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>遗传风险评估</td><td>APOE（阿尔茨海默遗传风险）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Aβ 蛋白 40/42</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Tau217</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基因分子评估</td><td>microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1137,11 +1144,11 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>血管损伤因子评估</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
 <tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
 <tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
-<tr><td class='cat'>大型设备检查</td><td>颅脑 MRI 检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
+<tr><td class='cat'>大型设备检查</td><td>颅脑 MRI 检查</td><td colspan="2" class='note'>按需加购</td><td></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>998</td><td class='c'>1,733</td><td></td></tr>
-<tr class='sale'><td colspan='2'>销售价</td><td class='c'>417</td><td class='c'>675</td><td></td></tr></tbody></table>
+
+</tbody></table>
       
     </div>
     <aside class="side">
@@ -1179,11 +1186,11 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>联合指标溯源</td><td>骨密度检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 左膝关节+右膝关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 髋关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>大型设备深度检测</td><td>关节 MRI 检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
+<tr><td class='cat'>大型设备深度检测</td><td>关节 MRI 检查</td><td colspan="2" class='note'>按需加购</td><td></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class='mkt'><td colspan='2'>市场价（以国宾普区价格为准）</td><td class='c'>842</td><td class='c'>1,164</td><td></td></tr>
-<tr class='sale'><td colspan='2'>销售价</td><td class='c'>335</td><td class='c'>448</td><td></td></tr></tbody></table>
+
+</tbody></table>
       
     </div>
     <aside class="side">
@@ -1222,8 +1229,8 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>AI 辅助检查</td><td>心安诊 · 冠脉钙化积分评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT 需要加做 CT 检查</td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>796</td><td class='c'>1,591</td><td></td></tr>
-<tr class='sale'><td colspan='2'>销售价</td><td class='c'>347</td><td class='c'>634</td><td></td></tr></tbody></table>
+
+</tbody></table>
       
     </div>
     <aside class="side">
@@ -1261,8 +1268,8 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>大型设备检查</td><td>磁控胶囊胃镜</td><td colspan="2" class='note'>按需升级</td><td></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>500</td><td class='c'>2,025</td><td></td></tr>
-<tr class='sale'><td colspan='2'>销售价</td><td class='c'>190</td><td class='c'>983</td><td></td></tr></tbody></table>
+
+</tbody></table>
       
     </div>
     <aside class="side">
@@ -1292,7 +1299,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     </div>
   </div>
   <div class="split fig">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>便常规</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>基础检测</td><td>必测 100</td><td class="c yes">√</td><td class="c no">—</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-bice100.jpg" alt="必测100产品海报"></span></span></td></tr><tr><td class='cat'>专项检查</td><td>常君策 · 肠道菌群检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>专项检查</td><td>肠道功能评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>无痛肠镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需升级，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>541</td><td class='c'>3,216</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>190</td><td class='c'>1,795</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>便常规</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>基础检测</td><td>必测 100</td><td class="c yes">√</td><td class="c no">—</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-bice100.jpg" alt="必测100产品海报"></span></span></td></tr><tr><td class='cat'>专项检查</td><td>常君策 · 肠道菌群检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>专项检查</td><td>肠道功能评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>无痛肠镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需升级</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1326,7 +1333,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     </div>
   </div>
   <div class="split fig">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/1.png" alt="逸力嘉产品海报：一次抽血，早期检测胰腺癌风险"></span></span></td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>558</td><td class='c'>1,558</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>196</td><td class='c'>694</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/1.png" alt="逸力嘉产品海报：一次抽血，早期检测胰腺癌风险"></span></span></td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需加购</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1360,7 +1367,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>乳腺彩超</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>基线检查</td><td>CA125</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>CA15-3</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>遗传风险评估</td><td>BRCA 基因检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>乳腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>市场价 1,526 元，不计入卡价</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr><tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>578</td><td class='c'>1,378</td><td></td></tr><tr class='sale'><td colspan='2'>销售价</td><td class='c'>203</td><td class='c'>483</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>乳腺彩超</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>基线检查</td><td>CA125</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>CA15-3</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>遗传风险评估</td><td>BRCA 基因检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>乳腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需加购</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1395,11 +1402,11 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>肿瘤风险外泌体评估</td><td>泌思优 · 卵巢癌外泌体检查</td><td class="c yes">√</td><td class="c yes">√</td></tr>
 <tr><td class='cat'>专项检测</td><td>类固醇激素分析</td><td class="c no">—</td><td class="c yes">√</td></tr>
 <tr><td class='cat'>专项检测</td><td>停经前/后荷尔蒙评估</td><td class="c no">—</td><td class="c yes">√</td></tr>
-<tr><td class='cat'>大型设备深度检测</td><td>盆腔磁共振检查</td><td colspan="2" class='note'>市场价：1526 元，按需加购</td><td></td></tr>
+<tr><td class='cat'>大型设备深度检测</td><td>盆腔磁共振检查</td><td colspan="2" class='note'>按需加购</td><td></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>1,205</td><td class='c'>6,045</td><td></td></tr>
-<tr class='sale'><td colspan='2'>销售价</td><td class='c'>422</td><td class='c'>3,326</td><td></td></tr></tbody></table>
+
+</tbody></table>
       
     </div>
     <aside class="side">
@@ -1436,8 +1443,8 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>专项检查</td><td>CPET（心肺运动试验）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>落地分院：爱康卓悦北京阜成门万通大厦分院、上海 WA 臻景医疗中心、爱康悦养功能医学中心</td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>728</td><td class='c'>3,600</td><td></td></tr>
-<tr class='sale'><td colspan='2'>销售价</td><td class='c'>255</td><td class='c'>1,560</td><td></td></tr></tbody></table>
+
+</tbody></table>
       
     </div>
     <aside class="side">
@@ -1474,8 +1481,8 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>专项检查</td><td>免疫功能综合评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>958</td><td class='c'>2,858</td><td></td></tr>
-<tr class='sale'><td colspan='2'>销售价</td><td class='c'>525</td><td class='c'>1,665</td><td></td></tr></tbody></table>
+
+</tbody></table>
       
     </div>
     <figure class="coqfig"><img src="images/coq10.png" alt="线粒体电子传递链中的辅酶Q10"></figure>
@@ -1518,8 +1525,8 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>营养评估</td><td>营养师一对一评估</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>评估饮食结构、调整饮食方案</td></tr>
 <tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class='mkt'><td colspan='2'>市场价（以国宾普区为准）</td><td class='c'>1,350</td><td class='c'>1,910</td><td></td></tr>
-<tr class='sale'><td colspan='2'>销售价</td><td class='c'>817</td><td class='c'>1,080</td><td></td></tr></tbody></table>
+
+</tbody></table>
       
     </div>
     <aside class="side">
@@ -1542,11 +1549,11 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   <div class="split">
     <div class="withfig mri-withfig">
     <div class="tbl-scroll">
-<table class="pkg"><thead><tr><th>项目</th><th>范围</th><th>市场价</th></tr></thead><tbody>
-<tr><td class="cat">单部位 MRI</td><td>头部、心脏、颈椎、胸椎、腰椎、腹部、盆腔、肝脏、胰腺、胆胰管、乳腺、前列腺，以及肩、肘、腕、髋、膝、踝</td><td class="c">1,526 元/部位</td></tr>
-<tr><td class="cat">全身 MRI</td><td>女士全身、男士全身</td><td class="c">女士 21,000 元 / 男士 18,000 元</td></tr>
-<tr><td class="cat">个检报告</td><td>电子版个检报告</td><td class="c">含</td></tr>
-<tr><td class="cat">一对一解读</td><td>把看不懂的片子讲成爸妈能听懂的语言</td><td class="c">含</td></tr>
+<table class="pkg"><thead><tr><th>项目</th><th>范围</th></tr></thead><tbody>
+<tr><td class="cat">单部位 MRI</td><td>头部、心脏、颈椎、胸椎、腰椎、腹部、盆腔、肝脏、胰腺、胆胰管、乳腺、前列腺，以及肩、肘、腕、髋、膝、踝</td></tr>
+<tr><td class="cat">全身 MRI</td><td>女士全身、男士全身</td></tr>
+<tr><td class="cat">个检报告</td><td>电子版个检报告</td></tr>
+<tr><td class="cat">一对一解读</td><td>把看不懂的片子讲成爸妈能听懂的语言</td></tr>
 </tbody></table>
 <p class="fine">平扫做初筛，怀疑异常再做增强。体内金属植入、幽闭恐惧、早孕需提前评估。增强检查要评估肾功能。</p></div>
     <figure class="mri-promo">
@@ -1557,7 +1564,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     <aside class="side">
       <div class="slogan" style="color:#2B62A8">按需选择，平扫初筛，增强精查</div>
       <p class="who">父母颈肩腰腿疼、头晕，或者报告上一个结节，不知道要不要紧。想把该看的部位看清楚，又不想一次做一堆用不上的检查。</p>
-      <p class="epi">单部位市场价 1,526 元。全身 MRI 女士 21,000 元，男士 18,000 元。不进主题卡的打包价，按需另购。</p>
+      
       <div class="out alert"><b>有提示时</b><span>影像发现结节、损伤或信号异常，给出随访周期和专科就诊建议，避免盲目反复检查。</span></div>
       <div class="out ok"><b>无明显异常时</b><span>本次影像未见明确病灶，按健康周期体检。有不适及时就诊。</span></div>
       <p class="bound">B 超较难识别的部分软组织细微变化，核磁有机会看得更清楚，并且没有电离辐射。可以根据父母的情况，针对性选择不舒服的单部位检查，也可以做全身核磁一次性全面筛查。检查结束后还有医生一对一帮您读片子，不只是给到一份冷冰冰的报告，会跟您讲清楚这个结果意味着什么、风险高低、后续该怎么跟进。</p>
@@ -1589,8 +1596,8 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class="cat">专项检查</td><td>福波看-脂肪肝及肝纤维化定量检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="c yes">√</td><td class="note">空腹 &gt; 3小时</td></tr>
 <tr><td class="cat">个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class="c no">—</td><td class="note">/</td></tr>
 <tr><td class="cat">一对一报告解读</td><td class="note">提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
-<tr class="mkt"><td colspan="2">市场价（以国宾普区为准）</td><td class="c">1,472</td><td class="c">820</td><td class="c">140</td><td></td></tr>
-<tr class="sale"><td colspan="2">销售价</td><td class="c">516</td><td class="c">287</td><td class="c">70</td><td></td></tr>
+
+
 </tbody></table></div>
     <div class="clinic-board">
       <div class="clinic-pair">
