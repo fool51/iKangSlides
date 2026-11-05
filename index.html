@@ -105,7 +105,8 @@ table.pkg td.cat{color:var(--navy);font-weight:650;white-space:nowrap}
 table.pkg td.c{text-align:center;width:58px;font-weight:700}
 table.pkg td.yes{color:var(--navy)}
 table.pkg td.no{color:#C5CDD8;font-weight:500}
-table.pkg td.need{color:#C2410C;font-size:11px}
+table.pkg td.need{color:#C2410C;font-size:12px}
+table.pkg td.c.need{width:auto;min-width:4.8em}
 table.pkg td.note{color:var(--muted);font-size:11.5px}
 table.pkg td.note:has(.poster){display:flex;flex-direction:column;align-items:flex-start;gap:5px;line-height:1.45;vertical-align:top}
 table.pkg td.note .note-txt{display:block;color:var(--muted)}
@@ -837,6 +838,7 @@ h2.pain-title em{font-style:normal;color:#F26A21;font-weight:800;margin-left:10p
   .leaflet table.pkg tr.sale td,table.pkg tr.sale td{font-size:14px}
   table.pkg td.cat,table.pkg th,table.pkg td.note{white-space:normal}
   table.pkg td.c{width:2.2em;padding-left:2px;padding-right:2px}
+  table.pkg td.c.need{width:auto;min-width:0;white-space:nowrap;padding-left:4px;padding-right:4px}
   .leaflet .split.fig .infographic{flex-direction:column;align-items:stretch;height:auto;padding:8px}
   .leaflet .split.fig .infographic img{max-width:100%;max-height:160px;margin:0 auto}
   .leaflet .split.fig .infographic figcaption{max-width:none;font-size:12px;line-height:1.45;border-left:0;border-top:3px solid #F26A21;padding:8px 0 0}
@@ -1109,7 +1111,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>遗传风险评估</td><td>APOE（阿尔茨海默遗传风险）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Aβ 蛋白 40/42</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Tau217</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基因分子评估</td><td>microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>遗传风险评估</td><td>APOE（阿尔茨海默遗传风险）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Aβ 蛋白 40/42</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>蛋白变性评估</td><td>Tau217</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>基因分子评估</td><td>microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1144,8 +1146,8 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>血管损伤因子评估</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
 <tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
 <tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
-<tr><td class='cat'>大型设备检查</td><td>颅脑 MRI 检查</td><td colspan="2" class='note'>按需加购</td><td></td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>大型设备检查</td><td>颅脑 MRI 检查</td><td class="c need">按需加购</td><td class="c need">按需加购</td><td class='note'></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 </tbody></table>
@@ -1183,11 +1185,11 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>基线检查</td><td>血清钙（Ca）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
 <tr><td class='cat'>基线检查</td><td>血清磷（P）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
 <tr><td class='cat'>联合指标溯源</td><td>骨标志物两项</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
-<tr><td class='cat'>联合指标溯源</td><td>骨密度检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 左膝关节+右膝关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 髋关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
-<tr><td class='cat'>大型设备深度检测</td><td>关节 MRI 检查</td><td colspan="2" class='note'>按需加购</td><td></td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>联合指标溯源</td><td>骨密度检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
+<tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 左膝关节+右膝关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
+<tr><td class='cat'>AI 辅助评估</td><td>骨力宝 · 髋关节正位健康评估（iKangAI+）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
+<tr><td class='cat'>大型设备深度检测</td><td>关节 MRI 检查</td><td class="c need">按需加购</td><td class="c need">按需加购</td><td class='note'></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 </tbody></table>
@@ -1221,13 +1223,13 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   </div>
   <div class="split">
     <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
-<tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>基础检测</td><td>心电图</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>血管损伤因子评估</td><td>辅酶 Q10</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
 <tr><td class='cat'>血管损伤因子评估</td><td>心无忧检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
 <tr><td class='cat'>血管损伤因子评估</td><td>同型半胱氨酸</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
 <tr><td class='cat'>血管损伤因子评估</td><td>低密度脂蛋白亚分型检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>空腹采血</td></tr>
 <tr><td class='cat'>AI 辅助检查</td><td>心安诊 · 冠脉钙化积分评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>如无 CT 需要加做 CT 检查</td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 </tbody></table>
@@ -1261,12 +1263,12 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   </div>
   <div class="split">
     <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
-<tr><td class='cat'>消化道检测</td><td>幽智策</td><td class="c yes">√</td><td class="c no">—</td><td class='note' rowspan="4">无需空腹，大便送检</td></tr>
-<tr><td class='cat'>消化道检测</td><td>幽敏策</td><td class="c no">—</td><td class="c yes">√</td></tr>
-<tr><td class='cat'>消化道检测</td><td>常智策</td><td class="c no">—</td><td class="c yes">√</td></tr>
-<tr><td class='cat'>消化道检测</td><td>常君策</td><td class="c no">—</td><td class="c yes">√</td></tr>
-<tr><td class='cat'>大型设备检查</td><td>磁控胶囊胃镜</td><td colspan="2" class='note'>按需升级</td><td></td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>消化道检测</td><td>幽智策</td><td class="c yes">√</td><td class="c no">—</td><td class='note'>无需空腹，大便送检</td></tr>
+<tr><td class='cat'>消化道检测</td><td>幽敏策</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr>
+<tr><td class='cat'>消化道检测</td><td>常智策</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr>
+<tr><td class='cat'>消化道检测</td><td>常君策</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr>
+<tr><td class='cat'>大型设备检查</td><td>磁控胶囊胃镜</td><td class="c need">按需加购</td><td class="c need">按需加购</td><td class='note'></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 </tbody></table>
@@ -1299,7 +1301,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     </div>
   </div>
   <div class="split fig">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>便常规</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>基础检测</td><td>必测 100</td><td class="c yes">√</td><td class="c no">—</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-bice100.jpg" alt="必测100产品海报"></span></span></td></tr><tr><td class='cat'>专项检查</td><td>常君策 · 肠道菌群检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>专项检查</td><td>肠道功能评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>无痛肠镜</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需升级</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>便常规</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹，大便送检</td></tr><tr><td class='cat'>基础检测</td><td>必测 100</td><td class="c yes">√</td><td class="c no">—</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/poster-bice100.jpg" alt="必测100产品海报"></span></span></td></tr><tr><td class='cat'>专项检查</td><td>常君策 · 肠道菌群检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>专项检查</td><td>肠道功能评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>大型设备</td><td>无痛肠镜</td><td class="c need">按需加购</td><td class="c need">按需加购</td><td class='note'></td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1308,7 +1310,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
       <p class="epi">2022 年我国结直肠癌新发 51.7 万例（国家癌症中心）。早期无症状，规范随访很重要。</p>
       <div class="out alert"><b>有提示时</b><span>菌群失衡或便潜血有提示，医生给出饮食与补充方案，必要时安排无痛肠镜。</span></div>
       <div class="out ok"><b>无明显异常时</b><span>菌群结构平稳，守住规律用餐与膳食纤维，不必长期补充益生菌。</span></div>
-      <p class="bound">肠道基础筛查，便常规联合必测 100 排查肠道基础异常，一对一解读报告，帮子女及早发现父母肠道预警信号。升级肠道深度溯源套餐，菌群检测 + 肠道功能评估，找准紊乱根源，指导个性化调理；按需升级无痛肠镜，同步做好肠道肿瘤早筛。</p>
+      <p class="bound">肠道基础筛查，便常规联合必测 100 排查肠道基础异常，一对一解读报告，帮子女及早发现父母肠道预警信号。升级肠道深度溯源套餐，菌群检测 + 肠道功能评估，找准紊乱根源，指导个性化调理；按需加购无痛肠镜，同步做好肠道肿瘤早筛。</p>
     </aside>
     <figure class="infographic gut">
       <img src="images/gut.png" alt="肠道菌群示意">
@@ -1333,7 +1335,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     </div>
   </div>
   <div class="split fig">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/1.png" alt="逸力嘉产品海报：一次抽血，早期检测胰腺癌风险"></span></span></td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需加购</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基础检测</td><td>CA19-9</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>CA242</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基础检测</td><td>腹部彩超（胰腺）</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>分子早筛</td><td>逸力嘉 · microRNA</td><td class="c no">—</td><td class="c yes">√</td><td class='note'><span class="poster" tabindex="0"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="1.3" fill="currentColor" stroke="none"/><path d="M7 16.5l3.2-3.2 2.1 2.1L15.5 12 19 16"/></svg>产品海报<span class="poster-pop"><img src="images/1.png" alt="逸力嘉产品海报：一次抽血，早期检测胰腺癌风险"></span></span></td></tr><tr><td class='cat'>大型设备</td><td>胰腺 MRI</td><td class="c need">按需加购</td><td class="c need">按需加购</td><td class='note'></td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1342,7 +1344,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
       <p class="epi">胰腺癌 5 年生存率约 5%–10%（国家癌症中心）。发病隐匿、进展快，发病数和死亡数接近。</p>
       <div class="out alert"><b>有提示时</b><span>CA19-9 升高或超声见占位，结合腹痛、黄疸，建议加做逸力嘉 microRNA、增强 CT 或 MRI，并转专科。</span></div>
       <div class="out ok"><b>无明显异常时</b><span>本次指标平稳、未见占位。重点控糖、戒酒、戒烟。出现症状不要等下一次体检，立即就诊。</span></div>
-      <p class="bound">胰腺基础评估，胰腺彩超联合 CA19-9、CA242 标志物筛查，为高危长辈初步排查胰腺异常风险，供医生判断后续方案。升级影像 + 肿瘤标志物 + 逸力嘉 microRNA 分子早筛多维评估；按需升级胰腺 MRI，为高危父母做更全面的胰腺风险排查。</p>
+      <p class="bound">胰腺基础评估，胰腺彩超联合 CA19-9、CA242 标志物筛查，为高危长辈初步排查胰腺异常风险，供医生判断后续方案。升级影像 + 肿瘤标志物 + 逸力嘉 microRNA 分子早筛多维评估；按需加购胰腺 MRI，为高危父母做更全面的胰腺风险排查。</p>
     </aside>
     <figure class="infographic">
       <img src="images/pancreas.png" alt="胰腺相关症状：消瘦乏力、黄疸、腹痛、低热、血糖异常、尿色变深">
@@ -1367,7 +1369,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
     </div>
   </div>
   <div class="split">
-    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>乳腺彩超</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>基线检查</td><td>CA125</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>CA15-3</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>遗传风险评估</td><td>BRCA 基因检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>—</td></tr><tr><td class='cat'>大型设备</td><td>乳腺 MRI</td><td class="c need">按需</td><td class="c need">按需</td><td class='note'>按需加购</td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
+    <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody><tr><td class='cat'>基线检查</td><td>乳腺彩超</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>基线检查</td><td>CA125</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>基线检查</td><td>CA15-3</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr><tr><td class='cat'>遗传风险评估</td><td>BRCA 基因检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>大型设备</td><td>乳腺 MRI</td><td class="c need">按需加购</td><td class="c need">按需加购</td><td class='note'></td></tr><tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr><tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr></tbody></table>
       
     </div>
     <aside class="side">
@@ -1376,7 +1378,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
       <p class="epi">我国女性乳腺癌年新发约 35.7 万例（国家癌症中心），发病中位年龄 47 岁。早筛能改善预后。</p>
       <div class="out alert"><b>有提示时</b><span>超声或 CA15-3 异常，结合年龄与 BI-RADS 分级，建议乳腺专科复查、钼靶或 MRI。</span></div>
       <div class="out ok"><b>无明显异常时</b><span>未见可疑结节，继续按年龄做年度超声或钼靶，保持月经后乳房自检习惯。</span></div>
-      <p class="bound">乳腺基础评估，乳腺彩超联合肿瘤标志物筛查，一对一解读报告，帮子女排查母亲乳腺结节、异常风险。升级基础影像 + 标志物 + BRCA 遗传易感检测，预判先天患病风险；按需升级乳腺磁共振，精准鉴别疑难病灶，全方位守护母亲乳腺健康。</p>
+      <p class="bound">乳腺基础评估，乳腺彩超联合肿瘤标志物筛查，一对一解读报告，帮子女排查母亲乳腺结节、异常风险。升级基础影像 + 标志物 + BRCA 遗传易感检测，预判先天患病风险；按需加购乳腺磁共振，精准鉴别疑难病灶，全方位守护母亲乳腺健康。</p>
     </aside>
   </div>
 </section>
@@ -1398,12 +1400,12 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   </div>
   <div class="split">
     <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
-<tr><td class='cat'>基线检查</td><td>子宫附件超声</td><td class="c yes">√</td><td class="c yes">√</td><td class='note' rowspan="4">均无需空腹</td></tr>
-<tr><td class='cat'>肿瘤风险外泌体评估</td><td>泌思优 · 卵巢癌外泌体检查</td><td class="c yes">√</td><td class="c yes">√</td></tr>
-<tr><td class='cat'>专项检测</td><td>类固醇激素分析</td><td class="c no">—</td><td class="c yes">√</td></tr>
-<tr><td class='cat'>专项检测</td><td>停经前/后荷尔蒙评估</td><td class="c no">—</td><td class="c yes">√</td></tr>
-<tr><td class='cat'>大型设备深度检测</td><td>盆腔磁共振检查</td><td colspan="2" class='note'>按需加购</td><td></td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>基线检查</td><td>子宫附件超声</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>均无需空腹</td></tr>
+<tr><td class='cat'>肿瘤风险外泌体评估</td><td>泌思优 · 卵巢癌外泌体检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>均无需空腹</td></tr>
+<tr><td class='cat'>专项检测</td><td>类固醇激素分析</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>均无需空腹</td></tr>
+<tr><td class='cat'>专项检测</td><td>停经前/后荷尔蒙评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>均无需空腹</td></tr>
+<tr><td class='cat'>大型设备深度检测</td><td>盆腔磁共振检查</td><td class="c need">按需加购</td><td class="c need">按需加购</td><td class='note'></td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 </tbody></table>
@@ -1437,11 +1439,11 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   </div>
   <div class="split">
     <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
-<tr><td class='cat'>基础检测</td><td>胸部 CT 检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>基础检测</td><td>胸部 CT 检查</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>分子早筛</td><td>肺癌抗体 7 项检查</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹</td></tr>
 <tr><td class='cat'>专项检查</td><td>肺功能检查</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>专项检查</td><td>CPET（心肺运动试验）</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>落地分院：爱康卓悦北京阜成门万通大厦分院、上海 WA 臻景医疗中心、爱康悦养功能医学中心</td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 </tbody></table>
@@ -1476,10 +1478,10 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   <div class="split">
     <div class="withfig">
     <div class="tbl-scroll"><table class='pkg'><thead><tr><th>分类</th><th>检查项目</th><th>基础卡</th><th>升级卡</th><th>备注</th></tr></thead><tbody>
-<tr><td class='cat'>分子早筛</td><td>细胞 NAD+ 水平分析检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note' rowspan="2">均无需空腹</td></tr>
-<tr><td class='cat'>分子早筛</td><td>人端粒长度检测</td><td class="c yes">√</td><td class="c yes">√</td></tr>
+<tr><td class='cat'>分子早筛</td><td>细胞 NAD+ 水平分析检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>均无需空腹</td></tr>
+<tr><td class='cat'>分子早筛</td><td>人端粒长度检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>均无需空腹</td></tr>
 <tr><td class='cat'>专项检查</td><td>免疫功能综合评估</td><td class="c no">—</td><td class="c yes">√</td><td class='note'></td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 </tbody></table>
@@ -1523,7 +1525,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class='cat'>专项检测</td><td>辅酶 Q10 检测</td><td class="c no">—</td><td class="c yes">√</td><td class='note'>无需空腹采血</td></tr>
 <tr><td class='cat'>专项检测</td><td>红细胞叶酸检测</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>营养评估</td><td>营养师一对一评估</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>评估饮食结构、调整饮食方案</td></tr>
-<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'>/</td></tr>
+<tr><td class='cat'>个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class='note'></td></tr>
 <tr><td class='cat'>一对一报告解读</td><td class='note'>提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 </tbody></table>
@@ -1594,7 +1596,7 @@ html,body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 <tr><td class="cat">专项检查</td><td>壳佑测-壳多糖酶3样蛋白1检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="c no">—</td><td class="note">无需空腹采血</td></tr>
 <tr><td class="cat">专项检查</td><td>人细胞角蛋白18片段（CK18-M30+M65）早期肝细胞受损检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="c no">—</td><td class="note">无需空腹采血</td></tr>
 <tr><td class="cat">专项检查</td><td>福波看-脂肪肝及肝纤维化定量检测</td><td class="c yes">√</td><td class="c yes">√</td><td class="c yes">√</td><td class="note">空腹 &gt; 3小时</td></tr>
-<tr><td class="cat">个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class="c no">—</td><td class="note">/</td></tr>
+<tr><td class="cat">个检报告</td><td>—</td><td class="c yes">√</td><td class="c yes">√</td><td class="c no">—</td><td class="note"></td></tr>
 <tr><td class="cat">一对一报告解读</td><td class="note">提供一对一报告解读服务，把看不懂的报告，翻译成通俗语言</td><td class="c yes">√</td><td class="c yes">√</td><td class="c yes">√</td><td></td></tr>
 
 
